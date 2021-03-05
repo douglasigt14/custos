@@ -12,7 +12,7 @@
 							<div class="row">
 								<a href='/' class="col-md-3 cinzinha">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-file"></i></span>
+										<span class="icon"><i class="fa fa-cube"></i></span>
 										<p>
 											<span class="number">0</span>
 											<span class="title">Materias Primas</span>
@@ -22,7 +22,7 @@
 
 								<a href='/' class="col-md-3 cinzinha">
 									<div class="metric">
-										<span class="icon"><i class="fa fa-file"></i></span>
+										<span class="icon"><i class="fa fa-money"></i></span>
 										<p>
 											<span class="number">0</span>
 											<span class="title">Custo Item Comercial</span>
