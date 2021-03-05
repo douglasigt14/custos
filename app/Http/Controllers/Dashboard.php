@@ -8,6 +8,6 @@ use DB;
 class Dashboard extends Controller
 {
     public function index(){
-        return view('inicial', compact([]));
+        return view('pagina_inicial', compact([]));
     }
 }

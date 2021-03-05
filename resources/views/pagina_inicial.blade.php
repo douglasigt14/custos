@@ -1,0 +1,34 @@
+@extends('commons.template')
+
+@section('conteudo')
+
+		
+                    <!-- OVERVIEW -->
+					<div class="panel panel-headline">
+						<div class="panel-heading">
+							<h3 class="panel-title">Custos</h3>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<a href='/documentos' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-file"></i></span>
+										<p>
+											<span class="number">0</span>
+											<span class="title">Valores Materias Primas</span>
+										</p>
+									</div>
+								</a>
+								
+							</div>
+							
+                        </div>
+                    
+                    
+                            </div>
+					<!-- END OVERVIEW -->
+	
+
+       
+            
+@endsection	
