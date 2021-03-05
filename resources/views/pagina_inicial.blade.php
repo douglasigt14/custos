@@ -10,7 +10,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<a href='/materias_primas' class="col-md-3 cinzinha">
+								<a href='/' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-file"></i></span>
 										<p>
@@ -20,7 +20,7 @@
 									</div>
 								</a>
 
-								<a href='/materias_primas' class="col-md-3 cinzinha">
+								<a href='/' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-file"></i></span>
 										<p>

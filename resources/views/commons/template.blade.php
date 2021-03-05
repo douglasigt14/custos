@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-	<title>GED</title>
+	<title>Custos</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -87,6 +87,10 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="/" @if(Route::current()->uri() == '/') class="active" @endif><i class="lnr lnr-home"></i> <span>Pagina Inicial</span></a></li>
+
+						<li><a href="/" @if(Route::current()->uri() == '/materias_primas') class="active" @endif><i class="fa fa-car"></i> <span>Materias Primas</span></a></li>
+
+						<li><a href="/" @if(Route::current()->uri() == '/custo_item_comercial') class="active" @endif><i class="lnr lnr-home"></i> <span>Custo Item Comercial</span></a></li>
 						
 					</ul>
 				</nav>
