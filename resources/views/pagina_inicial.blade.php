@@ -10,12 +10,22 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<a href='/documentos' class="col-md-3 cinzinha">
+								<a href='/materias_primas' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-file"></i></span>
 										<p>
 											<span class="number">0</span>
-											<span class="title">Valores Materias Primas</span>
+											<span class="title">Materias Primas</span>
+										</p>
+									</div>
+								</a>
+
+								<a href='/materias_primas' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-file"></i></span>
+										<p>
+											<span class="number">0</span>
+											<span class="title">Custo Item Comercial</span>
 										</p>
 									</div>
 								</a>
