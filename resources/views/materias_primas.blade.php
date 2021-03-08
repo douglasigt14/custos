@@ -22,8 +22,8 @@
 										@foreach ($itens as $item)
 										<tr>
 											<td>{{$item->cod_item}}-{{$item->desc_tecnica}}</td>
-											<td class='center'>{{number_format($item->valor_mat,2,',','.')}}</td>
-											<td class='center'>{{number_format($item->valor_mat,2,',','.')}}</td>
+											<td class='center'>{{number_format($item->valor,4,',','.')}}</td>
+											<td class='center'>{{number_format($item->valor,4,',','.')}}</td>
 										</tr>
 										@endforeach
 									</tbody>
