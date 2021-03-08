@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard;
 use App\Http\Middleware\MyAuth;
 use App\Http\Controllers\Auth\MyLogin;
+use App\Http\Controllers\MateriasPrimas;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,7 @@ use App\Http\Controllers\Auth\MyLogin;
 */
 Route::middleware(MyAuth::class)->group(function () {
     Route::get('/', [Dashboard::class, 'index']);
+    Route::get('/materias_primas', [MateriasPrimas::class, 'index']);
     
 });
 

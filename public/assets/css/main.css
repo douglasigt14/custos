@@ -367,10 +367,10 @@ ul.notifications > li {
       color: #fff;
       background-color: transparent; }
       .sidebar .nav > li > a:hover i, .sidebar .nav > li > a:focus i, .sidebar .nav > li > a.active i {
-        color: #FF6347; }
+        color: #FF4500; }
     .sidebar .nav > li > a:focus, .sidebar .nav > li > a.active {
       background-color: #252c35;
-      border-left-color: #FF6347; }
+      border-left-color: #FF4500; }
     .sidebar .nav > li > a[data-toggle="collapse"] .icon-submenu {
       /*display: inline-block;*/
       vertical-align: middle;
@@ -720,7 +720,7 @@ fieldset[disabled] .btn {
     width: 50px;
     height: 50px;
     line-height: 50px;
-    background-color: #FF6347;
+    background-color: #FF4500;
     text-align: center; }
     .metric .icon i {
       font-size: 18px;
