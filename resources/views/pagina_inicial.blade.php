@@ -10,7 +10,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<a href='/' class="col-md-3 cinzinha">
+								<a href='/materias_primas' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-cube"></i></span>
 										<p>
