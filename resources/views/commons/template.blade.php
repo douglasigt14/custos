@@ -91,6 +91,8 @@
 						<li><a href="materias_primas" @if(Route::current()->uri() == 'materias_primas') class="active" @endif><i class="fa fa-cube"></i> <span>Materias Primas</span></a></li>
 
 						<li><a href="custo_item_comercial" @if(Route::current()->uri() == 'custo_item_comercial') class="active" @endif><i class="fa fa-money"></i> <span>Custo Item Comercial</span></a></li>
+
+						<li><a href="margens_lucro" @if(Route::current()->uri() == 'margens_lucro') class="active" @endif><i class="fa fa-bar-chart"></i> <span>Margens de Lucro</span></a></li>
 						
 					</ul>
 				</nav>

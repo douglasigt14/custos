@@ -29,6 +29,17 @@
 										</p>
 									</div>
 								</a>
+
+
+								<a href='/margens_lucro' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-bar-chart"></i></span>
+										<p>
+											<span class="number">0</span>
+											<span class="title">Margens de Lucro</span>
+										</p>
+									</div>
+								</a>
 								
 							</div>
 							
