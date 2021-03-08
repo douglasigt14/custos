@@ -14,16 +14,16 @@
 									<thead>
 										<tr>
 											<th>Item</th>
-											<th>Custo Atual</th>
-											<th>Custo Reajuste</th>
+											<th class='center'>Custo Atual</th>
+											<th class='center'>Custo Reajuste</th>
 										</tr>
 									</thead>
 									<tbody>
 										@foreach ($itens as $item)
 										<tr>
-											<td>{{$item->cod_item}}-{{$item->dec_tecnica}}</td>
-											<td>{{$item->valor_mat}}</td>
-											<td></td>
+											<td>{{$item->cod_item}}-{{$item->desc_tecnica}}</td>
+											<td class='center'>{{number_format($item->valor_mat,2,',','.')}}</td>
+											<td class='center'>{{number_format($item->valor_mat,2,',','.')}}</td>
 										</tr>
 										@endforeach
 									</tbody>
