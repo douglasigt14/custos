@@ -25,10 +25,10 @@ class MyLogin extends Controller
             password_verify($_POST['password'], $user->senha)
         ) {
             // Cria a sessao
-            $_SESSION['usuario'] = $user->rotulo;
-            $_SESSION['id'] = $user->id;
-            $_SESSION['is_admin'] = $user->is_admin ?? NULL;
-            $_SESSION['login'] = $name;
+            $_SESSION['usuario_custos'] = $user->rotulo;
+            $_SESSION['id_custos'] = $user->id;
+            $_SESSION['is_admin_custos'] = $user->is_admin ?? NULL;
+            $_SESSION['login_custos'] = $name;
             if($user->is_admin) 
                 return redirect('/');
             else
@@ -41,9 +41,10 @@ class MyLogin extends Controller
 
     public function logout() {
         session_start();
-        unset($_SESSION['usuario']);
-        unset($_SESSION['id']);
-        unset($_SESSION['login']);
+        unset($_SESSION['usuario_custos']);
+        unset($_SESSION['id_custos']);
+        unset($_SESSION['login_custos']);
+        unset($_SESSION['is_admin_custos']);
         return redirect('/login');
     }
     
