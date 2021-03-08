@@ -8,6 +8,9 @@ use DB;
 class Dashboard extends Controller
 {
     public function index(){
-        return view('pagina_inicial', compact([]));
+        // $usuarios = DB::select("SELECT * FROM usuarios");
+        // dd($usuarios);
+
+        return view('login_tela', compact([]));
     }
 }
