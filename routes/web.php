@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Middleware\MyAuth;
 use App\Http\Controllers\Auth\MyLogin;
 use App\Http\Controllers\MateriasPrimas;
+use App\Http\Controllers\CustoItemComercial;
 
 
 /*
@@ -20,7 +21,7 @@ use App\Http\Controllers\MateriasPrimas;
 Route::middleware(MyAuth::class)->group(function () {
     Route::get('/', [Dashboard::class, 'index']);
     Route::get('/materias_primas', [MateriasPrimas::class, 'index']);
-    
+    Route::get('/custo_item_comercial', [CustoItemComercial::class, 'index']);
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');

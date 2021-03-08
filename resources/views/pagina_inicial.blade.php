@@ -20,7 +20,7 @@
 									</div>
 								</a>
 
-								<a href='/' class="col-md-3 cinzinha">
+								<a href='/custo_item_comercial' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-money"></i></span>
 										<p>
