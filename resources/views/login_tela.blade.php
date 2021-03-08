@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GED</title>
+	<title>Custos</title>
    <!--Made with love by Mutiullah Samim -->
    
     <!--Fontawesome CDN-->
