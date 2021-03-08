@@ -23,4 +23,4 @@ Route::middleware(MyAuth::class)->group(function () {
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');
 Route::post('/login', [MyLogin::class, 'login'] );
 Route::get('/logout', [MyLogin::class, 'logout']);
-Route::patch('/mudar-senha', [MyLogin::class, 'mudarSenha']);
+Route::patch('/mudar_senha', [MyLogin::class, 'mudarSenha']);

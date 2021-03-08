@@ -11,6 +11,6 @@ class Dashboard extends Controller
         // $usuarios = DB::select("SELECT * FROM usuarios");
         // dd($usuarios);
 
-        return view('login_tela', compact([]));
+        return view('pagina_inicial', compact([]));
     }
 }

@@ -14,6 +14,7 @@ class MyLogin extends Controller
     }
 
     public function login() {
+        
         session_start();
         $name = $_POST['name'];
         $user = DB::select("SELECT * FROM usuarios WHERE nome = '$name'");
@@ -47,7 +48,6 @@ class MyLogin extends Controller
     
     public function mudarSenha(Request $request) {
         $dados = (object) $request->all();
-       
         $msg = "";
         $msg_tipo = "";
         $user = DB::select("SELECT * FROM usuarios WHERE id = '$dados->id'");
