@@ -19,11 +19,13 @@
 										</tr>
 									</thead>
 									<tbody>
+										@foreach ($itens as $item)
 										<tr>
-											<td></td>
-											<td></td>
+											<td>{{$item->cod_item}}-{{$item->dec_tecnica}}</td>
+											<td>{{$item->valor_mat}}</td>
 											<td></td>
 										</tr>
+										@endforeach
 									</tbody>
 								</table>
 							</div>
@@ -37,7 +39,7 @@
 		<script>
 			 $(document).ready( function () {
                     $('.myTable').DataTable({
-						"pageLength": 10
+						"pageLength": 100
 					});
                 } );
 		</script>
