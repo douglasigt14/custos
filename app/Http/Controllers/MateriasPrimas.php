@@ -9,7 +9,8 @@ class MateriasPrimas extends Controller
 {
     public function index(){
         $sqlItens = "SELECT 
-        TITENS.COD_ITEM||'-'||TITENS.DESC_TECNICA ITEM
+         TITENS.COD_ITEM
+        ,TITENS.DESC_TECNICA
         ,TITENS_CUSTOS.VLR_CST_MAT_DIR VALOR
         ,TGRP_CLAS_ITE.COD_GRP_ITE
         ,TGRP_CLAS_ITE.DESCRICAO
