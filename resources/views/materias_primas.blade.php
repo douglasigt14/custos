@@ -13,8 +13,9 @@
 								<table class="table table-striped myTable">
 									<thead>
 										<tr>
+											<th>Cod'</th>
 											<th>Item</th>
-											<th class='center'>Custo Atual</th>
+											<th class='center'>Custo Focco</th>
 											<th class='center'>Custo Futuro</th>
 											<th class='center'>Perc. (%)</th>
 										</tr>
@@ -22,7 +23,8 @@
 									<tbody>
 										@foreach ($itens as $item)
 										<tr>
-											<td>{{$item->cod_item}}-{{$item->desc_tecnica}}</td>
+											<td>{{$item->cod_item}}</td>
+											<td>{{$item->desc_tecnica}}</td>
 											<td class='center'>{{number_format($item->valor,4,',','.')}}</td>
 											<td class='center'>{{number_format($item->valor,4,',','.')}}</td>
 											<td class='center'>0%</td>
@@ -41,7 +43,7 @@
 		<script>
 			 $(document).ready( function () {
                     $('.myTable').DataTable({
-						"pageLength": 100
+						"pageLength": 1000
 					});
                 } );
 		</script>
