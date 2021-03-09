@@ -30,8 +30,8 @@ class MateriasPrimas extends Controller
         OR TGRP_CLAS_ITE.COD_GRP_ITE LIKE '10.03%')
     AND   (TITENS.SIT = 1)
     AND TITENS_CUSTOS.VLR_CST_MAT_DIR <> 0
-    --AND TITENS.COD_ITEM = 8203
-    AND TITENS.DESC_TECNICA NOT LIKE '--%'
+    -- AND TITENS.COD_ITEM = 8203
+    -- AND TITENS.DESC_TECNICA NOT LIKE '--%'
     ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
         $itens = DB::connection('oracle')->select($sqlItens);
 

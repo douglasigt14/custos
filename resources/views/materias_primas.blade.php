@@ -15,7 +15,8 @@
 										<tr>
 											<th>Item</th>
 											<th class='center'>Custo Atual</th>
-											<th class='center'>Custo Reajuste</th>
+											<th class='center'>Custo Futuro</th>
+											<th class='center'>Perc. (%)</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -24,6 +25,7 @@
 											<td>{{$item->cod_item}}-{{$item->desc_tecnica}}</td>
 											<td class='center'>{{number_format($item->valor,4,',','.')}}</td>
 											<td class='center'>{{number_format($item->valor,4,',','.')}}</td>
+											<td class='center'>0%</td>
 										</tr>
 										@endforeach
 									</tbody>
