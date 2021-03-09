@@ -1860,4 +1860,10 @@ ul.activity-timeline > li {
   .descricao{
     width: 400px !important;
   }
+  .texto-verde{
+    color: green;
+  }
+  .texto-azul{
+    color: blue;
+  }  
 /*# sourceMappingURL=main.css.map */
