@@ -10,12 +10,12 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<table class="table table-striped myTable">
+								<table class="table table-striped menor myTable">
 									<thead>
 										<tr>
 											<th>Cod</th>
 											<th>Item</th>
-											<th class='center'>Data Atualiza</th>
+											<th class='center'>Dt. Atualz. Focco</th>
 											<th class='center'>Unid. Med.</th>
 											
 											<th class='center'>Custo Focco</th>
