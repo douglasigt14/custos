@@ -31,9 +31,9 @@
 											
 											<td class='center'>{{date("d/m/Y", strtotime($item->dt_atualiza))}}</td>
 											<td class='center'>{{$item->unid_med}}</td>
-											<td class='center texto-verde'>{{number_format($item->custo,4,',','.')}}</td>
-											<td class='center texto-azul'>{{number_format($item->custo_futuro,4,',','.')}}</td>
-											<td class='center'>0%</td>
+											<td class='center texto-verde'>{{$item->custo}}</td>
+											<td class='center texto-azul'>{{$item->custo_futuro}}</td>
+											<td class='center'>{{$item->perc}}%</td>
 										</tr>
 										@endforeach
 									</tbody>
