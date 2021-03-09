@@ -10,7 +10,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<table class="table table-striped menor myTable">
+								<table class="table table-hover table-striped menor myTable">
 									<thead>
 										<tr>
 											<th>Cod</th>
@@ -50,6 +50,7 @@
 			 $(document).ready( function () {
                     $('.myTable').DataTable({
 						"pageLength": 1000
+						,"order": [[ 1, "asc" ]]
 					});
                 } );
 		</script>
