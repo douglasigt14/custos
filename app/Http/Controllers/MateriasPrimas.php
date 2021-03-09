@@ -11,7 +11,7 @@ class MateriasPrimas extends Controller
         $sqlItens = "SELECT 
         TITENS.COD_ITEM
         ,TITENS.DESC_TECNICA
-        ,TITENS_CUSTOS.VLR_CST_MAT_DIR VALOR
+        ,TITENS_CUSTOS.VLR_CST_MAT_DIR CUSTO
         ,TGRP_CLAS_ITE.COD_GRP_ITE
         ,TGRP_CLAS_ITE.DESCRICAO CLASS_DESC
         ,TITENS_CUSTOS.DT_ATUALIZA
@@ -36,10 +36,16 @@ class MateriasPrimas extends Controller
     AND TITENS_CUSTOS.VLR_CST_MAT_DIR <> 0
     AND TITENS.DESC_TECNICA NOT LIKE '--%'
     AND TITENS.DESC_TECNICA NOT LIKE '(P)%'
-    AND TITENS_CUSTOS.DT_ATUALIZA BETWEEN SYSDATE-730 AND SYSDATE  
+    AND TITENS_CUSTOS.DT_ATUALIZA BETWEEN SYSDATE-1095 AND SYSDATE  
     --AND TITENS.COD_ITEM = 8203
     ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
         $itens = DB::connection('oracle')->select($sqlItens);
+
+    foreach ($itens as $key => $item) {
+        $sql = "SELECT valor FROM custos_futuros WHERE cod_item = $item->cod_item";
+        $custos_futuros = DB::connection('mysql')->select($sql);
+        $item->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : $item->custo;
+    }
 
         return view('materias_primas', compact(['itens']));
     }

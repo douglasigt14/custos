@@ -6,7 +6,7 @@
                     <!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Matérias Primas</h3>
+							<h3 class="panel-title">Matérias Primas - Cadastro</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
@@ -31,8 +31,8 @@
 											
 											<td class='center'>{{date("d/m/Y", strtotime($item->dt_atualiza))}}</td>
 											<td class='center'>{{$item->unid_med}}</td>
-											<td class='center texto-verde'>{{number_format($item->valor,4,',','.')}}</td>
-											<td class='center texto-azul'>{{number_format($item->valor,4,',','.')}}</td>
+											<td class='center texto-verde'>{{number_format($item->custo,4,',','.')}}</td>
+											<td class='center texto-azul'>{{number_format($item->custo_futuro,4,',','.')}}</td>
 											<td class='center'>0%</td>
 										</tr>
 										@endforeach
