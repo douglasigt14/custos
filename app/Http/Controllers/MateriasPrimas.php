@@ -9,11 +9,11 @@ class MateriasPrimas extends Controller
 {
     public function index(){
         $sqlItens = "SELECT 
-         TITENS.COD_ITEM
-        ,TITENS.DESC_TECNICA
+        TITENS.COD_ITEM||'-'||TITENS.DESC_TECNICA ITEM
         ,TITENS_CUSTOS.VLR_CST_MAT_DIR VALOR
-        ,TGRP_CLAS_ITE.COD_GRP_ITE COD_CLASS
-        ,TGRP_CLAS_ITE.DESCRICAO DESC_CLASS
+        ,TGRP_CLAS_ITE.COD_GRP_ITE
+        ,TGRP_CLAS_ITE.DESCRICAO
+        ,TITENS_CUSTOS.DT_ATUALIZA
     FROM
          FOCCO3I.TITENS
         ,FOCCO3I.TITENS_EMPR
@@ -30,8 +30,9 @@ class MateriasPrimas extends Controller
         OR TGRP_CLAS_ITE.COD_GRP_ITE LIKE '10.03%')
     AND   (TITENS.SIT = 1)
     AND TITENS_CUSTOS.VLR_CST_MAT_DIR <> 0
-    -- AND TITENS.COD_ITEM = 8203
-    -- AND TITENS.DESC_TECNICA NOT LIKE '--%'
+    AND TITENS.DESC_TECNICA NOT LIKE '--%'
+    AND TITENS_CUSTOS.DT_ATUALIZA BETWEEN SYSDATE-730 AND SYSDATE  
+    --AND TITENS.COD_ITEM = 8203
     ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
         $itens = DB::connection('oracle')->select($sqlItens);
 
