@@ -57,6 +57,20 @@ class MateriasPrimas extends Controller
     }
 
     public function ins_up_custo_futuro($cod_item = null,$valor = null){
+        $valor = str_replace(",",".", $valor);
+        $sql = "SELECT valor FROM custos_futuros WHERE cod_item = $cod_item";
+        $custos_futuros = DB::connection('mysql')->select($sql);
+
+        if($custos_futuros){
+            return 'UPDATE';
+        }
+        else{
+            DB::table('custos_futuros')->insert([
+                'cod_item' => $cod_item,
+                'valor' => $valor
+            ]);
+        }
+
         return 'COD ITEM: '.$cod_item.' VALOR: '.$valor;//back();
     }
 }
