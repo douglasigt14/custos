@@ -75,16 +75,16 @@
 								}
 
 
-								const URL_TO_FETCH = '';
-								fetch(URL_TO_FETCH, {
-									method: 'get' //opcional 
-								})
-								.then(function(response) { 
-									// use a resposta 
-								})
-								.catch(function(err) { 
-									console.error(err); 
-								});
+								// const URL_TO_FETCH = '';
+								// fetch(URL_TO_FETCH, {
+								// 	method: 'get' //opcional 
+								// })
+								// .then(function(response) { 
+								// 	// use a resposta 
+								// })
+								// .catch(function(err) { 
+								// 	console.error(err); 
+								// });
 
 							});
 
