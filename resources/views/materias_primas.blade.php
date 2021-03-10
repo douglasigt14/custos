@@ -33,7 +33,7 @@
 											<td class='center'>{{$item->unid_med}}</td>
 											<td class='center texto-verde'>{{$item->custo}}</td>
 											<td id='EditarValor{{$item->cod_item}}' class='center texto-azul'>{{$item->custo_futuro}}</td>
-											<td class='center'>{{$item->perc}}%</td>
+											<td id='Perc{{$item->cod_item}}' class='center'>{{$item->perc}}%</td>
 										</tr>
 										@endforeach
 									</tbody>
@@ -102,6 +102,24 @@
 									.catch(function(err) { 
 										console.error(err); 
 									});
+
+									let custo_focco = "{{$item->custo}}";
+									let custo_futuro = novoConteudo;
+
+									custo_focco = custo_focco.toString().replace(",",".");
+									custo_futuro = custo_futuro.toString().replace(",",".");
+									custo_focco = parseFloat(custo_focco);
+									custo_futuro = parseFloat(custo_futuro);
+									
+
+									let perc = (custo_futuro / custo_focco *100)-100;
+
+									perc =   perc.toFixed(2); 
+
+									var oldstr=  perc.toString();  
+									perc  = oldstr.toString().replace(".",",");
+
+									document.getElementById('Perc{{$item->cod_item}}').innerHTML = perc+'%';
 
 								}
 
