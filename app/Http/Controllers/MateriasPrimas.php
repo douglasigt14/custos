@@ -62,7 +62,11 @@ class MateriasPrimas extends Controller
         $custos_futuros = DB::connection('mysql')->select($sql);
 
         if($custos_futuros){
-            return 'UPDATE';
+            DB::table('custos_futuros')
+              ->where('cod_item', $cod_item)
+              ->update([
+                    'valor' => $valor
+            ]);
         }
         else{
             DB::table('custos_futuros')->insert([
