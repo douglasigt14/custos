@@ -14,7 +14,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-cube"></i></span>
 										<p>
-											<span class="number">0</span>
+											<span class="number">{{$qtde->materias_primas}}</span>
 											<span class="title">Materias Primas</span>
 										</p>
 									</div>
