@@ -56,7 +56,7 @@ class MateriasPrimas extends Controller
         return view('materias_primas', compact(['itens']));
     }
 
-    public function ins_up_custo_futuro(){
-        return back();
+    public function ins_up_custo_futuro($cod_item = null,$valor = null){
+        return 'COD ITEM: '.$cod_item.' VALOR: '.$valor;//back();
     }
 }

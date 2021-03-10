@@ -72,19 +72,23 @@
 									var novoConteudo = $(this).val();
 									$(this).parent().text(novoConteudo);
 									$(this).parent().removeClass("celulaEmEdicao");
+
+
+									let url = "{{asset('')}}";
+									const URL_TO_FETCH = url+"ins_up_custo_futuro/{{$item->cod_item}}/"+novoConteudo;
+									fetch(URL_TO_FETCH, {
+										method: 'get' //opcional 
+									})
+									.then(function(response) { 
+										// use a resposta 
+									})
+									.catch(function(err) { 
+										console.error(err); 
+									});
+
 								}
 
-
-								// const URL_TO_FETCH = '';
-								// fetch(URL_TO_FETCH, {
-								// 	method: 'get' //opcional 
-								// })
-								// .then(function(response) { 
-								// 	// use a resposta 
-								// })
-								// .catch(function(err) { 
-								// 	console.error(err); 
-								// });
+								
 
 							});
 
