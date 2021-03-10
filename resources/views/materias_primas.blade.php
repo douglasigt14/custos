@@ -52,19 +52,36 @@
 						"pageLength": 1000
 						,"order": [[ 1, "asc" ]]
 					});
-
-					$('.myTable').on( 'click', 'tbody td:not(:first-child)', function (e) {
-						editor.inline( this );
-					} );
                 } );
+
+
+				function mascara(o,f){
+					v_obj=o
+					v_fun=f
+					setTimeout("execmascara()",1)
+				}
+
+				function execmascara(){
+					v_obj.value=v_fun(v_obj.value)
+				}
+
+				function moeda(v){
+					v=v.replace(/\D/g,"") // permite digitar apenas numero
+					v=v.replace(/(\d{1})(\d{17})$/,"$1.$2") // coloca ponto antes dos ultimos digitos
+					v=v.replace(/(\d{1})(\d{13})$/,"$1.$2") // coloca ponto antes dos ultimos 13 digitos
+					v=v.replace(/(\d{1})(\d{10})$/,"$1.$2") // coloca ponto antes dos ultimos 10 digitos
+					v=v.replace(/(\d{1})(\d{7})$/,"$1.$2") // coloca ponto antes dos ultimos 7 digitos
+					v=v.replace(/(\d{1})(\d{1,4})$/,"$1,$2") // coloca virgula antes dos ultimos 4 digitos
+					return v;
+				}
 
 				@foreach ($itens as $item)
 					$(function () {
 						$("#EditarValor{{$item->cod_item}}").dblclick(function () {
 							var conteudoOriginal = $(this).text();
-
+							let evento = "mascara(this,moeda)";
 							$(this).addClass("celulaEmEdicao");
-							$(this).html("<input type='text' class='form-control' value='" + conteudoOriginal + "' />");
+							$(this).html("<input onKeyPress="+evento+" type='text' class='form-control' value='" + conteudoOriginal + "' />");
 							$(this).children().first().focus();
 
 							$(this).children().first().keypress(function (e) {
@@ -99,5 +116,7 @@
 						});
 				});
 				@endforeach
+
+			
 		</script>
 @endpush
