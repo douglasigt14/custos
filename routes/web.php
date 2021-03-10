@@ -21,7 +21,9 @@ use App\Http\Controllers\CustoItemComercial;
 Route::middleware(MyAuth::class)->group(function () {
     Route::get('/', [Dashboard::class, 'index']);
     Route::get('/materias_primas', [MateriasPrimas::class, 'index']);
+    Route::post('/materias_primas', [CustoItemComercial::class, 'ins_up_custo_futuro']);
     Route::get('/custo_item_comercial', [CustoItemComercial::class, 'index']);
+    
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');

@@ -32,7 +32,7 @@
 											<td class='center'>{{date("d/m/Y", strtotime($item->dt_atualiza))}}</td>
 											<td class='center'>{{$item->unid_med}}</td>
 											<td class='center texto-verde'>{{$item->custo}}</td>
-											<td class='center texto-azul'>{{$item->custo_futuro}}</td>
+											<td id='EditarValor{{$item->cod_item}}' class='center texto-azul'>{{$item->custo_futuro}}</td>
 											<td class='center'>{{$item->perc}}%</td>
 										</tr>
 										@endforeach
@@ -52,6 +52,48 @@
 						"pageLength": 1000
 						,"order": [[ 1, "asc" ]]
 					});
+
+					$('.myTable').on( 'click', 'tbody td:not(:first-child)', function (e) {
+						editor.inline( this );
+					} );
                 } );
+
+				@foreach ($itens as $item)
+					$(function () {
+						$("#EditarValor{{$item->cod_item}}").dblclick(function () {
+							var conteudoOriginal = $(this).text();
+
+							$(this).addClass("celulaEmEdicao");
+							$(this).html("<input type='text' class='form-control' value='" + conteudoOriginal + "' />");
+							$(this).children().first().focus();
+
+							$(this).children().first().keypress(function (e) {
+								if (e.which == 13) {
+									var novoConteudo = $(this).val();
+									$(this).parent().text(novoConteudo);
+									$(this).parent().removeClass("celulaEmEdicao");
+								}
+
+
+								const URL_TO_FETCH = '';
+								fetch(URL_TO_FETCH, {
+									method: 'get' //opcional 
+								})
+								.then(function(response) { 
+									// use a resposta 
+								})
+								.catch(function(err) { 
+									console.error(err); 
+								});
+
+							});
+
+						$(this).children().first().blur(function(){
+							$(this).parent().text(conteudoOriginal);
+							$(this).parent().removeClass("celulaEmEdicao");
+						});
+						});
+				});
+				@endforeach
 		</script>
 @endpush
