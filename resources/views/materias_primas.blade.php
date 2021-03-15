@@ -114,7 +114,7 @@
 
 									let perc = (custo_futuro / custo_focco *100)-100;
 
-									perc =   perc.toFixed(2); 
+									perc =   perc.toFixed(4); 
 
 									var oldstr=  perc.toString();  
 									perc  = oldstr.toString().replace(".",",");
