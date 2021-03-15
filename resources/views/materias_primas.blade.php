@@ -87,6 +87,10 @@
 							$(this).children().first().keypress(function (e) {
 								if (e.which == 13) {
 									var novoConteudo = $(this).val();
+									// novoConteudo_t = novoConteudo;
+									// novoConteudo_t = parseFloat(novoConteudo_t);
+									// novoConteudo_t = novoConteudo_t.toFixed(4);
+									// novoConteudo_t = novoConteudo_t.toString().replace(".",",");
 									$(this).parent().text(novoConteudo);
 									$(this).parent().removeClass("celulaEmEdicao");
 
