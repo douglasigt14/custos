@@ -115,11 +115,22 @@
 									let perc = (custo_futuro / custo_focco *100)-100;
 
 									perc =   perc.toFixed(4); 
-
+									let cor = '';
+									if(perc > 0 ){
+										cor = 'red';
+									}
+									else if (perc < 0) {
+										cor = 'green';
+									}	
+									else{
+										cor = '#676a6d';
+									}	
 									var oldstr=  perc.toString();  
 									perc  = oldstr.toString().replace(".",",");
 
 									document.getElementById('Perc{{$item->cod_item}}').innerHTML = perc+'%';
+
+									document.getElementById('Perc{{$item->cod_item}}').style.color = cor;
 
 								}
 
