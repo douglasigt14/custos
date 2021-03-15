@@ -1869,4 +1869,13 @@ ul.activity-timeline > li {
   .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     background-color: #d3d3d3;
   }
+  .perc-aumento{
+    color: red;
+  }
+  .perc-desconto{
+    color: green;
+  }
+  .perc-zerado{
+    color: #676a6d;
+  }
 /*# sourceMappingURL=main.css.map */

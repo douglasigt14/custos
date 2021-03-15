@@ -33,7 +33,7 @@
 											<td class='center'>{{$item->unid_med}}</td>
 											<td class='center texto-verde'>{{$item->custo}}</td>
 											<td id='EditarValor{{$item->cod_item}}' class='center texto-azul'>{{$item->custo_futuro}}</td>
-											<td id='Perc{{$item->cod_item}}' class='center'>{{$item->perc}}%</td>
+											<td id='Perc{{$item->cod_item}}' class='center {{$item->cor_perc}}'>{{$item->perc}}%</td>
 										</tr>
 										@endforeach
 									</tbody>
