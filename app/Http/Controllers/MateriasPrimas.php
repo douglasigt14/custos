@@ -41,6 +41,8 @@ class MateriasPrimas extends Controller
     --AND TITENS.COD_ITEM = 8203
     ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
         $itens = DB::connection('oracle')->select($sqlItens);
+    
+    $lista_class_desc = array();
 
     foreach ($itens as $key => $item) {
         $sql = "SELECT valor FROM custos_futuros WHERE cod_item = $item->cod_item";
@@ -65,10 +67,11 @@ class MateriasPrimas extends Controller
             $item->cor_perc = 'perc-zerado';
         }
 
-        //dd($item);
+        array_push($lista_class_desc, $item->class_desc);
     }
+    $lista_class_desc = array_unique($lista_class_desc);
 
-        return view('materias_primas', compact(['itens']));
+        return view('materias_primas', compact(["itens","lista_class_desc"]));
     }
 
     public function ins_up_custo_futuro($cod_item = null,$valor = null){
