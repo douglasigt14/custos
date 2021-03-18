@@ -93,7 +93,5 @@ class MateriasPrimas extends Controller
                 'valor' => $valor
             ]);
         }
-
-        return 'COD ITEM: '.$cod_item.' VALOR: '.$valor;//back();
     }
 }
