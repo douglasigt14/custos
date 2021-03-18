@@ -66,6 +66,7 @@ class MateriasPrimas extends Controller
         else{
             $item->cor_perc = 'perc-zerado';
         }
+        $item->class_desc = str_replace("_"," ",$item->class_desc);
 
         array_push($lista_class_desc, $item->class_desc);
     }
