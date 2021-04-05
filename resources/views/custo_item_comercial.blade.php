@@ -10,6 +10,19 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
+								<table class="table table-hover table-striped menor">
+									<thead>
+										<tr>
+											<th>Item</th>
+											<th>Nível</th>
+											<th>Descrição</th>
+											<th>UM</th>
+											<th>Quantidade</th>
+										</tr>
+									</thead>
+									<tbody>
+										
+									</tbody>
 							</div>
                         </div>
                     </div>
