@@ -47,11 +47,36 @@ class MateriasPrimas extends Controller
     foreach ($itens as $key => $item) {
         $sql = "SELECT valor FROM custos_futuros WHERE cod_item = $item->cod_item";
         $custos_futuros = DB::connection('mysql')->select($sql);
+
         $item->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : $item->custo;
         
         $perc = ($item->custo_futuro / $item->custo *100)-100;
         $item->perc = number_format( $perc,4,',','.');
 
+        $reload = false;
+        if($custos_futuros){
+            if($custos_futuros[0]->valor < $item->custo){
+                DB::table('custos_futuros')
+                ->where('cod_item', $item->cod_item)
+                ->update([
+                        'valor' => $item->custo
+                ]);
+            }
+        }
+        else{
+            DB::table('custos_futuros')->insert([
+                'cod_item' => $item->cod_item,
+                'valor' => $item->custo
+            ]);
+        }
+
+        $custos_futuros = DB::connection('mysql')->select($sql);
+
+        $item->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : $item->custo;
+        
+        $perc = ($item->custo_futuro / $item->custo *100)-100;
+        $item->perc = number_format( $perc,4,',','.');
+        
         $item->custo_futuro = number_format($item->custo_futuro,4,',','.');
         $item->custo = number_format($item->custo,4,',','.');
 
