@@ -14,7 +14,6 @@
 									<thead>
 										<tr>
 											<th>ITEM</th>
-											<th>NÍVEL</th>
 											<th>Descrição</th>
 											<th>COR</th>
 											<th>UM</th>
@@ -26,8 +25,7 @@
 										@if ($itens)
 											<tr class="preto">
 												<td>{{$itens[0]->codprodutopai ?? NULL }}</td>
-												<td>0</td>
-												<td>{{$itens[0]->descpai}}</td>
+												<td>0-{{$itens[0]->descpai}}</td>
 												<td>{{$itens[0]->corpai}}</td>
 												<td>UN</td>
 												<td class="center">{{number_format(1,4,',','.')}}</td>
@@ -37,8 +35,7 @@
 										@foreach ($itens as $pai)
 											<tr class='cinza-escuro'>
 												<td>{{$pai->codproduto}}</td>
-												<td><b>1</b></td>
-												<td>{{$pai->descfilho}}</td>
+												<td>1-{{$pai->descfilho}}</td>
 												<td>{{$pai->corfilho}}</td>
 												<td>UN</td>
 												<td class="center">{{number_format($pai->qtde,4,',','.')}}</td>
@@ -48,8 +45,7 @@
 											@foreach ($pai->filhos as $filho)
 											<tr @if($cinza) class='cinza' @endif>
 												<td>{{$filho->codproduto}}</td>
-												<td>2</td>
-												<td>{{$filho->descfilho}}</td>
+												<td>2-{{$filho->descfilho}}</td>
 												<td>{{$filho->corfilho}}</td>
 												<td>UN</td>
 												<td class="center">{{number_format($filho->qtde,4,',','.')}}</td>
@@ -58,8 +54,7 @@
 												@foreach ($filho->filhos as $neto)
 												<tr @if($cinza) class='cinza' @endif>
 													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->codproduto}}</td>
-													<td>3</td>
-													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->descfilho}}</td>
+													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-{{$neto->descfilho}}</td>
 													<td>{{$neto->corfilho}}</td>
 													<td>UN</td>
 													<td class="center">{{number_format($neto->qtde,4,',','.')}}</td>
@@ -68,8 +63,7 @@
 													@foreach ($neto->filhos as $bisneto)
 													<tr @if($cinza) class='cinza' @endif>
 														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$bisneto->codproduto}}</td>
-														<td>4</td>
-														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$bisneto->descfilho}}</td>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-{{$bisneto->descfilho}}</td>
 														<td>{{$bisneto->corfilho}}</td>
 														<td>UN</td>
 														<td class="center">{{number_format($bisneto->qtde,4,',','.')}}</td>
@@ -78,8 +72,7 @@
 													@foreach ($bisneto->filhos as $tataraneto)
 													<tr @if($cinza) class='cinza' @endif>
 														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$tataraneto->codproduto}}</td>
-														<td>5</td>
-														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$tataraneto->descfilho}}</td>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5-{{$tataraneto->descfilho}}</td>
 														<td>{{$tataraneto->corfilho}}</td>
 														<td>UN</td>
 														<td class="center">{{number_format($tataraneto->qtde,4,',','.')}}</td>
