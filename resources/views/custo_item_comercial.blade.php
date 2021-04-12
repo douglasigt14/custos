@@ -10,33 +10,61 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<table class="table table-hover table-striped menor">
+								<table class="table menor">
 									<thead>
 										<tr>
 											<th>Item</th>
 											<th>Nível</th>
 											<th>Descrição</th>
 											<th>UM</th>
-											<th>Quantidade</th>
+											<th class="center">Quantidade</th>
+											<th class="center">Valor</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
+										<tr class="preto">
 											<td>{{$itens[0]->codprodutopai ?? NULL }}</td>
 											<td>0</td>
-											<td>{{$itens[0]->codprodutopai}}</td>
-											<td>UNX</td>
+											<td>{{$itens[0]->descpai}}</td>
+											<td>UN</td>
+											<td class="center">1</td>
+											<td class="center">{{$itens[0]->valor_pai}}</td>
 										</tr>
-										@foreach ($itens as $item)
-											<tr>
-												<td>{{$item->codproduto}}</td>
-												<td>1</td>
-												<td>{{$item->descfilho}}</td>
+										
+										@foreach ($itens as $pai)
+											<tr class='cinza-escuro'>
+												<td>{{$pai->codproduto}}</td>
+												<td><b>1</b></td>
+												<td>{{$pai->descfilho}}</td>
 												<td>UN</td>
+												<td class="center">{{$pai->qtde}}</td>
+												<td class="center">{{$pai->valor_filho}}</td>
 											</tr>
-											<tr class='cinza'>
-												<td colspan="100%">&nbsp;</td>
+											@php $cinza = true; @endphp
+											@foreach ($pai->filhos as $filho)
+											<tr @if($cinza) class='cinza' @endif>
+												<td>{{$filho->codproduto}}</td>
+												<td>2</td>
+												<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$filho->descfilho}}</td>
+												<td>UN</td>
+												<td class="center">{{$filho->qtde}}</td>
+												<td class="center">{{$filho->valor_filho*$filho->qtde}}</td>
 											</tr>
+												@foreach ($filho->filhos as $neto)
+												<tr @if($cinza) class='cinza' @endif>
+													<td>{{$neto->codproduto}}</td>
+													<td>3</td>
+													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->descfilho}}</td>
+													<td>UN</td>
+													<td class="center">{{$neto->qtde}}</td>
+													<td class="center">{{$neto->valor_filho}}</td>
+												</tr>
+												@endforeach
+												
+												@php $cinza = $cinza ? false : true; 
+												@endphp
+											@endforeach
+
 										@endforeach
 									</tbody>
 								</table>
