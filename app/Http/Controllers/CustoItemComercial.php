@@ -30,6 +30,15 @@ class CustoItemComercial extends Controller
                     if($filho->filhos){
                         foreach ($filho->filhos as $key => $neto) {
                             $neto->filhos = $this->busca_filhos($neto->codproduto, $neto->idcorfilho);
+                        
+                            if($neto->filhos){
+                                foreach ($neto->filhos as $key => $bisneto) {
+                                    $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho);
+        
+                                    
+                                }
+                            }
+                            
                         }
                     }
 
