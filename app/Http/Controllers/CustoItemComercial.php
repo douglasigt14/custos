@@ -13,8 +13,8 @@ class CustoItemComercial extends Controller
                 FROM 
                     FOCCO3i.LJ_EST_SISTEMA_CUSTO 
                 WHERE  
-                    codprodutopai = '31725'
-                AND idcorpai = '107312'"; //  //90284
+                    codprodutopai = '6572' 
+                AND idcorpai = '61239'"; 
         
         $itens = DB::connection('oracle')->select($sql);
         
@@ -33,9 +33,13 @@ class CustoItemComercial extends Controller
                         
                             if($neto->filhos){
                                 foreach ($neto->filhos as $key => $bisneto) {
-                                    $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho,$bisneto->idcorpai);
-        
+                                    $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho,$bisneto->idcorpai); 
                                     
+                                    if($bisneto->filhos){
+                                        foreach ($bisneto->filhos as $key => $tataraneto) {
+                                            $tataraneto->filhos = $this->busca_filhos($tataraneto->codproduto, $tataraneto->idcorfilho,$tataraneto->idcorpai); 
+                                        }
+                                    }
                                 }
                             }
                             
@@ -45,7 +49,7 @@ class CustoItemComercial extends Controller
                 }
             }
         }
-      //  dd($itens);
+       //dd($itens);
         
         return view('custo_item_comercial', compact(["itens"]));
     }
