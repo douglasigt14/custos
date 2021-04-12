@@ -23,16 +23,17 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr class="preto">
-											<td>{{$itens[0]->codprodutopai ?? NULL }}</td>
-											<td>0</td>
-											<td>{{$itens[0]->descpai}}</td>
-											<td>{{$itens[0]->corpai}}</td>
-											<td>UN</td>
-											<td class="center">1</td>
-											<td class="center">{{number_format($itens[0]->valor_pai,4,',','.')}}</td>
-										</tr>
-										
+										@if ($itens)
+											<tr class="preto">
+												<td>{{$itens[0]->codprodutopai ?? NULL }}</td>
+												<td>0</td>
+												<td>{{$itens[0]->descpai}}</td>
+												<td>{{$itens[0]->corpai}}</td>
+												<td>UN</td>
+												<td class="center">1</td>
+												<td class="center">{{number_format($itens[0]->valor_pai,4,',','.')}}</td>
+											</tr>
+										@endif
 										@foreach ($itens as $pai)
 											<tr class='cinza-escuro'>
 												<td>{{$pai->codproduto}}</td>
@@ -56,7 +57,7 @@
 											</tr>
 												@foreach ($filho->filhos as $neto)
 												<tr @if($cinza) class='cinza' @endif>
-													<td>{{$neto->codproduto}}</td>
+													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->codproduto}}</td>
 													<td>3</td>
 													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->descfilho}}</td>
 													<td>{{$neto->corfilho}}</td>
@@ -66,7 +67,7 @@
 												</tr>
 													@foreach ($neto->filhos as $bisneto)
 													<tr @if($cinza) class='cinza' @endif>
-														<td>{{$bisneto->codproduto}}</td>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$bisneto->codproduto}}</td>
 														<td>4</td>
 														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$bisneto->descfilho}}</td>
 														<td>{{$bisneto->corfilho}}</td>
