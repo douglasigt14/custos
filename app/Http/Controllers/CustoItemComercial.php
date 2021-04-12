@@ -72,6 +72,12 @@ class CustoItemComercial extends Controller
             $filhos = DB::connection('oracle')->select($sql_f);
         
         if($filhos){
+            foreach ($filhos as $key => $filho) {
+                $sql = "SELECT valor FROM custos_futuros WHERE cod_item = $filho->codproduto";
+                $custos_futuros = DB::connection('mysql')->select($sql);
+
+                $filho->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : NULL;
+            }
             return $filhos;
         }
         else{

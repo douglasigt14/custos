@@ -18,7 +18,8 @@
 											<th>COR</th>
 											<th>UM</th>
 											<th class="center">QTDE</th>
-											<th class="center">CUSTO MAT</th>
+											<th class="center">CUSTO FOCCO</th>
+											<th class="center">CUSTO FUTURO</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -30,6 +31,7 @@
 												<td>UN</td>
 												<td class="center">{{number_format(1,4,',','.')}}</td>
 												<td class="center texto-verde">{{number_format($itens[0]->valor_pai,4,',','.')}}</td>
+												<td></td>
 											</tr>
 										@endif
 										@foreach ($itens as $pai)
@@ -40,6 +42,7 @@
 												<td>UN</td>
 												<td class="center">{{number_format($pai->qtde,4,',','.')}}</td>
 												<td class="center texto-verde">{{number_format($pai->valor_filho,4,',','.')}}</td>
+												<td></td>
 											</tr>
 											@php $cinza = true; @endphp
 											@foreach ($pai->filhos as $filho)
@@ -50,6 +53,7 @@
 												<td>UN</td>
 												<td class="center">{{number_format($filho->qtde,4,',','.')}}</td>
 												<td class="center texto-verde">{{number_format($filho->valor_filho,4,',','.')}}</td>
+												<td class="center texto-azul">{{number_format($filho->custo_futuro,4,',','.')}}</td>
 											</tr>
 												@foreach ($filho->filhos as $neto)
 												<tr @if($cinza) class='cinza' @endif>
@@ -59,6 +63,7 @@
 													<td>UN</td>
 													<td class="center">{{number_format($neto->qtde,4,',','.')}}</td>
 													<td class="center texto-verde">{{number_format($neto->valor_filho,4,',','.')}}</td>
+													<td class="center texto-azul">{{number_format($neto->custo_futuro,4,',','.')}}</td>
 												</tr>
 													@foreach ($neto->filhos as $bisneto)
 													<tr @if($cinza) class='cinza' @endif>
@@ -68,6 +73,7 @@
 														<td>UN</td>
 														<td class="center">{{number_format($bisneto->qtde,4,',','.')}}</td>
 														<td class="center texto-verde">{{number_format($bisneto->valor_filho,4,',','.')}}</td>
+														<td class="center texto-azul">{{number_format($bisneto->custo_futuro,4,',','.')}}</td>
 													</tr>
 													@foreach ($bisneto->filhos as $tataraneto)
 													<tr @if($cinza) class='cinza' @endif>
@@ -77,6 +83,7 @@
 														<td>UN</td>
 														<td class="center">{{number_format($tataraneto->qtde,4,',','.')}}</td>
 														<td class="center texto-verde">{{number_format($tataraneto->valor_filho,4,',','.')}}</td>
+														<td class="center texto-azul">{{number_format($tataraneto->custo_futuro,4,',','.')}}</td>
 													</tr>
 													@endforeach
 													@endforeach
