@@ -21,7 +21,23 @@
 										</tr>
 									</thead>
 									<tbody>
-										
+										<tr>
+											<td>{{$itens[0]->codprodutopai ?? NULL }}</td>
+											<td>0</td>
+											<td>{{$itens[0]->codprodutopai}}</td>
+											<td>UNX</td>
+										</tr>
+										@foreach ($itens as $item)
+											<tr>
+												<td>{{$item->codproduto}}</td>
+												<td>1</td>
+												<td>{{$item->descfilho}}</td>
+												<td>UN</td>
+											</tr>
+											<tr class='cinza'>
+												<td colspan="100%">&nbsp;</td>
+											</tr>
+										@endforeach
 									</tbody>
 								</table>
 							</div>

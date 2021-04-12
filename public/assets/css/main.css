@@ -1878,4 +1878,7 @@ ul.activity-timeline > li {
   .perc-zerado{
     color: #676a6d;
   }
+  .cinza{
+    background-color: #d3d3d3 !important;
+  } 
 /*# sourceMappingURL=main.css.map */
