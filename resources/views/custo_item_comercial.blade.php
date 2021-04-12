@@ -48,7 +48,7 @@
 											<tr @if($cinza) class='cinza' @endif>
 												<td>{{$filho->codproduto}}</td>
 												<td>2</td>
-												<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$filho->descfilho}}</td>
+												<td>{{$filho->descfilho}}</td>
 												<td>{{$filho->corfilho}}</td>
 												<td>UN</td>
 												<td class="center">{{$filho->qtde}}</td>
@@ -58,7 +58,7 @@
 												<tr @if($cinza) class='cinza' @endif>
 													<td>{{$neto->codproduto}}</td>
 													<td>3</td>
-													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->descfilho}}</td>
+													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->descfilho}}</td>
 													<td>{{$neto->corfilho}}</td>
 													<td>UN</td>
 													<td class="center">{{$neto->qtde}}</td>
@@ -68,7 +68,7 @@
 													<tr @if($cinza) class='cinza' @endif>
 														<td>{{$bisneto->codproduto}}</td>
 														<td>4</td>
-														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$bisneto->descfilho}}</td>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$bisneto->descfilho}}</td>
 														<td>{{$bisneto->corfilho}}</td>
 														<td>UN</td>
 														<td class="center">{{$bisneto->qtde}}</td>
