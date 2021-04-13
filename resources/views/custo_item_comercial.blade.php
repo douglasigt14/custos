@@ -84,8 +84,12 @@
 														<td class="center">{{number_format($bisneto->qtde,4,',','.')}}</td>
 														<td class="center texto-verde">{{number_format($bisneto->valor_filho,4,',','.')}}</td>
 														<td class="center texto-verde">{{number_format($bisneto->valor_filho*$bisneto->qtde,4,',','.')}}</td>
-														<td class="center texto-azul">{{number_format($bisneto->custo_futuro,4,',','.')}}</td>
-														<td class="center texto-azul">{{number_format($bisneto->custo_futuro*$bisneto->qtde,4,',','.')}}</td>
+														<td class="center texto-azul">{{$bisneto->custo_futuro ? number_format($bisneto->custo_futuro,4,',','.') : NULL}}</td>
+														<td class="center texto-azul">{{$bisneto->custo_futuro ? 
+														number_format($bisneto->custo_futuro*$bisneto->qtde,4,',','.') 
+														:
+														number_format($bisneto->custo_futuro_x_qtde,4,',','.')
+														}}</td>
 													</tr>
 													@foreach ($bisneto->filhos as $tataraneto)
 													<tr @if($cinza) class='cinza' @endif>
