@@ -45,9 +45,9 @@
 												<td>{{$pai->corfilho}}</td>
 												<td>{{$pai->uni}}</td>
 												<td class="center">{{number_format($pai->qtde,4,',','.')}}</td>
-												<td class="center texto-verde">{{number_format($pai->valor_filho,4,',','.')}}</td>
-												<td class="center texto-verde">{{number_format($pai->valor_filho*$pai->qtde,4,',','.')}}</td>
 												<td></td>
+												<td></td>
+												<td class="center"><b>{{number_format($pai->valor_filho*$pai->qtde,4,',','.')}}</b></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -62,12 +62,14 @@
 
 										<td class="center">{{number_format($filho->qtde,4,',','.')}}</td>
 										
-										<td class="center texto-verde">{{number_format($filho->valor_filho,4,',','.')}}</td>
+										<td></td>
 
-										<td class="center texto-verde">{{number_format($filho->valor_filho*$filho->qtde,4,',','.')}}
+										<td></td>
+
+										<td class="center"><b>{{number_format($filho->valor_filho*$filho->qtde,4,',','.')}}</b>
 										</td>
 										
-										<td></td>
+										
 										<td></td>
 										<td></td>
 										<td></td>
@@ -81,12 +83,17 @@
 
 									<td class="center">{{number_format($neto->qtde,4,',','.')}}</td>
 
-									<td class="center texto-verde">{{number_format($neto->valor_filho,4,',','.')}}</td>
+									<td class="center texto-verde">{{
+									$neto->custo_futuro ? 
+ 									number_format($neto->valor_filho,4,',','.') : NULL}}</td>
 									
-									<td class="center texto-verde">{{number_format($neto->valor_filho
+									<td class="center texto-verde">
+										{{
+									$neto->custo_futuro ? 
+									number_format($neto->valor_filho
 										*$neto->qtde
 										*$filho->qtde
-										*$pai->qtde,4,',','.')}}
+										*$pai->qtde,4,',','.') : NULL}}
 									</td>
 									
 									<td class="center texto-verde"></td>
@@ -115,13 +122,17 @@
 
 										<td class="center">{{number_format($bisneto->qtde,4,',','.')}}</td>
 
-										<td class="center texto-verde">{{number_format($bisneto->valor_filho,4,',','.')}}</td>
+										<td class="center texto-verde">{{
+										$bisneto->custo_futuro ?
+										number_format($bisneto->valor_filho,4,',','.') : NULL}}</td>
 
-										<td class="center texto-verde">{{number_format($bisneto->valor_filho
+										<td class="center texto-verde">{{
+										$bisneto->custo_futuro ?
+										number_format($bisneto->valor_filho
 											*$bisneto->qtde
 											*$neto->qtde
 											*$filho->qtde
-											*$pai->qtde,4,',','.')}}
+											*$pai->qtde,4,',','.') : NULL}}
 										</td>
 
 										<td class="center texto-verde"></td>
@@ -171,6 +182,8 @@
 											*$neto->qtde
 											*$filho->qtde
 											*$pai->qtde,4,',','.') : NULL}}
+
+											{{-- <p class='perc-aumento'> {{$tataraneto->valor_filho }} * {{$tataraneto->qtde }} = {{(number_format($tataraneto->valor_filho,4,'.','') * number_format($tataraneto->qtde,4,'.',''))}}</p> --}}
 										</td>
 
 										<td class="center texto-azul"></td>

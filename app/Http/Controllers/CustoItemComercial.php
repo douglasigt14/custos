@@ -19,6 +19,7 @@ class CustoItemComercial extends Controller
         $itens = DB::connection('oracle')->select($sql);
         
         $itens = $this->percorrer_itens($itens);
+        //dd($itens);
         // $itens = $this->somar_custos_futuros($itens,'tataranetos');
         // $itens = $this->somar_custos_futuros($itens,'bisnetos');
         // $itens = $this->somar_custos_futuros($itens,'netos');
