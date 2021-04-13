@@ -19,11 +19,11 @@ class CustoItemComercial extends Controller
         $itens = DB::connection('oracle')->select($sql);
         
         $itens = $this->percorrer_itens($itens);
-        $itens = $this->somar_custos_futuros($itens,'tataranetos');
-        $itens = $this->somar_custos_futuros($itens,'bisnetos');
-        $itens = $this->somar_custos_futuros($itens,'netos');
+        // $itens = $this->somar_custos_futuros($itens,'tataranetos');
+        // $itens = $this->somar_custos_futuros($itens,'bisnetos');
+        // $itens = $this->somar_custos_futuros($itens,'netos');
 
-       // dd($itens);
+        //dd($itens);
         
         return view('custo_item_comercial', compact(["itens"]));
     }
@@ -31,6 +31,7 @@ class CustoItemComercial extends Controller
     private function percorrer_itens($itens){
         foreach ($itens as $key => $pai) {
             $pai->custo_futuro = null;
+            $pai->custo_futuro_soma = null;
             $pai->filhos = $this->busca_filhos($pai->codproduto, $pai->idcorfilho,$pai->idcorpai);
             
 
@@ -87,7 +88,7 @@ class CustoItemComercial extends Controller
 
                 $filho->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : NULL;
 
-                $filho->custo_futuro_soma = $custos_futuros ? $custos_futuros[0]->valor*$filho->qtde : NULL;
+                $filho->custo_futuro_soma =  NULL;
             }
             return $filhos;
         }
@@ -135,7 +136,6 @@ class CustoItemComercial extends Controller
                                             *$neto->qtde
                                             *$filho->qtde
                                             *$pai->qtde);
-                                            //dd($bisneto->custo_futuro_soma);
                                         }
                                     }
                                 }
