@@ -18,37 +18,9 @@ class CustoItemComercial extends Controller
         
         $itens = DB::connection('oracle')->select($sql);
         
-       
+        $itens = $this->percorrer_itens($itens);
         
-        foreach ($itens as $key => $pai) {
-            $pai->filhos = $this->busca_filhos($pai->codproduto, $pai->idcorfilho,$pai->idcorpai);
-
-            if($pai->filhos){
-                foreach ($pai->filhos as $key => $filho) {
-                    $filho->filhos = $this->busca_filhos($filho->codproduto, $filho->idcorfilho,$filho->idcorpai);
-
-                    if($filho->filhos){
-                        foreach ($filho->filhos as $key => $neto) {
-                            $neto->filhos = $this->busca_filhos($neto->codproduto, $neto->idcorfilho,$neto->idcorpai);
-                        
-                            if($neto->filhos){
-                                foreach ($neto->filhos as $key => $bisneto) {
-                                    $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho,$bisneto->idcorpai); 
-                                    
-                                    if($bisneto->filhos){
-                                        foreach ($bisneto->filhos as $key => $tataraneto) {
-                                            $tataraneto->filhos = $this->busca_filhos($tataraneto->codproduto, $tataraneto->idcorfilho,$tataraneto->idcorpai); 
-                                        }
-                                    }
-                                }
-                            }
-                            
-                        }
-                    }
-
-                }
-            }
-        }
+        
        //CUSTOS FUTUROS 
         
         return view('custo_item_comercial', compact(["itens"]));
@@ -86,4 +58,38 @@ class CustoItemComercial extends Controller
 
 
     }   
+
+    private function percorrer_itens($itens){
+        foreach ($itens as $key => $pai) {
+            $pai->filhos = $this->busca_filhos($pai->codproduto, $pai->idcorfilho,$pai->idcorpai);
+
+            if($pai->filhos){
+                foreach ($pai->filhos as $key => $filho) {
+                    $filho->filhos = $this->busca_filhos($filho->codproduto, $filho->idcorfilho,$filho->idcorpai);
+
+                    if($filho->filhos){
+                        foreach ($filho->filhos as $key => $neto) {
+                            $neto->filhos = $this->busca_filhos($neto->codproduto, $neto->idcorfilho,$neto->idcorpai);
+                        
+                            if($neto->filhos){
+                                foreach ($neto->filhos as $key => $bisneto) {
+                                    $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho,$bisneto->idcorpai); 
+                                    
+                                    if($bisneto->filhos){
+                                        foreach ($bisneto->filhos as $key => $tataraneto) {
+                                            $tataraneto->filhos = $this->busca_filhos($tataraneto->codproduto, $tataraneto->idcorfilho,$tataraneto->idcorpai); 
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+
+                }
+            }
+        }
+
+        return $itens;
+    }
 }
