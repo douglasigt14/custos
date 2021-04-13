@@ -13,16 +13,17 @@ class CustoItemComercial extends Controller
                 FROM 
                     FOCCO3i.LJ_EST_SISTEMA_CUSTO 
                 WHERE  
-                    codprodutopai = '31725' 
-                AND idcorpai = '107312'"; 
+                    codprodutopai = '6572' 
+                AND idcorpai = '61239'"; 
         
         $itens = DB::connection('oracle')->select($sql);
         
         $itens = $this->percorrer_itens($itens);
         $itens = $this->somar_custos_futuros($itens,'tataranetos');
         $itens = $this->somar_custos_futuros($itens,'bisnetos');
+        $itens = $this->somar_custos_futuros($itens,'netos');
 
-        //dd($itens);
+       // dd($itens);
         
         return view('custo_item_comercial', compact(["itens"]));
     }
@@ -107,20 +108,34 @@ class CustoItemComercial extends Controller
                 foreach ($pai->filhos as $key => $filho) {
                    //dd($filho);
                     
-                    if($filho->filhos){
+                    if($filho->filhos and ($tipo == 'netos' or $tipo == 'bisnetos' or $tipo == 'tataranetos')){
+                        $filho->custo_futuro_soma = 0;
                         foreach ($filho->filhos as $key => $neto) {
-                            //dd($neto);
+                            $filho->custo_futuro_soma += $neto->custo_futuro ? ($neto->custo_futuro*$neto->qtde
+                            *$filho->qtde
+                            *$pai->qtde) : 
+                                ($neto->custo_futuro_soma) ;
 
                             if($neto->filhos and ($tipo == 'bisnetos' or $tipo == 'tataranetos')){
                                 $neto->custo_futuro_soma = 0;
                                 foreach ($neto->filhos as $key => $bisneto) {
-                                    $neto->custo_futuro_soma += $bisneto->custo_futuro ? ($bisneto->custo_futuro*$bisneto->qtde) : 
-                                    ($bisneto->custo_futuro_soma*$bisneto->qtde) ;
+                                    $neto->custo_futuro_soma += $bisneto->custo_futuro ? ($bisneto->custo_futuro
+                                    *$bisneto->qtde
+                                    *$neto->qtde
+                                    *$filho->qtde
+                                    *$pai->qtde) : 
+                                    ($bisneto->custo_futuro_soma) ;
 
                                     if($bisneto->filhos and $tipo == 'tataranetos'){
                                         $bisneto->custo_futuro_soma = 0;
                                         foreach ($bisneto->filhos as $key => $tataraneto) {
-                                            $bisneto->custo_futuro_soma += ($tataraneto->custo_futuro*$tataraneto->qtde);
+                                            $bisneto->custo_futuro_soma += ($tataraneto->custo_futuro
+                                            *$tataraneto->qtde
+                                            *$bisneto->qtde
+                                            *$neto->qtde
+                                            *$filho->qtde
+                                            *$pai->qtde);
+                                            //dd($bisneto->custo_futuro_soma);
                                         }
                                     }
                                 }
