@@ -1870,7 +1870,7 @@ ul.activity-timeline > li {
     background-color: #d3d3d3;
   }
   .perc-aumento{
-    color: red;
+    color:#A52A2A !important;
   }
   .perc-desconto{
     color: green;

@@ -55,13 +55,13 @@ class MateriasPrimas extends Controller
 
         $reload = false;
         if($custos_futuros){
-            if($custos_futuros[0]->valor < $item->custo){
-                DB::table('custos_futuros')
-                ->where('cod_item', $item->cod_item)
-                ->update([
-                        'valor' => $item->custo
-                ]);
-            }
+            // if($custos_futuros[0]->valor < $item->custo){
+            //     DB::table('custos_futuros')
+            //     ->where('cod_item', $item->cod_item)
+            //     ->update([
+            //             'valor' => $item->custo
+            //     ]);
+            // }
         }
         else{
             DB::table('custos_futuros')->insert([

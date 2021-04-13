@@ -20,8 +20,8 @@
 											<th class="center">QTDE</th>
 											<th class="center">CUSTO FOC.</th>
 											<th class="center">CUSTO FOC. X QTDE</th>
-											<th class="center">CUSTO FUT.</th>
-											<th class="center">CUSTO FUT. X QTDE</th>
+											<th class="center">CUSTO MAN.</th>
+											<th class="center">CUSTO MAN. X QTDE</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -39,7 +39,7 @@
 											</tr>
 										@endif
 										@foreach ($itens as $pai)
-											<tr class='cinza-escuro'>
+											<tr class='cinza-escuro perc-aumento'>
 												<td>{{$pai->codproduto}}</td>
 												<td>1-{{$pai->descfilho}}</td>
 												<td>{{$pai->corfilho}}</td>
@@ -72,8 +72,12 @@
 													<td class="center">{{number_format($neto->qtde,4,',','.')}}</td>
 													<td class="center texto-verde">{{number_format($neto->valor_filho,4,',','.')}}</td>
 													<td class="center texto-verde">{{number_format($neto->valor_filho*$neto->qtde,4,',','.')}}</td>
-													<td class="center texto-azul">{{number_format($neto->custo_futuro,4,',','.')}}</td>
-													<td class="center texto-azul">{{number_format($neto->custo_futuro*$neto->qtde,4,',','.')}}</td>
+													<td class="center texto-azul">{{$neto->custo_futuro ? number_format($neto->custo_futuro,4,',','.') : NULL}}</td>
+														<td class="center texto-azul">{{$neto->custo_futuro ? 
+														number_format($neto->custo_futuro*$neto->qtde,4,',','.') 
+														:
+														number_format($neto->custo_futuro_soma*$neto->qtde,4,',','.')
+														}}</td>
 												</tr>
 													@foreach ($neto->filhos as $bisneto)
 													<tr @if($cinza) class='cinza' @endif>
@@ -88,7 +92,7 @@
 														<td class="center texto-azul">{{$bisneto->custo_futuro ? 
 														number_format($bisneto->custo_futuro*$bisneto->qtde,4,',','.') 
 														:
-														number_format($bisneto->custo_futuro_x_qtde,4,',','.')
+														number_format($bisneto->custo_futuro_soma*$bisneto->qtde,4,',','.')
 														}}</td>
 													</tr>
 													@foreach ($bisneto->filhos as $tataraneto)
