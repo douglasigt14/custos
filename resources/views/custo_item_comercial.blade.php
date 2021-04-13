@@ -59,9 +59,14 @@
 										<td>2-{{$filho->descfilho}}</td>
 										<td>{{$filho->corfilho}}</td>
 										<td>{{$filho->uni}}</td>
+
 										<td class="center">{{number_format($filho->qtde,4,',','.')}}</td>
+										
 										<td class="center texto-verde">{{number_format($filho->valor_filho,4,',','.')}}</td>
-										<td class="center texto-verde">{{number_format($filho->valor_filho*$filho->qtde,4,',','.')}}</td>
+
+										<td class="center texto-verde">{{number_format($filho->valor_filho*$filho->qtde,4,',','.')}}
+										</td>
+										
 										<td></td>
 										<td></td>
 										<td></td>
@@ -73,13 +78,33 @@
 									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-{{$neto->descfilho}}</td>
 									<td>{{$neto->corfilho}}</td>
 									<td>{{$neto->uni}}</td>
+
 									<td class="center">{{number_format($neto->qtde,4,',','.')}}</td>
+
 									<td class="center texto-verde">{{number_format($neto->valor_filho,4,',','.')}}</td>
-									<td class="center texto-verde">{{number_format($neto->valor_filho*$neto->qtde,4,',','.')}}</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									
+									<td class="center texto-verde">{{number_format($neto->valor_filho
+										*$neto->qtde
+										*$filho->qtde
+										*$pai->qtde,4,',','.')}}
+									</td>
+									
+									<td class="center texto-verde"></td>
+
+									<td class="center texto-azul">{{
+									$neto->custo_futuro ?
+									number_format($neto->custo_futuro,4,',','.') : NULL}}</td>
+									
+									<td class="center texto-azul">{{
+									$neto->custo_futuro ? 
+									number_format($neto->custo_futuro
+										*$neto->qtde
+										*$filho->qtde
+										*$pai->qtde,4,',','.') : NULL}}
+									</td>
+
+									<td class="center texto-azul"></td>
+
 								</tr>
 									@foreach ($neto->filhos as $bisneto)
 									<tr @if($cinza) class='cinza' @endif>
@@ -87,24 +112,34 @@
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-{{$bisneto->descfilho}}</td>
 										<td>{{$bisneto->corfilho}}</td>
 										<td>{{$bisneto->uni}}</td>
+
 										<td class="center">{{number_format($bisneto->qtde,4,',','.')}}</td>
+
 										<td class="center texto-verde">{{number_format($bisneto->valor_filho,4,',','.')}}</td>
+
 										<td class="center texto-verde">{{number_format($bisneto->valor_filho
 											*$bisneto->qtde
 											*$neto->qtde
 											*$filho->qtde
-											*$pai->qtde,4,',','.')}}</td>
+											*$pai->qtde,4,',','.')}}
+										</td>
+
 										<td class="center texto-verde"></td>
+										
 										<td class="center texto-azul">{{
 										$bisneto->custo_futuro ?
-										number_format($bisneto->custo_futuro,4,',','.') : NULL}}</td>
+										number_format($bisneto->custo_futuro,4,',','.') : NULL}}
+										</td>
+
 										<td class="center texto-azul">{{
 										$bisneto->custo_futuro ? 
 										number_format($bisneto->custo_futuro
 											*$bisneto->qtde
 											*$neto->qtde
 											*$filho->qtde
-											*$pai->qtde,4,',','.') : NULL}}</td>
+											*$pai->qtde,4,',','.') : NULL}}
+										</td>
+
 										<td class="center texto-azul"></td>
 									</tr>
 									@foreach ($bisneto->filhos as $tataraneto)
@@ -113,22 +148,31 @@
 										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5-{{$tataraneto->descfilho}}</td>
 										<td>{{$tataraneto->corfilho}}</td>
 										<td>{{$tataraneto->uni}}</td>
+
 										<td class="center">{{number_format($tataraneto->qtde,4,',','.')}}</td>
+										
 										<td class="center texto-verde">{{number_format($tataraneto->valor_filho,4,',','.')}}</td>
+
 										<td class="center texto-verde">{{number_format($tataraneto->valor_filho*$tataraneto->qtde
 											*$bisneto->qtde
 											*$neto->qtde
 											*$filho->qtde
-											*$pai->qtde,4,',','.')}}</td>
+											*$pai->qtde,4,',','.')}}
+										</td>
+
 										<td class="center texto-verde"></td>
+
 										<td class="center texto-azul">{{number_format($tataraneto->custo_futuro,4,',','.')}}</td>
+
 										<td class="center texto-azul">{{
 										$tataraneto->custo_futuro ?
 										number_format($tataraneto->custo_futuro*$tataraneto->qtde
 											*$bisneto->qtde
 											*$neto->qtde
 											*$filho->qtde
-											*$pai->qtde,4,',','.') : NULL}}</td>
+											*$pai->qtde,4,',','.') : NULL}}
+										</td>
+
 										<td class="center texto-azul"></td>
 									</tr>
 									@endforeach
