@@ -45,8 +45,7 @@ class CustoItemComercial extends Controller
         
         if($filhos){
             foreach ($filhos as $key => $filho) {
-                $sql = "SELECT valor FROM custos_futuros WHERE cod_item = $filho->codproduto";
-                $custos_futuros = DB::connection('mysql')->select($sql);
+                $custos_futuros = $this->buscar_custo_futuro($filho->codproduto);
 
                 $filho->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : NULL;
             }
@@ -91,5 +90,47 @@ class CustoItemComercial extends Controller
         }
 
         return $itens;
+    }
+
+    private function somar_custos_futuros($itens){
+        foreach ($itens as $key => $pai) {
+            // $pai->filhos = $this->busca_filhos($pai->codproduto, $pai->idcorfilho,$pai->idcorpai);
+
+            if($pai->filhos){
+                foreach ($pai->filhos as $key => $filho) {
+                    // $filho->filhos = $this->busca_filhos($filho->codproduto, $filho->idcorfilho,$filho->idcorpai);
+
+                    if($filho->filhos){
+                        foreach ($filho->filhos as $key => $neto) {
+                            // $neto->filhos = $this->busca_filhos($neto->codproduto, $neto->idcorfilho,$neto->idcorpai);
+                        
+                            if($neto->filhos){
+                                foreach ($neto->filhos as $key => $bisneto) {
+                                    // $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho,$bisneto->idcorpai); 
+                                    
+                                    if($bisneto->filhos){
+                                        foreach ($bisneto->filhos as $key => $tataraneto) {
+                                            // $tataraneto->filhos = $this->busca_filhos($tataraneto->codproduto, $tataraneto->idcorfilho,$tataraneto->idcorpai); 
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+
+                }
+            }
+        }
+
+        return $itens;
+    }
+
+
+    public function buscar_custo_futuro($codproduto){
+        $sql = "SELECT valor FROM custos_futuros WHERE cod_item = $codproduto";
+        $custos_futuros = DB::connection('mysql')->select($sql);
+
+        return $custos_futuros;
     }
 }
