@@ -49,7 +49,7 @@ class CustoItemComercial extends Controller
                 }
             }
         }
-       //dd($itens);
+       //CUSTOS FUTUROS 
         
         return view('custo_item_comercial', compact(["itens"]));
     }

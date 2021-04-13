@@ -39,7 +39,7 @@
 												<td>{{$pai->codproduto}}</td>
 												<td>1-{{$pai->descfilho}}</td>
 												<td>{{$pai->corfilho}}</td>
-												<td>UN</td>
+												<td>{{$pai->uni}}</td>
 												<td class="center">{{number_format($pai->qtde,4,',','.')}}</td>
 												<td class="center texto-verde">{{number_format($pai->valor_filho,4,',','.')}}</td>
 												<td></td>
@@ -50,7 +50,7 @@
 												<td>{{$filho->codproduto}}</td>
 												<td>2-{{$filho->descfilho}}</td>
 												<td>{{$filho->corfilho}}</td>
-												<td>UN</td>
+												<td>{{$filho->uni}}</td>
 												<td class="center">{{number_format($filho->qtde,4,',','.')}}</td>
 												<td class="center texto-verde">{{number_format($filho->valor_filho,4,',','.')}}</td>
 												<td class="center texto-azul">{{number_format($filho->custo_futuro,4,',','.')}}</td>
@@ -60,7 +60,7 @@
 													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$neto->codproduto}}</td>
 													<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3-{{$neto->descfilho}}</td>
 													<td>{{$neto->corfilho}}</td>
-													<td>UN</td>
+													<td>{{$neto->uni}}</td>
 													<td class="center">{{number_format($neto->qtde,4,',','.')}}</td>
 													<td class="center texto-verde">{{number_format($neto->valor_filho,4,',','.')}}</td>
 													<td class="center texto-azul">{{number_format($neto->custo_futuro,4,',','.')}}</td>
@@ -70,7 +70,7 @@
 														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$bisneto->codproduto}}</td>
 														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4-{{$bisneto->descfilho}}</td>
 														<td>{{$bisneto->corfilho}}</td>
-														<td>UN</td>
+														<td>{{$bisneto->uni}}</td>
 														<td class="center">{{number_format($bisneto->qtde,4,',','.')}}</td>
 														<td class="center texto-verde">{{number_format($bisneto->valor_filho,4,',','.')}}</td>
 														<td class="center texto-azul">{{number_format($bisneto->custo_futuro,4,',','.')}}</td>
@@ -80,7 +80,7 @@
 														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$tataraneto->codproduto}}</td>
 														<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5-{{$tataraneto->descfilho}}</td>
 														<td>{{$tataraneto->corfilho}}</td>
-														<td>UN</td>
+														<td>{{$tataraneto->uni}}</td>
 														<td class="center">{{number_format($tataraneto->qtde,4,',','.')}}</td>
 														<td class="center texto-verde">{{number_format($tataraneto->valor_filho,4,',','.')}}</td>
 														<td class="center texto-azul">{{number_format($tataraneto->custo_futuro,4,',','.')}}</td>
