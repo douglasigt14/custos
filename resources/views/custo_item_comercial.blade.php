@@ -104,7 +104,7 @@
 	
 										<td class="center texto-azul"></td>
 
-									<td class="center texto-verde">{{
+									<td @if($neto->valor_filho != $neto->custo_futuro) class='sublinhado-vermelho center texto-verde' @endif  class="center texto-verde">{{
 									$neto->custo_futuro ? 
  									number_format($neto->valor_filho,4,',','.') : NULL}}</td>
 									
@@ -145,7 +145,7 @@
 												*$pai->qtde,4,',','.') : NULL}}
 											</td>
 											<td></td>
-										<td class="center texto-verde">{{
+										<td @if($bisneto->valor_filho != $bisneto->custo_futuro) class='sublinhado-vermelho center texto-verde' @endif class="center texto-verde">{{
 										$bisneto->custo_futuro ?
 										number_format($bisneto->valor_filho,4,',','.') : NULL}}</td>
 

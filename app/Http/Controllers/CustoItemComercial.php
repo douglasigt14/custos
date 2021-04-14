@@ -19,7 +19,7 @@ class CustoItemComercial extends Controller
         $itens = DB::connection('oracle')->select($sql);
         
         $itens = $this->percorrer_itens($itens);
-        $itens = $this->somar_custos_futuros($itens);
+        $itens = $this->somar_custos($itens);
        // dd($itens);
         
         return view('custo_item_comercial', compact(["itens"]));
@@ -99,7 +99,7 @@ class CustoItemComercial extends Controller
 
     
 
-    private function somar_custos_futuros($itens){
+    private function somar_custos($itens){
         foreach ($itens as $key => $pai) {
             
             $pai->custo_futuro_soma = 0;
