@@ -15,7 +15,7 @@
 										<tr>
 											<th>ITEM</th>
 											<th>Descrição</th>
-											<th>COR</th>
+											<th>MASC</th>
 											<th>UM</th>
 											<th class="center">QTDE</th>
 											<th class="center" colspan="3">CUSTO MAN.</th>
@@ -40,7 +40,7 @@
 											</tr>
 										@endif
 										@foreach ($itens as $pai)
-											<tr class='cinza-escuro perc-aumento'>
+											<tr class='preto perc-aumento'>
 												<td>{{$pai->codproduto}}</td>
 												<td>1-{{$pai->descfilho}}</td>
 												<td>{{$pai->corfilho}}</td>
