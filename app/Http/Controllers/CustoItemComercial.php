@@ -19,9 +19,7 @@ class CustoItemComercial extends Controller
         $itens = DB::connection('oracle')->select($sql);
         
         $itens = $this->percorrer_itens($itens);
-        //dd($itens);
         $itens = $this->somar_custos_futuros($itens);
-
        // dd($itens);
         
         return view('custo_item_comercial', compact(["itens"]));
@@ -88,6 +86,7 @@ class CustoItemComercial extends Controller
                 $filho->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : NULL;
 
                 $filho->custo_futuro_soma =  NULL;
+                $filho->custo_focco_soma =  NULL;
             }
             return $filhos;
         }
@@ -109,11 +108,19 @@ class CustoItemComercial extends Controller
                 foreach ($pai->filhos as $key => $filho) {
                     if($filho->filhos){
                         $filho->custo_futuro_soma = 0;
+                        $filho->custo_focco_soma = 0;
+
                         foreach ($filho->filhos as $key => $neto) {
                            
                             $filho->custo_futuro_soma +=  ($neto->custo_futuro*$neto->qtde
                             *$filho->qtde
                             *$pai->qtde) ;
+
+                            if($neto->custo_futuro){
+                                $filho->custo_focco_soma +=  ($neto->valor_filho*$neto->qtde
+                                *$filho->qtde
+                                *$pai->qtde) ;
+                            }
 
                             if($neto->filhos){
                                 foreach ($neto->filhos as $key => $bisneto) {
@@ -123,6 +130,14 @@ class CustoItemComercial extends Controller
                                         *$filho->qtde
                                         *$pai->qtde);
 
+                                        if($bisneto->custo_futuro){
+                                            $filho->custo_focco_soma += ($bisneto->valor_filho
+                                            *$bisneto->qtde
+                                            *$neto->qtde
+                                            *$filho->qtde
+                                            *$pai->qtde);
+                                        }
+
                                     if($bisneto->filhos){
                                         foreach ($bisneto->filhos as $key => $tataraneto) {
                                             $filho->custo_futuro_soma += ($tataraneto->custo_futuro
@@ -131,6 +146,15 @@ class CustoItemComercial extends Controller
                                             *$neto->qtde
                                             *$filho->qtde
                                             *$pai->qtde);
+
+                                            if($tataraneto->custo_futuro){
+                                                $filho->custo_focco_soma += ($tataraneto->valor_filho
+                                                *$tataraneto->qtde
+                                                *$bisneto->qtde
+                                                *$neto->qtde
+                                                *$filho->qtde
+                                                *$pai->qtde);
+                                            }
                                         }
                                     }
                                 }
