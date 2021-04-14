@@ -10,7 +10,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<table class="table menor">
+								<table class="table myTable menor">
 									<thead>
 										<tr>
 											<th>ITEM</th>
@@ -58,7 +58,7 @@
 									@foreach ($pai->filhos as $filho)
 									<tr @if($cinza) class='cinza' @endif>
 										<td>{{$filho->codproduto}}</td>
-										<td>2-{{$filho->descfilho}}</td>
+										<td><b>2-{{$filho->descfilho}}</b></td>
 										<td>{{$filho->corfilho}}</td>
 										<td>{{$filho->uni}}</td>
 
