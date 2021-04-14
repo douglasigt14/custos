@@ -14,7 +14,7 @@ class CustoItemComercial extends Controller
                     FOCCO3i.LJ_EST_SISTEMA_CUSTO 
                 WHERE  
                     codprodutopai = '6572' 
-                AND idcorpai = '48377'"; 
+                AND idcorpai = '61239'"; 
         
         $itens = DB::connection('oracle')->select($sql);
         
