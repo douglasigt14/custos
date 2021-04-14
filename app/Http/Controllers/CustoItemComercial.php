@@ -13,16 +13,22 @@ class CustoItemComercial extends Controller
                 FROM 
                     FOCCO3i.LJ_EST_SISTEMA_CUSTO 
                 WHERE  
-                    codprodutopai = '32685' 
-                AND idcorpai = '116242'"; 
+                    codprodutopai = '6572' 
+                AND idcorpai = '61239'"; 
         
         $itens = DB::connection('oracle')->select($sql);
         
         $itens = $this->percorrer_itens($itens);
         $itens = $this->somar_custos($itens);
-       // dd($itens);
+
+        $custo_item_focco = 0;
+        $custo_item_futuro = 0;
+        foreach ($itens as $key => $volume) {
+            $custo_item_focco += $volume->custo_focco_soma;
+            $custo_item_futuro += $volume->custo_futuro_soma;          
+        }
         
-        return view('custo_item_comercial', compact(["itens"]));
+        return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro"]));
     }
     
     private function percorrer_itens($itens){
@@ -103,6 +109,7 @@ class CustoItemComercial extends Controller
         foreach ($itens as $key => $pai) {
             
             $pai->custo_futuro_soma = 0;
+            $pai->custo_focco_soma = 0;
 
             if($pai->filhos){
                 foreach ($pai->filhos as $key => $filho) {
@@ -110,8 +117,7 @@ class CustoItemComercial extends Controller
                         $filho->custo_focco_soma = 0;
                         
                         if($filho->custo_futuro){
-                           // dd($filho);
-                        $filho->custo_futuro_soma +=  (
+                            $filho->custo_futuro_soma +=  (
                             $filho->custo_futuro
                             *$filho->qtde
                             *$pai->qtde) ;
@@ -178,6 +184,8 @@ class CustoItemComercial extends Controller
                         }
                     }
 
+                    $pai->custo_futuro_soma += $filho->custo_futuro_soma;
+                    $pai->custo_focco_soma += $filho->custo_focco_soma;
                 }
             }
         }

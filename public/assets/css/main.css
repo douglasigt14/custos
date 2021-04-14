@@ -1861,10 +1861,13 @@ ul.activity-timeline > li {
     width: 400px !important;
   }
   .texto-verde{
-    color: green;
+    color: green !important;
   }
   .texto-azul{
-    color: blue;
+    color: blue !important;
+  } 
+  .texto-azul-claro{
+    color:#1E90FF !important;
   } 
   .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     background-color: #d3d3d3;

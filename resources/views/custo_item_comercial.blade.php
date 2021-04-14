@@ -33,10 +33,10 @@
 												
 												<td></td>
 												<td></td>
+												<td class="center texto-azul-claro">{{number_format($custo_item_focco,4,',','.')}}</td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
+												<td class="center texto-verde">{{number_format($custo_item_futuro,4,',','.')}}</td>
 											</tr>
 										@endif
 										@foreach ($itens as $pai)
@@ -49,10 +49,17 @@
 												<td></td>
 												<td></td>
 												
+												<td class="center texto-azul-claro"><b>{{
+													$pai->custo_futuro_soma ?
+												number_format($pai->custo_futuro_soma,4,',','.') : NULL}}</b></td>
+
 												<td></td>
 												<td></td>
-												<td></td>
-												<td class="center"><b>{{number_format($pai->valor_filho*$pai->qtde,4,',','.')}}</b></td>
+
+												<td class="center texto-verde"><b>{{
+													$pai->custo_focco_soma ?
+												number_format($pai->custo_focco_soma,4,',','.') : NULL}}</b></td>
+
 											</tr>
 									@php $cinza = true; @endphp
 									@foreach ($pai->filhos as $filho)
@@ -66,7 +73,7 @@
 										
 										<td></td>
 										<td></td>
-										<td class="center texto-azul""><b>{{
+										<td class="center texto-azul"><b>{{
 											$filho->custo_futuro_soma ?
 										number_format($filho->custo_futuro_soma,4,',','.') : NULL}}</b></td>
 										
@@ -74,7 +81,7 @@
 
 										<td></td>
 
-										<td class="center texto-verde""><b>{{
+										<td class="center texto-verde"><b>{{
 											$filho->custo_focco_soma ?
 										number_format($filho->custo_focco_soma,4,',','.') : NULL}}</b></td>
 										
