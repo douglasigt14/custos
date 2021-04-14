@@ -20,7 +20,7 @@ class CustoItemComercial extends Controller
         
         $itens = $this->percorrer_itens($itens);
         //dd($itens);
-        // $itens = $this->somar_custos_futuros($itens,'tataranetos');
+        $itens = $this->somar_custos_futuros($itens,'tataranetos');
         // $itens = $this->somar_custos_futuros($itens,'bisnetos');
         // $itens = $this->somar_custos_futuros($itens,'netos');
 
@@ -113,20 +113,26 @@ class CustoItemComercial extends Controller
                     if($filho->filhos and ($tipo == 'netos' or $tipo == 'bisnetos' or $tipo == 'tataranetos')){
                         $filho->custo_futuro_soma = 0;
                         foreach ($filho->filhos as $key => $neto) {
-                            $filho->custo_futuro_soma += $neto->custo_futuro ? ($neto->custo_futuro*$neto->qtde
-                            *$filho->qtde
-                            *$pai->qtde) : 
-                                ($neto->custo_futuro_soma) ;
+                           
+                            if($tipo == 'netos'){
+                                $filho->custo_futuro_soma += $neto->custo_futuro ? ($neto->custo_futuro*$neto->qtde
+                                *$filho->qtde
+                                *$pai->qtde) : 
+                                    ($neto->custo_futuro_soma) ;
+                            }
 
                             if($neto->filhos and ($tipo == 'bisnetos' or $tipo == 'tataranetos')){
-                                $neto->custo_futuro_soma = 0;
+                              //  $neto->custo_futuro_soma = 0;
                                 foreach ($neto->filhos as $key => $bisneto) {
-                                    $neto->custo_futuro_soma += $bisneto->custo_futuro ? ($bisneto->custo_futuro
-                                    *$bisneto->qtde
-                                    *$neto->qtde
-                                    *$filho->qtde
-                                    *$pai->qtde) : 
-                                    ($bisneto->custo_futuro_soma) ;
+
+                                    if($tipo == 'bisnetos'){
+                                        $neto->custo_futuro_soma += $bisneto->custo_futuro ? ($bisneto->custo_futuro
+                                        *$bisneto->qtde
+                                        *$neto->qtde
+                                        *$filho->qtde
+                                        *$pai->qtde) : 
+                                        ($bisneto->custo_futuro_soma) ;
+                                    }
 
                                     if($bisneto->filhos and $tipo == 'tataranetos'){
                                         $bisneto->custo_futuro_soma = 0;

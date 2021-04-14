@@ -150,7 +150,9 @@
 											*$pai->qtde,4,',','.') : NULL}}
 										</td>
 
-										<td class="center texto-azul"></td>
+										<td class="center">{{
+											$bisneto->custo_futuro_soma ?
+										number_format($bisneto->custo_futuro_soma,4,',','.') : NULL}}</td>
 									</tr>
 									@foreach ($bisneto->filhos as $tataraneto)
 									<tr @if($cinza) class='cinza' @endif>
