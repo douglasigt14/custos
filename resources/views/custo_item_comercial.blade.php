@@ -71,7 +71,9 @@
 										
 										<td></td>
 										<td></td>
-										<td></td>
+										<td class="center">{{
+											$filho->custo_futuro_soma ?
+										number_format($filho->custo_futuro_soma,4,',','.') : NULL}}</td>
 							</tr>
 								@foreach ($filho->filhos as $neto)
 								<tr @if($cinza) class='cinza' @endif>
@@ -150,9 +152,7 @@
 											*$pai->qtde,4,',','.') : NULL}}
 										</td>
 
-										<td class="center">{{
-											$bisneto->custo_futuro_soma ?
-										number_format($bisneto->custo_futuro_soma,4,',','.') : NULL}}</td>
+										<td></td>
 									</tr>
 									@foreach ($bisneto->filhos as $tataraneto)
 									<tr @if($cinza) class='cinza' @endif>
