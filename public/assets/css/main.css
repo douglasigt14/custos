@@ -1889,4 +1889,7 @@ ul.activity-timeline > li {
     background-color:black !important;
     color: white;
   }
+  .sublinhado-vermelho{
+    text-decoration: underline   red;
+  }
 /*# sourceMappingURL=main.css.map */

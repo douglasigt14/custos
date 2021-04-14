@@ -184,7 +184,7 @@
 										</td>
 
 										<td class="center texto-azul"></td>
-										<td class="center texto-verde">{{number_format($tataraneto->valor_filho,4,',','.')}}</td>
+										<td @if($tataraneto->valor_filho != $tataraneto->custo_futuro) class='sublinhado-vermelho center texto-verde' @endif class="center texto-verde">{{number_format($tataraneto->valor_filho,4,',','.')}}</td>
 
 										<td class="center texto-verde">{{number_format($tataraneto->valor_filho*$tataraneto->qtde
 											*$bisneto->qtde
