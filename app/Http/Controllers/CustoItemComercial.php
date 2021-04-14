@@ -106,10 +106,25 @@ class CustoItemComercial extends Controller
 
             if($pai->filhos){
                 foreach ($pai->filhos as $key => $filho) {
-                    if($filho->filhos){
                         $filho->custo_futuro_soma = 0;
                         $filho->custo_focco_soma = 0;
+                        
+                        if($filho->custo_futuro){
+                           // dd($filho);
+                        $filho->custo_futuro_soma +=  (
+                            $filho->custo_futuro
+                            *$filho->qtde
+                            *$pai->qtde) ;
 
+                        
+                            $filho->custo_focco_soma +=  (
+                            $filho->valor_filho
+                            *$filho->qtde
+                            *$pai->qtde) ;
+                        }
+
+                    if($filho->filhos){
+                        
                         foreach ($filho->filhos as $key => $neto) {
                            
                             $filho->custo_futuro_soma +=  ($neto->custo_futuro*$neto->qtde

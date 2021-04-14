@@ -66,7 +66,7 @@
 										
 										<td></td>
 										<td></td>
-										<td class="center"><b>{{
+										<td class="center texto-azul""><b>{{
 											$filho->custo_futuro_soma ?
 										number_format($filho->custo_futuro_soma,4,',','.') : NULL}}</b></td>
 										
@@ -74,7 +74,7 @@
 
 										<td></td>
 
-										<td class="center"><b>{{
+										<td class="center texto-verde""><b>{{
 											$filho->custo_focco_soma ?
 										number_format($filho->custo_focco_soma,4,',','.') : NULL}}</b></td>
 										
@@ -144,7 +144,7 @@
 												*$filho->qtde
 												*$pai->qtde,4,',','.') : NULL}}
 											</td>
-
+											<td></td>
 										<td class="center texto-verde">{{
 										$bisneto->custo_futuro ?
 										number_format($bisneto->valor_filho,4,',','.') : NULL}}</td>
@@ -162,7 +162,7 @@
 										
 										
 
-										<td></td>
+										
 									</tr>
 									@foreach ($bisneto->filhos as $tataraneto)
 									<tr @if($cinza) class='cinza' @endif>
