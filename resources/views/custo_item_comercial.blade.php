@@ -66,8 +66,7 @@
 
 										<td></td>
 
-										<td class="center"><b>{{number_format($filho->valor_filho*$filho->qtde,4,',','.')}}</b>
-										</td>
+										<td class="center"></td>
 										
 										
 										<td></td>
