@@ -33,10 +33,10 @@
 												
 												<td></td>
 												<td></td>
-												<td class="center texto-azul-claro">{{number_format($custo_item_focco,4,',','.')}}</td>
+												<td class="center texto-azul-claro">{{number_format($custo_item_futuro,4,',','.')}}</td>
 												<td></td>
 												<td></td>
-												<td class="center texto-verde">{{number_format($custo_item_futuro,4,',','.')}}</td>
+												<td class="center texto-verde">{{number_format($custo_item_focco,4,',','.')}}</td>
 											</tr>
 										@endif
 										@foreach ($itens as $pai)
