@@ -12,6 +12,18 @@ class CustoItemComercial extends Controller
         $cod_item = $_GET['cod_item'] ?? NULL;
         $id_masc = $_GET['id_masc'] ?? NULL;
 
+
+        $sql_lista_itens = "SELECT 
+                                    cod_item
+                                    ,item 
+                                FROM 
+                                    FOCCO3I.LJ_VALOR_ITEM_CUSTO
+                                GROUP BY 
+                                    cod_item
+                                    ,item";
+
+        $lista_itens  = DB::connection('oracle')->select($sql_lista_itens);
+
         $sql = "SELECT 
                     * 
                 FROM 
