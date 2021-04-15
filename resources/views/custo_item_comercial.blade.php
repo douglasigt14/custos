@@ -6,7 +6,7 @@
                     <!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Custo Item Comercial</h3>
+							<h3 class="panel-title">CUSTO {{$itens[0]->descpai ?? NULL ? ': '.$itens[0]->descpai.' - '.$itens[0]->corpai : NULL }}</h3>
 						</div>
 						<div class="panel-body">
 							<div class="row">
