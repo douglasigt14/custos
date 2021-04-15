@@ -14,15 +14,28 @@ class CustoItemComercial extends Controller
 
 
         $sql_lista_itens = "SELECT 
-                                    cod_item
-                                    ,item 
+                                    COD_ITEM
+                                    ,ITEM 
                                 FROM 
                                     FOCCO3I.LJ_VALOR_ITEM_CUSTO
                                 GROUP BY 
-                                    cod_item
-                                    ,item";
+                                    COD_ITEM
+                                    ,ITEM";
 
         $lista_itens  = DB::connection('oracle')->select($sql_lista_itens);
+
+        $lista_cores = NULL;
+        if($cod_item){
+           $sql_lista_cores = "SELECT 
+                                    *
+                                FROM 
+                                    FOCCO3I.LJ_VALOR_ITEM_CUSTO
+                                WHERE 
+                                    COD_ITEM = '$cod_item'";
+
+            $lista_cores  = DB::connection('oracle')->select($sql_lista_cores);
+            dd($lista_cores);
+        }
 
         $sql = "SELECT 
                     * 
@@ -44,7 +57,7 @@ class CustoItemComercial extends Controller
             $custo_item_futuro += $volume->custo_futuro_soma;          
         }
         
-        return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro","cod_item","id_masc"]));
+        return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro","cod_item","id_masc","lista_itens","lista_cores"]));
     }
     
     private function percorrer_itens($itens){

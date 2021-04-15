@@ -13,9 +13,28 @@
 								<form action="">
 									<div class="col col-md-3">
 										<label>COD ITEM</label>
-										<input type="text" name='cod_item' class="form-control">
+										<input class='form-control' list="itens" name="cod_item">
+										<datalist id="itens">
+											@foreach ($lista_itens as $item)
+												<option value="{{$item->cod_item}}">{{$item->item}}</option>	
+											@endforeach
+										</datalist>
 									</div>
-									
+									@if ($lista_cores)
+									<div class="col col-md-3">
+										<label for="itens">CONFIGURADO</label>
+										<input class='form-control' list="itens" name="id_masc" id="itens">
+										<datalist id="itens">
+											@foreach ($lista_itens as $item)
+												<option value="{{$item->cod_item}}">{{$item->item}}</option>	
+											@endforeach
+										</datalist>
+									</div>
+									@endif
+									<div class="col col-md-3">
+										<br>
+										<button class="btn btn-primary" type='submit'>Buscar</button>
+									</div>
 								</form>
 							</div>
 							<br>
