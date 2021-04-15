@@ -31,8 +31,6 @@ class Dashboard extends Controller
     AND TITENS_CUSTOS.VLR_CST_MAT_DIR <> 0
     AND TITENS.DESC_TECNICA NOT LIKE '--%'
     AND TITENS.DESC_TECNICA NOT LIKE '(P)%'
-    AND TITENS_CUSTOS.DT_ATUALIZA BETWEEN SYSDATE-1095 AND SYSDATE  
-    --AND TITENS.COD_ITEM = 8203
     ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
         $itens = DB::connection('oracle')->select($sqlItens);
         $qtde = (object) ['materias_primas' => $itens[0]->qtde ]; 

@@ -24,7 +24,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-money"></i></span>
 										<p>
-											<span class="number">0</span>
+											<span class="number">&nbsp;</span>
 											<span class="title">Custo Item Comercial</span>
 										</p>
 									</div>
@@ -35,7 +35,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-bar-chart"></i></span>
 										<p>
-											<span class="number">0</span>
+											<span class="number">&nbsp;</span>
 											<span class="title">Margens de Lucro</span>
 										</p>
 									</div>
