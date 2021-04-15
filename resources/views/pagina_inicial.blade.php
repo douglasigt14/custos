@@ -30,7 +30,9 @@
 									</div>
 								</a>
 
-
+								@if ($_SESSION["is_admin_custos"])
+									
+								
 								<a href='/margem_lucro' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-bar-chart"></i></span>
@@ -40,6 +42,8 @@
 										</p>
 									</div>
 								</a>
+
+								@endif
 								
 							</div>
 							
