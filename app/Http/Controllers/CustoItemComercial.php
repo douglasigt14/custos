@@ -31,10 +31,10 @@ class CustoItemComercial extends Controller
                                 FROM 
                                     FOCCO3I.LJ_VALOR_ITEM_CUSTO
                                 WHERE 
-                                    COD_ITEM = '$cod_item'";
+                                    COD_ITEM = '$cod_item'
+                                ORDER BY VALOR_MAT DESC";
 
             $lista_cores  = DB::connection('oracle')->select($sql_lista_cores);
-            dd($lista_cores);
         }
 
         $sql = "SELECT 

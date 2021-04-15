@@ -13,7 +13,7 @@
 								<form action="">
 									<div class="col col-md-3">
 										<label>COD ITEM</label>
-										<input class='form-control' list="itens" name="cod_item">
+										<input class='form-control' list="itens" @if($cod_item) readonly = 'true' @endif name="cod_item" value='{{$cod_item}}' required ='true' autocomplete="off">
 										<datalist id="itens">
 											@foreach ($lista_itens as $item)
 												<option value="{{$item->cod_item}}">{{$item->item}}</option>	
@@ -23,18 +23,24 @@
 									@if ($lista_cores)
 									<div class="col col-md-3">
 										<label for="itens">CONFIGURADO</label>
-										<input class='form-control' list="itens" name="id_masc" id="itens">
-										<datalist id="itens">
-											@foreach ($lista_itens as $item)
-												<option value="{{$item->cod_item}}">{{$item->item}}</option>	
+										<input class='form-control' list="cores" name="id_masc" value='{{$id_masc}}' required ='true' autocomplete="off">
+										<datalist id="cores">
+											@foreach ($lista_cores as $item)
+												<option value="{{$item->id_cor}}">{{$item->cor}} - {{number_format($item->valor_mat,4,',','.')}}</option>	
 											@endforeach
 										</datalist>
 									</div>
 									@endif
-									<div class="col col-md-3">
+									<div class="col col-md-2">
 										<br>
 										<button class="btn btn-primary" type='submit'>Buscar</button>
 									</div>
+									@if($cod_item)
+									<div class="col col-md-2">
+										<br>
+										<a href='/custo_item_comercial' class="btn btn-danger" type='submit'>Trocar Item</a>
+									</div>
+									@endif
 								</form>
 							</div>
 							<br>
