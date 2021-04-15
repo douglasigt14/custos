@@ -10,6 +10,13 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
+								<div class="col col-md-10"></div>
+								<div class="col col-md-2">
+									<button class="btn btn-primary btn-block">Igualar Valores</button>
+								</div>
+							</div>
+							<br>
+							<div class="row">
 								<table class="table table-hover table-striped menor myTable">
 									<thead>
 										<tr>
