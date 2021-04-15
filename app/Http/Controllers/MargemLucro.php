@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class MargemLucro extends Controller
 {
     public function index(){
-        return 'Margem de Lucro';
+
+        return view('margem_lucro', compact([]));
     }
 }
