@@ -19,7 +19,14 @@
 									</tr>
 								</thead>
 								<tbody>
-
+									@foreach ($itens as $item)
+										<tr>
+											<td>{{$item->item}}</td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									@endforeach
 								</tbody>
 							</table>
                         </div>
