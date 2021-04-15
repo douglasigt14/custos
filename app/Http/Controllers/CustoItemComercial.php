@@ -7,14 +7,14 @@ use DB;
 
 class CustoItemComercial extends Controller
 {
-    public function index(){
+    public function index($cod_item = 0 , $id_masc = 0){
         $sql = "SELECT 
                     * 
                 FROM 
                     FOCCO3i.LJ_EST_SISTEMA_CUSTO 
                 WHERE  
-                    codprodutopai = '6572' 
-                AND idcorpai = '61239'"; 
+                    codprodutopai = '$cod_item' 
+                AND idcorpai = '$id_masc'"; 
         
         $itens = DB::connection('oracle')->select($sql);
         

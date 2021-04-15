@@ -10,7 +10,8 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<table class="table myTable menor">
+								@if ($itens)
+								<table class="table menor">
 									<thead>
 										<tr>
 											<th>ITEM</th>
@@ -215,6 +216,7 @@
 										@endforeach
 									</tbody>
 								</table>
+								@endif
 							</div>
                         </div>
                     </div>
