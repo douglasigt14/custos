@@ -7,7 +7,11 @@ use DB;
 
 class CustoItemComercial extends Controller
 {
-    public function index($cod_item = 0 , $id_masc = 0){
+    public function index(){
+
+        $cod_item = $_GET['cod_item'] ?? NULL;
+        $id_masc = $_GET['id_masc'] ?? NULL;
+
         $sql = "SELECT 
                     * 
                 FROM 
@@ -28,7 +32,7 @@ class CustoItemComercial extends Controller
             $custo_item_futuro += $volume->custo_futuro_soma;          
         }
         
-        return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro"]));
+        return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro","cod_item","id_masc"]));
     }
     
     private function percorrer_itens($itens){

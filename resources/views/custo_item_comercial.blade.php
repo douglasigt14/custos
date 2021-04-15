@@ -10,6 +10,16 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
+								<form action="">
+									<div class="col col-md-3">
+										<label>COD ITEM</label>
+										<input type="text" name='cod_item' class="form-control">
+									</div>
+									
+								</form>
+							</div>
+							<br>
+							<div class="row">
 								@if ($itens)
 								<table class="table menor">
 									<thead>
