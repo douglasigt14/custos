@@ -119,4 +119,9 @@ class MateriasPrimas extends Controller
             ]);
         }
     }
+
+    public function delete(){
+        DB::table('custos_futuros')->delete();
+        return back();
+    }
 }

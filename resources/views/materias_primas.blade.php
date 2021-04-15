@@ -12,7 +12,11 @@
 							<div class="row">
 								<div class="col col-md-10"></div>
 								<div class="col col-md-2">
-									<button class="btn btn-primary btn-block">Igualar Valores</button>
+									<form action="" method="post">
+										@csrf
+										@method('delete')
+										<button type='submit' class="btn btn-primary btn-block">Igualar Valores</button>
+									</form>
 								</div>
 							</div>
 							<br>
