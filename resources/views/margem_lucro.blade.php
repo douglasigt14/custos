@@ -9,7 +9,19 @@
 							<h3 class="panel-title">Margem de Lucro </h3>
 						</div>
 						<div class="panel-body">
-							
+							<table class="table table-hover table-striped menor myTable">
+								<thead>
+									<tr>
+										<th>Item</th>
+										<th>Margem de Lucro Atual</th>
+										<th>Margem de Lucro Futura</th>
+										<th>Diferença</th>
+									</tr>
+								</thead>
+								<tbody>
+
+								</tbody>
+							</table>
                         </div>
                     </div>
 @endsection	
