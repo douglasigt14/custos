@@ -39,7 +39,7 @@ class CustoCron extends Command
     public function handle()
     {
         DB::table('teste')->insert([
-            'desc' => 'SHOW RAPAZ'
+            'desc' => 'SHOW RAPAZ 2'
         ]);
         return 0;
     }
