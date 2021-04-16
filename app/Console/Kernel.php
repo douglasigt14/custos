@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\CustoCron::class,
+        Commands\ApagarCusto::class,
     ];
 
     /**
@@ -26,6 +27,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('custo:cron')->dailyAt('12:00');
+        $schedule->command('custo:apagar');
     }
 
     /**
