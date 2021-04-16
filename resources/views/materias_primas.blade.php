@@ -30,8 +30,8 @@
 											<th class='center'>Dt. Atualz. Focco</th>
 											<th class='center'>Unid. Med.</th>
 											
-											<th class='center'>Custo Focco</th>
 											<th class='center'>Custo Manual</th>
+											<th class='center'>Custo Focco</th>
 											<th class='center'>Perc. (%)</th>
 										</tr>
 									</thead>
@@ -43,8 +43,10 @@
 											<td>{{$item->class_desc}}</td>
 											<td class='center'>{{date("d/m/Y", strtotime($item->dt_atualiza))}}</td>
 											<td class='center'>{{$item->unid_med}}</td>
-											<td class='center texto-verde'>{{$item->custo}}</td>
 											<td id='EditarValor{{$item->cod_item}}' class='center texto-azul'>{{$item->custo_futuro}}</td>
+											
+											<td class='center texto-verde'>{{$item->custo}}</td>
+											
 											<td id='Perc{{$item->cod_item}}' class='center {{$item->cor_perc}}'>{{$item->perc}}%</td>
 										</tr>
 										@endforeach
