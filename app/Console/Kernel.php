@@ -27,7 +27,6 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('custo:cron')->dailyAt('12:00');
-        $schedule->command('custo:apagar');
     }
 
     /**
