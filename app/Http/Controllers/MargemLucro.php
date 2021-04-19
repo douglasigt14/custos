@@ -8,15 +8,12 @@ class MargemLucro extends Controller
 {
     public function index(){
         $sql = "SELECT 
-                    COD_ITEM
-                    ,ITEM 
-                FROM 
-                    FOCCO3I.LJ_VALOR_ITEM_CUSTO
-                GROUP BY 
-                    COD_ITEM
-                    ,ITEM";
+                    *
+                FROM custos_log";
 
-            $itens  = DB::connection('oracle')->select($sql);
+            $itens  = DB::connection('mysql')->select($sql);
+
+        
 
         return view('margem_lucro', compact(["itens"]));
     }

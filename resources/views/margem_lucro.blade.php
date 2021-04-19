@@ -12,16 +12,22 @@
 							<table class="table table-hover table-striped menor myTable">
 								<thead>
 									<tr>
+										<th>Cod</th>
 										<th>Item</th>
+										<th>Custo Atual</th>
+										<th>Custo Futuro</th>
 										<th>Margem de Lucro Atual</th>
-										<th>Margem de Lucro Futura</th>
+										<th>Margem de Lucro Futuro</th>
 										<th>Diferença</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach ($itens as $item)
 										<tr>
-											<td>{{$item->item}}</td>
+											<td>{{$item->cod_item}}</td>
+											<td>{{$item->descricao}}</td>
+											<td class='texto-azul'>{{number_format($item->custo_manual,4,',','.')}}</td>
+											<td class='texto-verde'>{{number_format($item->custo_focco,4,',','.')}}</td>
 											<td></td>
 											<td></td>
 											<td></td>
