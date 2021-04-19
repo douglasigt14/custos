@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use DB;
+use App\Http\Controllers\CustoItemComercial;
 
 class CustoCron extends Command
 {
@@ -49,14 +50,38 @@ class CustoCron extends Command
 
         $lista_itens  = DB::connection('oracle')->select($sql_lista_itens);
         
-        //dd($lista_itens);
+        $id_masc = NULL;
         foreach ($lista_itens as $key => $item) {
-            dd($item);
+            $sql_lista_cores = "SELECT 
+                                    *
+                                FROM 
+                                    FOCCO3I.LJ_VALOR_ITEM_CUSTO
+                                WHERE 
+                                    COD_ITEM = '$item->cod_item'
+                                ORDER BY VALOR_MAT DESC";
+
+            $lista_cores  = DB::connection('oracle')->select($sql_lista_cores);
+            $id_masc =  $lista_cores[0]->id_cor ?? NULL;
+            
+
+            $sql = "SELECT 
+                        * 
+                    FROM 
+                        FOCCO3i.LJ_EST_SISTEMA_CUSTO 
+                    WHERE  
+                        codprodutopai = '$item->cod_item' 
+                    AND idcorpai = '$id_masc'"; 
+
+            $itens = DB::connection('oracle')->select($sql);
+            dd($itens);
+            
         }
         //$this->info('Example Cron comando rodando com êxito');
 
         return 0;
     }
+
+    
 }
 
 //* * * * * php /path/to/artisan schedule:run 1>> /dev/null 2>&1

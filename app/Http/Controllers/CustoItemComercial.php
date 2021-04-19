@@ -60,7 +60,7 @@ class CustoItemComercial extends Controller
         return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro","cod_item","id_masc","lista_itens","lista_cores"]));
     }
     
-    private function percorrer_itens($itens){
+    public function percorrer_itens($itens){
         foreach ($itens as $key => $pai) {
             $pai->custo_futuro = null;
             $pai->custo_futuro_soma = null;
@@ -97,7 +97,7 @@ class CustoItemComercial extends Controller
         return $itens;
     }
 
-    private function busca_filhos($codproduto,$idcorfilho,$idcorpai){
+    public function busca_filhos($codproduto,$idcorfilho,$idcorpai){
             $sql_f = "SELECT 
                     * 
                 FROM 
@@ -134,7 +134,7 @@ class CustoItemComercial extends Controller
 
     
 
-    private function somar_custos($itens){
+    public function somar_custos($itens){
         foreach ($itens as $key => $pai) {
             
             $pai->custo_futuro_soma = 0;
