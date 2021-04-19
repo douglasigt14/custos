@@ -96,6 +96,7 @@ class CustoCron extends Command
             DB::table('custos_log')->insert([
                 'cod_item' => $item->cod_item,
                 'descricao' => $item->item,
+                'id_masc' => $id_masc,
                 'cor' => $cor,
                 'custo_focco' => number_format($custo_item_focco,4,'.',''),
                 'custo_manual' => number_format($custo_item_futuro,4,'.','')
