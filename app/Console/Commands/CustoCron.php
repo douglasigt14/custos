@@ -66,7 +66,7 @@ class CustoCron extends Command
 
             $lista_cores  = DB::connection('oracle')->select($sql_lista_cores);
             $id_masc =  $lista_cores[0]->id_cor ?? NULL;
-            
+            $cor =  $lista_cores[0]->cor ?? NULL;
 
             $sql = "SELECT 
                         * 
@@ -89,16 +89,19 @@ class CustoCron extends Command
                 $custo_item_futuro += $volume->custo_futuro_soma;          
             }
 
-            $this->info('ITEM: '.$item->cod_item.' | CUSTO FOCCO: '.number_format($custo_item_focco,4,'.','').' | CUSTO MANUAL: '.number_format($custo_item_futuro,4,'.',''));
+            $this->info('ITEM: '.$item->cod_item.' | CUSTO FOCCO: '.number_format($custo_item_focco,4,'.','').' | CUSTO MANUAL: '.number_format($custo_item_futuro,4,'.','').' | '.$cor);
 
             //dd($item);
 
             DB::table('custos_log')->insert([
                 'cod_item' => $item->cod_item,
                 'descricao' => $item->item,
+                'cor' => $cor,
                 'custo_focco' => number_format($custo_item_focco,4,'.',''),
                 'custo_manual' => number_format($custo_item_futuro,4,'.','')
             ]);
+
+            //break;
         }
         $this->info('Finalizado: Logs de Custos Criados');
 
