@@ -1901,4 +1901,10 @@ ul.activity-timeline > li {
     vertical-align: top;
     border-top: 1px solid #ddd;
   }
+  .preto-link {
+    color:#676a6d;
+  }
+  .preto-link:hover {
+    color:#676a6d;
+  }
 /*# sourceMappingURL=main.css.map */
