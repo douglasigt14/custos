@@ -14,6 +14,7 @@
 									<tr>
 										<th>Cod</th>
 										<th>Item</th>
+										<th>Config.</th>
 										<th>Custo Atual</th>
 										<th>Custo Futuro</th>
 										<th>Margem de Lucro Atual</th>
@@ -26,6 +27,7 @@
 										<tr>
 											<td>{{$item->cod_item}}</td>
 											<td>{{$item->descricao}}</td>
+											<td>{{$item->cor}}</td>
 											<td class='texto-azul'>{{number_format($item->custo_manual,4,',','.')}}</td>
 											<td class='texto-verde'>{{number_format($item->custo_focco,4,',','.')}}</td>
 											<td></td>
