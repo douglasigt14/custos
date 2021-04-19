@@ -87,8 +87,11 @@ class CustoCron extends Command
 
             $this->info('ITEM: '.$item->cod_item.' | CUSTO FOCCO: '.number_format($custo_item_focco,4,'.','').' | CUSTO MANUAL: '.number_format($custo_item_futuro,4,'.',''));
 
+            dd($item);
+
             DB::table('custos_log')->insert([
                 'cod_item' => $item->cod_item,
+                'descricao' => $item->item,
                 'custo_focco' => number_format($custo_item_focco,4,'.',''),
                 'custo_manual' => number_format($custo_item_futuro,4,'.','')
             ]);
