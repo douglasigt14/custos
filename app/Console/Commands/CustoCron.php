@@ -51,6 +51,7 @@ class CustoCron extends Command
         $lista_itens  = DB::connection('oracle')->select($sql_lista_itens);
         
         $id_masc = NULL;
+        DB::table('custos_log')->delete();
         foreach ($lista_itens as $key => $item) {
             $sql_lista_cores = "SELECT 
                                     *
@@ -87,7 +88,7 @@ class CustoCron extends Command
 
             $this->info('ITEM: '.$item->cod_item.'-'.$item->item.' | CUSTO FOCCO: '.number_format($custo_item_focco,4,'.','').' | CUSTO MANUAL: '.number_format($custo_item_futuro,4,'.',''));
 
-            dd($item);
+            //dd($item);
 
             DB::table('custos_log')->insert([
                 'cod_item' => $item->cod_item,
