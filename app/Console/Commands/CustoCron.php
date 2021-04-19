@@ -76,8 +76,22 @@ class CustoCron extends Command
             
             $custoObj = new CustoItemComercial();
             $itens = $custoObj->percorrer_itens($itens);
-            // dd($itens);
-            
+            $itens = $custoObj->somar_custos($itens);
+
+            $custo_item_focco = 0;
+            $custo_item_futuro = 0;
+            foreach ($itens as $key => $volume) {
+                $custo_item_focco += $volume->custo_focco_soma;
+                $custo_item_futuro += $volume->custo_futuro_soma;          
+            }
+
+            $this->info('ITEM: '.$item->cod_item.' | CUSTO FOCCO: '.$custo_item_focco.' | CUSTO MANUAL: '.$custo_item_futuro);
+
+            DB::table('custos_log')->insert([
+                'cod_item' => $item->cod_item,
+                'custo_focco' => number_format($custo_item_focco,4,'.',''),
+                'custo_manual' => number_format($custo_item_futuro,4,'.','')
+            ]);
         }
         //$this->info('Example Cron comando rodando com êxito');
 
