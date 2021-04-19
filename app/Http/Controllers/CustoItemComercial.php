@@ -18,6 +18,9 @@ class CustoItemComercial extends Controller
                                     ,ITEM 
                                 FROM 
                                     FOCCO3I.LJ_VALOR_ITEM_CUSTO
+                                WHERE
+                                    ITEM NOT LIKE '--%'
+                                AND ITEM NOT LIKE '(P)%'
                                 GROUP BY 
                                     COD_ITEM
                                     ,ITEM";
