@@ -73,7 +73,10 @@ class CustoCron extends Command
                     AND idcorpai = '$id_masc'"; 
 
             $itens = DB::connection('oracle')->select($sql);
-            dd($itens);
+            
+            $custoObj = new CustoItemComercial();
+            $itens = $custoObj->percorrer_itens($itens);
+            // dd($itens);
             
         }
         //$this->info('Example Cron comando rodando com êxito');
