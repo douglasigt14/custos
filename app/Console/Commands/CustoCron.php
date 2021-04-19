@@ -85,7 +85,7 @@ class CustoCron extends Command
                 $custo_item_futuro += $volume->custo_futuro_soma;          
             }
 
-            $this->info('ITEM: '.$item->cod_item.' | CUSTO FOCCO: '.$custo_item_focco.' | CUSTO MANUAL: '.$custo_item_futuro);
+            $this->info('ITEM: '.$item->cod_item.' | CUSTO FOCCO: '.number_format($custo_item_focco,4,'.','').' | CUSTO MANUAL: '.number_format($custo_item_futuro,4,'.',''));
 
             DB::table('custos_log')->insert([
                 'cod_item' => $item->cod_item,
