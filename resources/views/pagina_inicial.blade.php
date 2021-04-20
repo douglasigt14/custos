@@ -15,7 +15,7 @@
 										<span class="icon"><i class="fa fa-cube"></i></span>
 										<p>
 											<span class="number">{{$qtde->materias_primas}}</span>
-											<span class="title">Materias Primas</span>
+											<span class="title">Materias Primas<br><br></span>
 										</p>
 									</div>
 								</a>
@@ -25,7 +25,7 @@
 										<span class="icon"><i class="fa fa-money"></i></span>
 										<p>
 											<span class="number">&nbsp;</span>
-											<span class="title">Custo Item Comercial</span>
+											<span class="title">Custo Item Comercial<br><br></span>
 										</p>
 									</div>
 								</a>								
@@ -36,11 +36,21 @@
 										<span class="icon"><i class="fa fa-bar-chart"></i></span>
 										<p>
 											<span class="number">&nbsp;</span>
-											<span class="title">Margens de Lucro</span>
+											<span class="title">Margens de Lucro<br><br></span>
 										</p>
 									</div>
 								</a>
-								
+								@if($_SESSION['is_admin_custos'])
+								<a href='/avaliacao_custo' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-line-chart"></i></span>
+										<p>
+											<span class="number">&nbsp;</span>
+											<span class="title">Avaliação Valor de Compra</span>
+										</p>
+									</div>
+								</a>
+								@endif
 							</div>
 							
                         </div>
