@@ -13,6 +13,7 @@ class MargemLucro extends Controller
 
             $itens  = DB::connection('mysql')->select($sql);
 
+        $itens_sem_valor = [];
         foreach ($itens as $key => $item) {
             $sql_preco = "SELECT TITENS.COD_ITEM
                                 ,TITENS.DESC_TECNICA
@@ -44,11 +45,17 @@ class MargemLucro extends Controller
             
             $precos = DB::connection('oracle')->select($sql_preco);
             
-            $item->prreco_com_5 = $precos[0]->valor_c_desc ?? NULL;
+            $item->preco_com_5 = $precos[0]->valor_c_desc ?? NULL;
 
+            if(!$item->preco_com_5){
+                unset($itens[$key]);
+            }
+            else{
+                $item->margem_manual = number_format((( 100-50.6-$item->custo_manual*100/$item->preco_com_5)/100)*100, 4,',','.' );
+
+                $item->margem_focco = number_format((( 100-50.6-$item->custo_focco*100/$item->preco_com_5)/100)*100, 4,',','.' );
+            }
         }
-
-       // dd($itens);
 
         return view('margem_lucro', compact(["itens"]));
     }
