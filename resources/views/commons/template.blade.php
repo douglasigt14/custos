@@ -167,6 +167,7 @@
 	<script src="{{url('assets/vendor/datatables.net/js/jquery.dataTables.js')}}"></script>
 	<script src="{{url('assets/vendor/bootstrap4-toggle/js/bootstrap4-toggle.min.js')}}"></script>
 	<script src="{{url('assets/scripts/klorofil-common.js')}}"></script>
+	<script src="{{url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 	<script>
 		 function mostrarModalSenha_template(event) {
                 const button = event.currentTarget
