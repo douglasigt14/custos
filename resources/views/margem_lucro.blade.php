@@ -15,8 +15,6 @@
 										<th>Cod</th>
 										<th>Item</th>
 										<th>Config.</th>
-										<th>Custo Atual</th>
-										<th>Custo Futuro</th>
 										<th>Margem de Lucro Atual</th>
 										<th>Margem de Lucro Futuro</th>
 										<th>Diferença</th>
@@ -28,10 +26,8 @@
 											<td>{{$item->cod_item}}</td>
 											<td><a class='preto-link' href="/custo_item_comercial?cod_item={{$item->cod_item}}&id_masc={{$item->id_masc}}">{{$item->descricao}}</a></td>
 											<td>{{$item->cor}}</td>
-											<td class='texto-azul center'>{{number_format($item->custo_manual,4,',','.')}}</td>
-											<td class='texto-verde center'>{{number_format($item->custo_focco,4,',','.')}}</td>
-											<td class='texto-azul center'>{{number_format($item->margem_manual,4,',','.')}}</td>
-											<td class='texto-verde center'>{{number_format($item->margem_focco,4,',','.')}}</td>
+											<td class='texto-azul center'>{{number_format($item->margem_manual,2,',','.')}}%</td>
+											<td class='texto-verde center'>{{number_format($item->margem_focco,2,',','.')}}%</td>
 											<td></td>
 										</tr>
 									@endforeach
