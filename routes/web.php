@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\MyLogin;
 use App\Http\Controllers\MateriasPrimas;
 use App\Http\Controllers\CustoItemComercial;
 use App\Http\Controllers\MargemLucro;
+use App\Http\Controllers\AvaliacaoCusto;
 
 
 /*
@@ -26,6 +27,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/ins_up_custo_futuro/{cod_item}/{valor}', [MateriasPrimas::class, 'ins_up_custo_futuro']);
     Route::get('/custo_item_comercial', [CustoItemComercial::class, 'index']);
     Route::get('/margem_lucro', [MargemLucro::class, 'index']);
+    Route::get('/avaliacao_custo', [AvaliacaoCusto::class, 'index']);
     
 });
 
