@@ -28,10 +28,10 @@
 											<td>{{$item->cod_item}}</td>
 											<td><a class='preto-link' href="/custo_item_comercial?cod_item={{$item->cod_item}}&id_masc={{$item->id_masc}}">{{$item->descricao}}</a></td>
 											<td>{{$item->cor}}</td>
-											<td class='texto-azul'>{{number_format($item->custo_manual,4,',','.')}}</td>
-											<td class='texto-verde'>{{number_format($item->custo_focco,4,',','.')}}</td>
-											<td></td>
-											<td></td>
+											<td class='texto-azul center'>{{number_format($item->custo_manual,4,',','.')}}</td>
+											<td class='texto-verde center'>{{number_format($item->custo_focco,4,',','.')}}</td>
+											<td class='texto-azul center'>{{number_format($item->margem_manual,4,',','.')}}</td>
+											<td class='texto-verde center'>{{number_format($item->margem_focco,4,',','.')}}</td>
 											<td></td>
 										</tr>
 									@endforeach

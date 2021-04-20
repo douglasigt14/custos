@@ -51,9 +51,9 @@ class MargemLucro extends Controller
                 unset($itens[$key]);
             }
             else{
-                $item->margem_manual = number_format((( 100-50.6-$item->custo_manual*100/$item->preco_com_5)/100)*100, 4,',','.' );
+                $item->margem_manual = (( 100-50.6-$item->custo_manual*100/$item->preco_com_5)/100)*100;
 
-                $item->margem_focco = number_format((( 100-50.6-$item->custo_focco*100/$item->preco_com_5)/100)*100, 4,',','.' );
+                $item->margem_focco = (( 100-50.6-$item->custo_focco*100/$item->preco_com_5)/100)*100;
             }
         }
 
