@@ -34,7 +34,7 @@
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-50.6-{{$item->custo_focco}}*100/{{$item->preco_com_5}})/100)*100"
 											class='texto-verde center'>{{number_format($item->margem_focco,2,',','.')}}%</td>
-											<td></td>
+											<td class='center'>{{number_format($item->margem_focco-$item->margem_manual,2,',','.')}}%</td>
 										</tr>
 									@endforeach
 								</tbody>
