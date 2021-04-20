@@ -10,8 +10,6 @@
 	<link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/font-awesome/css/font-awesome.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/linearicons/style.css')}}">
-	<link rel="stylesheet" href="{{asset('assets/vendor/dropify/dist/css/dropify.css')}}">
-	<link rel="stylesheet" href="{{asset('assets/vendor/chartist/css/chartist-custom.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/datatables.net-dt/css/jquery.dataTables.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendor/bootstrap4-toggle/css/bootstrap4-toggle.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/card_upload.css')}}">
@@ -19,8 +17,6 @@
 	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}?{{date("YmdHis")}}">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
-	<!-- GOOGLE FONTS -->
-	<link rel="stylesheet" href="{{url('assets/vendor/sweetalert2/dist/sweetalert2.min.css')}}">
 	
      @stack('styles')
 </head>
@@ -168,16 +164,9 @@
 	<!-- Javascript -->
 	<script src="{{url('assets/vendor/jquery/jquery.min.js')}}"></script>
 	<script src="{{url('assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-	<script src="{{url('assets/vendor/dropify/dist/js/dropify.min.js')}}"></script>
 	<script src="{{url('assets/vendor/datatables.net/js/jquery.dataTables.js')}}"></script>
 	<script src="{{url('assets/vendor/bootstrap4-toggle/js/bootstrap4-toggle.min.js')}}"></script>
-	<script src="{{url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
-	<script src="{{url('assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
-	<script src="{{url('assets/vendor/chartist/js/chartist.min.js')}}"></script>
 	<script src="{{url('assets/scripts/klorofil-common.js')}}"></script>
-
-	<script src="{{url('assets/vendor/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
-
 	<script>
 		 function mostrarModalSenha_template(event) {
                 const button = event.currentTarget
