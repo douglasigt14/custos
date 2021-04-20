@@ -28,9 +28,7 @@
 											<span class="title">Custo Item Comercial</span>
 										</p>
 									</div>
-								</a>
-
-								@if ($_SESSION["is_admin_custos"])
+								</a>								
 									
 								
 								<a href='/margem_lucro' class="col-md-3 cinzinha">
@@ -42,8 +40,6 @@
 										</p>
 									</div>
 								</a>
-
-								@endif
 								
 							</div>
 							
