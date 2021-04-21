@@ -21,14 +21,14 @@ class MargemLucro extends Controller
                                 ,TDESC_IPCMD.VLR_MAXIMO  AS VALOR_DESC
                                 ,ROUND(TPRECOSVEN_IT.PRECO - ((TPRECOSVEN_IT.PRECO * TDESC_IPCMD.VLR_MAXIMO)/100),2) AS VALOR_C_DESC
                                 ,TDESC_IPCMD.DESCRICAO tipo
-                        FROM TPOLITICA_COM_DESC 
-                            ,TITENS_PCMD
-                            ,TDESC_IPCMD
-                            ,TITENS_COMERCIAL
-                            ,TITENS_EMPR
-                            ,TITENS
-                            ,TPRECOSVEN
-                            ,TPRECOSVEN_IT
+                        FROM FOCCO3I.TPOLITICA_COM_DESC 
+                            ,FOCCO3I.TITENS_PCMD
+                            ,FOCCO3I.TDESC_IPCMD
+                            ,FOCCO3I.TITENS_COMERCIAL
+                            ,FOCCO3I.TITENS_EMPR
+                            ,FOCCO3I.TITENS
+                            ,FOCCO3I.TPRECOSVEN
+                            ,FOCCO3I.TPRECOSVEN_IT
                         WHERE TITENS_PCMD.PCMD_ID         =  TPOLITICA_COM_DESC.ID
                         AND   TDESC_IPCMD.IPCMD_ID        =  TITENS_PCMD.ID
                         AND   TITENS_COMERCIAL.ID         =  TITENS_PCMD.ITCM_ID
