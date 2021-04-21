@@ -132,7 +132,7 @@
 
 									let perc = (custo_futuro / custo_focco *100)-100;
 
-									perc =   perc.toFixed(4); 
+									perc =   perc.toFixed(2); 
 									let cor = '';
 									if(perc > 0 ){
 										cor = 'red';
@@ -141,7 +141,7 @@
 										cor = 'green';
 									}	
 									else{
-										cor = '#676a6d';
+										cor = '#A52A2A';
 									}	
 									var oldstr=  perc.toString();  
 									perc  = oldstr.toString().replace(".",",");
