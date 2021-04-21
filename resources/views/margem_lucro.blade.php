@@ -44,34 +44,40 @@
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_manual}}*100/{{$item->preco_com_5}})/100)*100"
-											class='texto-azul center'>{{number_format($item->margem_manual_5,2,',','.')}}%</td>
+											class='texto-azul center'>{{$item->margem_manual_5 ?number_format($item->margem_manual_5,2,',','.').'%' : NULL}}</td>
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_focco}}*100/{{$item->preco_com_5}})/100)*100"
-											class='texto-verde center'>{{number_format($item->margem_focco_5,2,',','.')}}%</td>
-											<td class='center'>{{number_format($item->margem_focco_5-$item->margem_manual_5,2,',','.')}}%</td>
+											class='texto-verde center'>{{ $item->margem_focco_5 ? number_format($item->margem_focco_5,2,',','.').'%' : NULL}}</td>
+											<td class='center'>{{
+											$item->margem_focco_5 ?
+											number_format($item->margem_focco_5-$item->margem_manual_5,2,',','.').'%' : NULL}}</td>
 
 											{{-- COMISSÃO DE 4 --}}
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_manual}}*100/{{$item->preco_com_4}})/100)*100"
-											class='texto-azul center'>{{number_format($item->margem_manual_4,2,',','.')}}%</td>
+											class='texto-azul center'>{{$item->margem_manual_4 ?number_format($item->margem_manual_4,2,',','.').'%' : NULL}}</td>
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_focco}}*100/{{$item->preco_com_4}})/100)*100"
-											class='texto-verde center'>{{number_format($item->margem_focco_4,2,',','.')}}%</td>
-											<td class='center'>{{number_format($item->margem_focco_4-$item->margem_manual_4,2,',','.')}}%</td>
+											class='texto-verde center'>{{ $item->margem_focco_4 ? number_format($item->margem_focco_4,2,',','.').'%' : NULL}}</td>
+											<td class='center'>{{
+											$item->margem_focco_4 ?
+											number_format($item->margem_focco_4-$item->margem_manual_4,2,',','.').'%' : NULL}}</td>
 
 											{{-- COMISSÃO DE 3 --}}
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_manual}}*100/{{$item->preco_com_3}})/100)*100"
-											class='texto-azul center'>{{number_format($item->margem_manual_3,2,',','.')}}%</td>
+											class='texto-azul center'>{{$item->margem_manual_3 ?number_format($item->margem_manual_3,2,',','.').'%' : NULL}}</td>
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_focco}}*100/{{$item->preco_com_3}})/100)*100"
-											class='texto-verde center'>{{number_format($item->margem_focco_3,2,',','.')}}%</td>
-											<td class='center'>{{number_format($item->margem_focco_3-$item->margem_manual_3,2,',','.')}}%</td>
+											class='texto-verde center'>{{ $item->margem_focco_3 ? number_format($item->margem_focco_3,2,',','.').'%' : NULL}}</td>
+											<td class='center'>{{
+											$item->margem_focco_3 ?
+											number_format($item->margem_focco_3-$item->margem_manual_3,2,',','.').'%' : NULL}}</td>
 
 
 										</tr>
