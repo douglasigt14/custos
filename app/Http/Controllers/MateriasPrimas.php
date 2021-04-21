@@ -50,7 +50,7 @@ class MateriasPrimas extends Controller
         $item->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : $item->custo;
         
         $perc = ($item->custo_futuro / $item->custo *100)-100;
-        $item->perc = number_format( $perc,4,',','.');
+        $item->perc = number_format( $perc,2,',','.');
 
         $reload = false;
         if($custos_futuros){
@@ -74,7 +74,7 @@ class MateriasPrimas extends Controller
         $item->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : $item->custo;
         
         $perc = ($item->custo_futuro / $item->custo *100)-100;
-        $item->perc = number_format( $perc,4,',','.');
+        $item->perc = number_format( $perc,2,',','.');
         
         $item->custo_futuro = number_format($item->custo_futuro,4,',','.');
         $item->custo = number_format($item->custo,4,',','.');
