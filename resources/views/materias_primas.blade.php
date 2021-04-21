@@ -30,8 +30,8 @@
 											<th class='center'>Dt. Atualz. Focco</th>
 											<th class='center'>Unid. Med.</th>
 											
-											<th class='center'>Custo Manual</th>
-											<th class='center'>Custo Focco</th>
+											<th class='center'>Custo Atual</th>
+											<th class='center'>Custo Futuro</th>
 											<th class='center'>Perc. (%)</th>
 										</tr>
 									</thead>
