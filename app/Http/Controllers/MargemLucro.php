@@ -69,6 +69,10 @@ class MargemLucro extends Controller
 
             $item->fator = 54.6;
 
+            if($item->categoria  == 'ROUPEIROS'){
+                $item->fator = $item->fator-4;
+            }
+
             if($item->preco_com_5){
                 $item->margem_manual_5 = (( 100-($item->fator)-$item->custo_manual*100/$item->preco_com_5)/100)*100;
 
