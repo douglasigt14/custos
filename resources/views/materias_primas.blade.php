@@ -130,18 +130,18 @@
 									custo_futuro = parseFloat(custo_futuro);
 									
 
-									let perc = (custo_futuro / custo_focco *100)-100;
+									let perc = (custo_focco/custo_futuro  *100)-100;
 
 									perc =   perc.toFixed(2); 
 									let cor = '';
 									if(perc > 0 ){
-										cor = 'red';
+										cor = '#A52A2A';
 									}
 									else if (perc < 0) {
 										cor = 'green';
 									}	
 									else{
-										cor = '#A52A2A';
+										cor = '#676a6d';
 									}	
 									var oldstr=  perc.toString();  
 									perc  = oldstr.toString().replace(".",",");
