@@ -61,6 +61,12 @@ class MargemLucro extends Controller
             $item->margem_manual_5 = NULL;
             $item->margem_focco_5 = NULL;
 
+            $item->margem_manual_4 = NULL;
+            $item->margem_focco_4 = NULL;
+
+            $item->margem_manual_3 = NULL;
+            $item->margem_focco_3 = NULL;
+
             if(!$item->preco_com_5){
                 unset($itens[$key]);
             }
@@ -68,6 +74,16 @@ class MargemLucro extends Controller
                 $item->margem_manual_5 = (( 100-54.6-$item->custo_manual*100/$item->preco_com_5)/100)*100;
 
                 $item->margem_focco_5 = (( 100-54.6-$item->custo_focco*100/$item->preco_com_5)/100)*100;
+
+
+                $item->margem_manual_4 = (( 100-54.6-$item->custo_manual*100/$item->preco_com_4)/100)*100;
+
+                $item->margem_focco_4 = (( 100-54.6-$item->custo_focco*100/$item->preco_com_4)/100)*100;
+
+
+                $item->margem_manual_3 = (( 100-54.6-$item->custo_manual*100/$item->preco_com_3)/100)*100;
+
+                $item->margem_focco_3 = (( 100-54.6-$item->custo_focco*100/$item->preco_com_3)/100)*100;
             }
         }
 
