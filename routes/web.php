@@ -28,7 +28,6 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/custo_item_comercial', [CustoItemComercial::class, 'index']);
     Route::get('/margem_lucro', [MargemLucro::class, 'index']);
     Route::get('/avaliacao_custo', [AvaliacaoCusto::class, 'index']);
-    
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');
