@@ -42,6 +42,7 @@ class CustoCron extends Command
         $sql_lista_itens = "SELECT 
         COD_ITEM
         ,ITEM 
+        ,CATEGORIAS
     FROM 
         FOCCO3I.LJ_VALOR_ITEM_CUSTO
     WHERE
@@ -49,7 +50,8 @@ class CustoCron extends Command
     AND ITEM NOT LIKE '(P)%'
     GROUP BY 
         COD_ITEM
-        ,ITEM";
+        ,ITEM
+        ,CATEGORIAS";
 
         $lista_itens  = DB::connection('oracle')->select($sql_lista_itens);
         
@@ -91,12 +93,12 @@ class CustoCron extends Command
 
             $this->info('ITEM: '.$item->cod_item.' | CUSTO FOCCO: '.number_format($custo_item_focco,4,'.','').' | CUSTO MANUAL: '.number_format($custo_item_futuro,4,'.','').' | '.$cor);
 
-            //dd($item);
 
             DB::table('custos_log')->insert([
                 'cod_item' => $item->cod_item,
                 'descricao' => $item->item,
                 'id_masc' => $id_masc,
+                'categoria' => $item->categorias,
                 'cor' => $cor,
                 'custo_focco' => number_format($custo_item_focco,4,'.',''),
                 'custo_manual' => number_format($custo_item_futuro,4,'.','')

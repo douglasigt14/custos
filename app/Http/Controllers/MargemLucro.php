@@ -58,9 +58,6 @@ class MargemLucro extends Controller
                     $item->preco_com_3 = $preco->valor_c_desc ?? NULL;
             }
            
-           
-
-           
             $item->margem_manual_5 = NULL;
             $item->margem_focco_5 = NULL;
 
