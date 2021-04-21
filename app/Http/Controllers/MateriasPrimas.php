@@ -37,6 +37,7 @@ class MateriasPrimas extends Controller
     AND TITENS_CUSTOS.VLR_CST_MAT_DIR <> 0
     AND TITENS.DESC_TECNICA NOT LIKE '--%'
     AND TITENS.DESC_TECNICA NOT LIKE '(P)%'
+    AND TITENS_CUSTOS.OBSER =  1
     ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
         $itens = DB::connection('oracle')->select($sqlItens);
     
