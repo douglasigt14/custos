@@ -88,6 +88,10 @@ class MargemLucro extends Controller
                 $item->margem_focco_3 = (( 100-52.6-$item->custo_focco*100/$item->preco_com_3)/100)*100;
             }
 
+            if(!$item->preco_com_3 and !$item->preco_com_4 and !$item->preco_com_3){
+                unset($itens[$key]);
+            }
+
         }
 
         return view('margem_lucro', compact(["itens"]));
