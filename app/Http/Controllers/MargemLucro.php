@@ -77,15 +77,15 @@ class MargemLucro extends Controller
             }
 
             if($item->preco_com_4){
-                $item->margem_manual_4 = (( 100-54.6-$item->custo_manual*100/$item->preco_com_4)/100)*100;
+                $item->margem_manual_4 = (( 100-53.6-$item->custo_manual*100/$item->preco_com_4)/100)*100;
 
-                $item->margem_focco_4 = (( 100-54.6-$item->custo_focco*100/$item->preco_com_4)/100)*100;
+                $item->margem_focco_4 = (( 100-53.6-$item->custo_focco*100/$item->preco_com_4)/100)*100;
             }
 
             if($item->preco_com_3){
-                $item->margem_manual_3 = (( 100-54.6-$item->custo_manual*100/$item->preco_com_3)/100)*100;
+                $item->margem_manual_3 = (( 100-52.6-$item->custo_manual*100/$item->preco_com_3)/100)*100;
 
-                $item->margem_focco_3 = (( 100-54.6-$item->custo_focco*100/$item->preco_com_3)/100)*100;
+                $item->margem_focco_3 = (( 100-52.6-$item->custo_focco*100/$item->preco_com_3)/100)*100;
             }
 
         }
