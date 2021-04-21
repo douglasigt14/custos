@@ -15,7 +15,7 @@
 									<form action="" method="post">
 										@csrf
 										@method('delete')
-										<button type='submit' class="btn btn-primary btn-block">Igualar Valores</button>
+										{{-- <button type='submit' class="btn btn-primary btn-block">Igualar Valores</button> --}}
 									</form>
 								</div>
 							</div>
