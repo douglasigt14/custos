@@ -12,12 +12,16 @@
 							<table class="table table-hover table-striped menor myTable">
 								<thead>
 									<tr>
-										<th>Cod</th>
-										<th>Item</th>
-										<th>Config.</th>
-										<th>Margem de Lucro Atual</th>
-										<th>Margem de Lucro Futuro</th>
-										<th>Diferença</th>
+										<th colspan="3"></th>
+										<th colspan="3" class='center'>COMISSÃO de 5</th>
+									</tr>
+									<tr>
+										<th>COD</th>
+										<th>ITEM</th>
+										<th>CONFIG.</th>
+										<th class='center'>MARGEM ATUAL</th>
+										<th class='center'>MARGEM FUTURA</th>
+										<th class='center'>DIF.</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -29,12 +33,12 @@
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_manual}}*100/{{$item->preco_com_5}})/100)*100"
-											class='texto-azul center'>{{number_format($item->margem_manual,2,',','.')}}%</td>
+											class='texto-azul center'>{{number_format($item->margem_manual_5,2,',','.')}}%</td>
 											<td 
 											data-toggle="tooltip" data-placement="top" 
 											title="(( 100-54.6-{{$item->custo_focco}}*100/{{$item->preco_com_5}})/100)*100"
-											class='texto-verde center'>{{number_format($item->margem_focco,2,',','.')}}%</td>
-											<td class='center'>{{number_format($item->margem_focco-$item->margem_manual,2,',','.')}}%</td>
+											class='texto-verde center'>{{number_format($item->margem_focco_5,2,',','.')}}%</td>
+											<td class='center'>{{number_format($item->margem_focco_5-$item->margem_manual_5,2,',','.')}}%</td>
 										</tr>
 									@endforeach
 								</tbody>
