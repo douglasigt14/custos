@@ -10,16 +10,18 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
+							  <form action="">
 								<div class="col col-md-3">
-									<input type="date" name="dt_inicial" class="form-control">
+									<input type="date" name="dt_inicial" class="form-control" required ='true'>
 								</div>
 								<div class="col col-md-3">
-									<input type="date" name="dt_final"  class="form-control">
+									<input type="date" name="dt_final"  class="form-control" required ='true'>
 								</div>
 								<div class="col col-md-2">
-									<button type='submit' class="btn btn-primary">Buscar</button>
+									<button type='submit' class="btn btn-primary btn-block">Buscar</button>
 								</div>
 								<div class="col col-md-4"></div>
+							  </form>
 							</div>
 							<div class="row">
 								<div class="col md-12">

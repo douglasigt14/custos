@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\CustoCron::class,
         Commands\ApagarCusto::class,
+        Commands\AvaliacaoCusto::class,
     ];
 
     /**
