@@ -25,21 +25,44 @@
 								</div>
 								<div class="col col-md-4"></div>
 							  </form>
-							</div>
-							<div class="row">
-								<div class="col md-12">
-									<table class="table table-hover menor myTable">
-										<thead>
-											<tr>
-												
-											</tr>
-										</thead>
-										<tbody>
+							</div><br><br>
 
-										</tbody>
-									</table>
-								</div>
-							</div>
+							<table class="table table-hover menor myTable">
+								<thead>
+									<tr>
+										<th>COD ITEM</th>
+										<th>DESC TECNICA</th>
+										<th>DT ENT</th>
+										<th>VLR COMPRA</th>
+										<th>CUSTO COMPRA</th>
+										<th>VLR FRETE</th>
+										<th>CUSTO FRETE</th>
+										<th>CUSTO TOT NF</th>
+										<th>ICMS</th>
+										<th>DT REPOS</th>
+										<th>CUSTO GRAV</th>
+										<th>TRANS</th>
+										<th>QTDE</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
 							
                         </div>
                     </div>
