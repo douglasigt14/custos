@@ -55,7 +55,7 @@
 									@endphp
 									<tr>
 											<td>{{$item->cod_item}}</td>
-											<td>{{$item->desc_tecnica}}</td>
+											<td class='desc_tecnica'>{{$item->desc_tecnica}}</td>
 											<td>{{$item->dt_ent_data}}</td>
 
 											<td>{{number_format($item->vlr_compra,4,',','.')}}</td>
