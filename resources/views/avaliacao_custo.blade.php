@@ -27,6 +27,7 @@
 							  </form>
 							</div><br><br>
 
+							@if($dados)
 							<table class="table table-hover menor myTable">
 								<thead>
 									<tr>
@@ -47,23 +48,25 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+										@foreach ($dados as $item)
+											<td>{{$item->cod_item}}</td>
+											<td>{{$item->desc_tecnica}}</td>
+											<td>{{$item->dt_ent_data}}</td>
+											<td>{{$item->vlr_compra}}</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										@endforeach
 									</tr>
 								</tbody>
 							</table>
-							
+							@endif				
                         </div>
                     </div>
 @endsection	
