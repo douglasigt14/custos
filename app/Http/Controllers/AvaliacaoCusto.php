@@ -23,7 +23,7 @@ class AvaliacaoCusto extends Controller
         WHERE 
             DT_ENT_DATA BETWEEN TO_DATE ('$dt_inicial_br','DD/MM/RRRR') 
         AND TO_DATE ('$dt_final_br','DD/MM/RRRR')
-        AND COD_ITEM = 328";
+       -- AND COD_ITEM = 328";
             
         $dados = DB::connection('oracle')->select($sql);
     }

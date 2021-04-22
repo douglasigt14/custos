@@ -47,23 +47,30 @@
 									</tr>
 								</thead>
 								<tbody>
+									@foreach ($dados as $item)
 									<tr>
-										@foreach ($dados as $item)
 											<td>{{$item->cod_item}}</td>
 											<td>{{$item->desc_tecnica}}</td>
 											<td>{{$item->dt_ent_data}}</td>
-											<td>{{$item->vlr_compra}}</td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-										@endforeach
+
+											<td>{{number_format($item->vlr_compra,4,',','.')}}</td>
+
+											<td>{{number_format($item->custo_compra,4,',','.')}}</td>
+											
+											<td>{{number_format($item->vlr_frete,4,',','.')}}</td>
+											
+											<td>{{number_format($item->custo_frete,4,',','.')}}</td>
+
+											<td>{{number_format($item->custo_tot_nf,4,',','.')}}</td>
+
+											<td>{{$item->icms}}</td>
+											<td>{{$item->dt_repos}}</td>
+											<td>{{$item->custo_grav}}</td>
+											<td>{{$item->trans}}</td>
+											<td>{{$item->qtde}}</td>
+										
 									</tr>
+									@endforeach
 								</tbody>
 							</table>
 							@endif				
