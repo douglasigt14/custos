@@ -16,15 +16,18 @@ class AvaliacaoCusto extends Controller
         $dt_inicial = implode("/",array_reverse(explode("-",$dt_inicial)));
         $dt_final = implode("/",array_reverse(explode("-",$dt_final)));
 
-        // $sql = "SELECT 
-        //     * 
-        // FROM 
-        //     FOCCO3I.AVALIACAO_CUSTO_SISTEMA 
-        // WHERE 
-        //     DT_ENT_DATA BETWEEN TO_DATE ('$dt_inicial','DD/MM/RRRR') 
-        // AND TO_DATE ('$dt_final','DD/MM/RRRR')";
+        $sql = "SELECT 
+            * 
+        FROM 
+            FOCCO3I.AVALIACAO_CUSTO_SISTEMA 
+        WHERE 
+            DT_ENT_DATA BETWEEN TO_DATE ('$dt_inicial','DD/MM/RRRR') 
+        AND TO_DATE ('$dt_final','DD/MM/RRRR')
+        AND cod_item = 337";
             
-        // $dados = DB::connection('oracle')->select($sql);
+        $dados = DB::connection('oracle')->select($sql);
+
+        dd($dados);
     }
 
         return view('avaliacao_custo', compact(["dados","dt_inicial","dt_final"]));
