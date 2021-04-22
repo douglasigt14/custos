@@ -63,11 +63,14 @@
 
 											<td>{{number_format($item->custo_tot_nf,4,',','.')}}</td>
 
-											<td>{{$item->icms}}</td>
+											<td>{{$item->icms}}%</td>
 											<td>{{$item->dt_repos}}</td>
-											<td>{{$item->custo_grav}}</td>
-											<td>{{$item->trans}}</td>
-											<td>{{$item->qtde}}</td>
+
+											<td>{{number_format($item->custo_grav,4,',','.')}}</td>
+
+											<td>{{is_numeric($item->trans) ? number_format($item->trans,4,',','.'): $item->trans}}</td>
+
+											<td>{{number_format($item->qtde,2,',','.')}}</td>
 										
 									</tr>
 									@endforeach
