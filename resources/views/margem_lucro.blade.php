@@ -105,6 +105,7 @@
 						,"order": [[ 1, "asc" ]]
 						,"searching": false
 						,"paging": false
+						,"info":  false
 					});
                 } );
 
