@@ -10,7 +10,11 @@
 						</div>
 						<div class="panel-body">
 							<table class="table table-hover menor myTable">
+								@foreach ($categorias as $categoria)
 								<thead>
+										<tr>
+											<td class='center cinza categoria' colspan="12"><b>{{$categoria}}</b></td>
+										</tr>
 									<tr>
 										<th colspan="3"></th>
 										<th colspan="3" class='center'>COMISSÃO DE 5%</th>
@@ -34,10 +38,7 @@
 								</thead>
 								
 								<tbody>
-									@foreach ($categorias as $categoria)
-										<tr>
-											<td class='center cinza categoria' colspan="100%"><b>{{$categoria}}</b></td>
-										</tr>
+									
 									@foreach ($itens as $item)
 										@php if($item->categoria != $categoria) continue; @endphp
 										<tr>
@@ -102,6 +103,8 @@
                     $('.myTable').DataTable({
 						"pageLength": 1000
 						,"order": [[ 1, "asc" ]]
+						,"searching": false
+						,"paging": false
 					});
                 } );
 

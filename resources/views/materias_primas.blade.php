@@ -65,6 +65,7 @@
                     $('.myTable').DataTable({
 						"pageLength": 1000
 						,"order": [[ 1, "asc" ]]
+						,"paging": false
 					});
                 } );
 
