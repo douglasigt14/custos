@@ -13,27 +13,33 @@
 								<thead>
 									<tr>
 										<th colspan="3"></th>
-										<th colspan="3" class='center cinza'>COMISSÃO DE 5%</th>
+										<th colspan="3" class='center'>COMISSÃO DE 5%</th>
 										<th colspan="3" class='center'>COMISSÃO DE 4%</th>
-										<th colspan="3" class='center cinza'>COMISSÃO DE 3%</th>
+										<th colspan="3" class='center'>COMISSÃO DE 3%</th>
 									</tr>
 									<tr>
 										<th>COD</th>
 										<th>ITEM</th>
 										<th>CONFIG.</th>
-										<th class='center cinza'>M. ATUAL</th>
-										<th class='center cinza'>M. FUTURA</th>
-										<th class='center cinza'>DIF.</th>
 										<th class='center'>M. ATUAL</th>
 										<th class='center'>M. FUTURA</th>
 										<th class='center'>DIF.</th>
-										<th class='center cinza'>M. ATUAL</th>
-										<th class='center cinza'>M. FUTURA</th>
-										<th class='center cinza'>DIF.</th>
+										<th class='center'>M. ATUAL</th>
+										<th class='center'>M. FUTURA</th>
+										<th class='center'>DIF.</th>
+										<th class='center'>M. ATUAL</th>
+										<th class='center'>M. FUTURA</th>
+										<th class='center'>DIF.</th>
 									</tr>
 								</thead>
+								
 								<tbody>
+									@foreach ($categorias as $categoria)
+										<tr>
+											<td class='center cinza categoria' colspan="100%"><b>{{$categoria}}</b></td>
+										</tr>
 									@foreach ($itens as $item)
+										@php if($item->categoria != $categoria) continue; @endphp
 										<tr>
 											<td>{{$item->cod_item}}</td>
 											<td><a class='preto-link' href="/custo_item_comercial?cod_item={{$item->cod_item}}&id_masc={{$item->id_masc}}">{{$item->descricao}}</a></td>
@@ -83,6 +89,7 @@
 										</tr>
 									@endforeach
 								</tbody>
+								@endforeach
 							</table>
                         </div>
                     </div>

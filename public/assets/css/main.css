@@ -1910,4 +1910,7 @@ ul.activity-timeline > li {
   .desc_tecnica{
     width: 20% !important;
   }
+  .categoria{
+    font-size: 20px !important;
+  }  
 /*# sourceMappingURL=main.css.map */

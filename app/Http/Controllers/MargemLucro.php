@@ -13,7 +13,7 @@ class MargemLucro extends Controller
 
             $itens  = DB::connection('mysql')->select($sql);
 
-        $itens_sem_valor = [];
+        $categorias = array();
         foreach ($itens as $key => $item) {
             $sql_preco = "SELECT TITENS.COD_ITEM
                                 ,TITENS.DESC_TECNICA
@@ -68,6 +68,7 @@ class MargemLucro extends Controller
             $item->margem_focco_3 = NULL;
 
             $item->fator = 54.6;
+            array_push($categorias,$item->categoria);
 
             if($item->categoria  == 'ROUPEIROS'){
                 $item->fator = $item->fator-4;
@@ -94,9 +95,10 @@ class MargemLucro extends Controller
             if(!$item->preco_com_3 and !$item->preco_com_4 and !$item->preco_com_3){
                 unset($itens[$key]);
             }
-
+            
         }
+        $categorias = array_unique($categorias);
 
-        return view('margem_lucro', compact(["itens"]));
+        return view('margem_lucro', compact(["itens","categorias"]));
     }
 }
