@@ -12,12 +12,15 @@
 							<div class="row">
 							  <form action="">
 								<div class="col col-md-3">
+									<label>Data de Entrada - Inicial</label>
 									<input type="date" name="dt_inicial" class="form-control" required ='true'>
 								</div>
 								<div class="col col-md-3">
+									<label>Data de Entrada - Final</label>
 									<input type="date" name="dt_final"  class="form-control" required ='true'>
 								</div>
 								<div class="col col-md-2">
+									<label>&nbsp;</label>
 									<button type='submit' class="btn btn-primary btn-block">Buscar</button>
 								</div>
 								<div class="col col-md-4"></div>
