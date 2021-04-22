@@ -27,7 +27,9 @@
 							  </form>
 							</div><br><br>
 
-							@if($dados)
+							@if($dados and $fornecedores)
+							@foreach ($fornecedores as $desc_for)
+							<h5>{{$desc_for}}</h5>
 							<table class="table table-hover menor myTable">
 								<thead>
 									<tr>
@@ -48,6 +50,9 @@
 								</thead>
 								<tbody>
 									@foreach ($dados as $item)
+									@php if($desc_for != $item->fornecedor) 
+										continue;	
+									@endphp
 									<tr>
 											<td>{{$item->cod_item}}</td>
 											<td>{{$item->desc_tecnica}}</td>
@@ -76,6 +81,8 @@
 									@endforeach
 								</tbody>
 							</table>
+
+							@endforeach
 							@endif				
                         </div>
                     </div>
