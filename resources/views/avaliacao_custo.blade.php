@@ -42,8 +42,8 @@
 										<th>ICMS</th>
 										<th>DT REPOS</th>
 										<th>CUSTO GRAV</th>
-										<th>TRANS</th>
-										<th>QTDE</th>
+										<th class='center'>TRANS</th>
+										<th class='center'>QTDE</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -68,9 +68,9 @@
 
 											<td>{{number_format($item->custo_grav,4,',','.')}}</td>
 
-											<td>{{is_numeric($item->trans) ? number_format($item->trans,4,',','.'): $item->trans}}</td>
+											<td class='center'>{{is_numeric($item->trans) ? number_format($item->trans,2,',','.'): $item->trans}}</td>
 
-											<td>{{number_format($item->qtde,2,',','.')}}</td>
+											<td class='center'>{{number_format($item->qtde,2,',','.')}}</td>
 										
 									</tr>
 									@endforeach
