@@ -88,9 +88,7 @@
 
 						<li><a href="custo_item_comercial" @if(Route::current()->uri() == 'custo_item_comercial') class="active" @endif><i class="fa fa-money"></i> <span>Custo Item Comercial</span></a></li>
 						<li><a href="margem_lucro" @if(Route::current()->uri() == 'margem_lucro') class="active" @endif><i class="fa fa-bar-chart"></i> <span>Margens de Lucro</span></a></li>
-						@if($_SESSION['is_admin_custos'])
 						<li><a href="avaliacao_custo" @if(Route::current()->uri() == 'avaliacao_custo') class="active" @endif><i class="fa fa-line-chart"></i> <span>Avaliação Vlr de Compra</span></a></li>
-						@endif
 						
 					</ul>
 				</nav>

@@ -40,7 +40,6 @@
 										</p>
 									</div>
 								</a>
-								@if($_SESSION['is_admin_custos'])
 								<a href='/avaliacao_custo' class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-line-chart"></i></span>
@@ -50,7 +49,6 @@
 										</p>
 									</div>
 								</a>
-								@endif
 							</div>
 							
                         </div>
