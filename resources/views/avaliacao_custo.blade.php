@@ -73,7 +73,7 @@
 
 											<td>{{number_format($item->custo_grav,4,',','.')}}</td>
 
-											<td class='center'>{{is_numeric($item->trans) ? number_format($item->trans,2,',','.'): $item->trans}}</td>
+											<td class='center'>{{$item->trans}}</td>
 
 											<td class='center'>{{number_format($item->qtde,2,',','.')}}</td>
 										
