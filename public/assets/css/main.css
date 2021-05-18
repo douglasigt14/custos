@@ -1931,4 +1931,7 @@ ul.activity-timeline > li {
     color: black !important;
     opacity: 1 !important;
   }
+  .titulo-relatorio{
+    font-size: 23px;font-weight: bold;
+  }
 /*# sourceMappingURL=main.css.map */

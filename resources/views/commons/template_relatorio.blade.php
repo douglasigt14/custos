@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Relatorio</title>
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}?{{date("YmdHis")}}">
+    <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}">
     <script type="text/javascript">
         function printpage()
           {
           window.print()
           }
-        </script>
+    </script>
     
     @stack('styles')
 </head>
@@ -22,9 +23,9 @@
         <p class='titulo-cabecario'>TUBOARTE INDÚSTRIA E COMERCIO EIRELI</p>
         <p class='subtitulo-cabecario'>RUA 12 DE AGOSTO, S/Nº - BAIRRO NOVA BRASÍLIA</p>
         <p class='subtitulo-cabecario'>FONE: (88) 3522-8300 FAX: (88) 3522-8304</p>
-        <p class='subtitulo-cabecario'>SITE: www.tuboarte.com.br</p></div><br>
+        <p class='subtitulo-cabecario'>SITE: www.tuboarte.com.br</p></div><br><br>
 
-        <center><h2>@yield('titulo')</h2></center>
+        <center><p class='titulo-relatorio'>@yield('titulo')</p></center><br><br>
 
         @yield('conteudo')
     </div>
