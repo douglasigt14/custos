@@ -10,13 +10,16 @@
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col col-md-10"></div>
+								<div class="col col-md-8"></div>
 								<div class="col col-md-2">
 									<form action="" method="post">
 										@csrf
 										@method('delete')
 										{{-- <button type='submit' class="btn btn-primary btn-block">Igualar Valores</button> --}}
 									</form>
+								</div>
+								<div class="col col-md-2">
+									<a target='_blank' href='relatorios/rel_itens_reajustados' class="btn btn-primary btn-block">Itens Reajustados</a>
 								</div>
 							</div>
 							<br>

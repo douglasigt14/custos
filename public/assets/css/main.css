@@ -1934,4 +1934,7 @@ ul.activity-timeline > li {
   .titulo-relatorio{
     font-size: 23px;font-weight: bold;
   }
+  .tabela-relatorio{
+    font-size: 10px !important;
+  }
 /*# sourceMappingURL=main.css.map */
