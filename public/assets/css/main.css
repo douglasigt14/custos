@@ -1913,4 +1913,14 @@ ul.activity-timeline > li {
   .categoria{
     font-size: 20px !important;
   }  
+  .img-logo-cabecario{
+    display: inline;
+  }
+  .div-container-cabecario{
+    text-align: left;
+  }  
+  .titulo-cabecario{
+    margin: -95px 0 0 230px; 
+    font-size: 19px;font-weight: bold;
+  }
 /*# sourceMappingURL=main.css.map */
