@@ -19,7 +19,7 @@
 									</form>
 								</div>
 								<div class="col col-md-2">
-									<a target='_blank' href='relatorios/rel_itens_reajustados' class="btn btn-primary btn-block">Itens Reajustados</a>
+									<a target='_blank' href='relatorios/rel_itens_reajustados' class="btn btn-primary">Itens Reajustados</a>
 								</div>
 							</div>
 							<br>
