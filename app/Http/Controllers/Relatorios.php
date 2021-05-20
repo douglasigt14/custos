@@ -38,7 +38,7 @@ class Relatorios extends Controller
     AND TITENS.DESC_TECNICA NOT LIKE '--%'
     AND TITENS.DESC_TECNICA NOT LIKE '(P)%'
     AND TITENS_CUSTOS.OBSER =  1
-    ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
+    ORDER BY TITENS.DESC_TECNICA";
         $itens = DB::connection('oracle')->select($sqlItens);
     
     $lista_class_desc = array();
