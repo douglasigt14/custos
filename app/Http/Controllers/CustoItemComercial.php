@@ -59,6 +59,7 @@ class CustoItemComercial extends Controller
             $custo_item_focco += $volume->custo_focco_soma;
             $custo_item_futuro += $volume->custo_futuro_soma;          
         }
+       // dd($itens[0]->filhos);
         
         return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro","cod_item","id_masc","lista_itens","lista_cores"]));
     }
@@ -67,24 +68,25 @@ class CustoItemComercial extends Controller
         foreach ($itens as $key => $pai) {
             $pai->custo_futuro = null;
             $pai->custo_futuro_soma = null;
-            $pai->filhos = $this->busca_filhos($pai->codproduto, $pai->idcorfilho,$pai->idcorpai);
+            $pai->filhos = $this->busca_filhos($pai->codproduto, $pai->idcorfilho,$pai->idcorpai,$pai->tp);
             
 
             if($pai->filhos){
                 foreach ($pai->filhos as $key => $filho) {
-                    $filho->filhos = $this->busca_filhos($filho->codproduto, $filho->idcorfilho,$filho->idcorpai);
+                    $filho->filhos = $this->busca_filhos($filho->codproduto, $filho->idcorfilho,$filho->idcorpai,$filho->tp);
 
                     if($filho->filhos){
                         foreach ($filho->filhos as $key => $neto) {
-                            $neto->filhos = $this->busca_filhos($neto->codproduto, $neto->idcorfilho,$neto->idcorpai);
+                            $neto->filhos = $this->busca_filhos($neto->codproduto, $neto->idcorfilho,$neto->idcorpai,$neto->tp);
                         
                             if($neto->filhos){
                                 foreach ($neto->filhos as $key => $bisneto) {
-                                    $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho,$bisneto->idcorpai); 
+                                    $bisneto->filhos = $this->busca_filhos($bisneto->codproduto, $bisneto->idcorfilho,$bisneto->idcorpai,$bisneto->tp); 
                                     
                                     if($bisneto->filhos){
                                         foreach ($bisneto->filhos as $key => $tataraneto) {
-                                            $tataraneto->filhos = $this->busca_filhos($tataraneto->codproduto, $tataraneto->idcorfilho,$tataraneto->idcorpai); 
+                                            $tataraneto->filhos = $this->busca_filhos($tataraneto->codproduto, $tataraneto->idcorfilho,$tataraneto->idcorpai,
+                                            $tataraneto->tp); 
                                         }
                                     }
                                 }
@@ -100,7 +102,7 @@ class CustoItemComercial extends Controller
         return $itens;
     }
 
-    public  function busca_filhos($codproduto,$idcorfilho,$idcorpai){
+    public  function busca_filhos($codproduto,$idcorfilho,$idcorpai,$tp){
             $sql_f = "SELECT 
                     * 
                 FROM 
