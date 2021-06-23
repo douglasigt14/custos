@@ -10,10 +10,9 @@
 						</div>
 						<div class="panel-body">
 							<table class="table table-hover menor myTable">
-								@foreach ($categorias as $categoria)
 								<thead>
 										<tr>
-											<td class='center cinza categoria' colspan="12"><b>{{$categoria}}</b></td>
+											{{-- <td class='center cinza categoria' colspan="12"><b>{{$categoria}}</b></td> --}}
 										</tr>
 									<tr>
 										<th colspan="3"></th>
@@ -25,6 +24,7 @@
 										<th>COD</th>
 										<th>ITEM</th>
 										<th>CONFIG.</th>
+										<th>CATEGORIA</th>
 										<th class='center'>M. ATUAL</th>
 										<th class='center'>M. FUTURA</th>
 										<th class='center'>DIF.</th>
@@ -40,12 +40,12 @@
 								<tbody>
 									
 									@foreach ($itens as $item)
-										@php if($item->categoria != $categoria) continue; @endphp
+										{{-- @php if($item->categoria != $categoria) continue; @endphp --}}
 										<tr>
 											<td>{{$item->cod_item}}</td>
 											<td><a class='preto-link' href="/custo_item_comercial?cod_item={{$item->cod_item}}&id_masc={{$item->id_masc}}">{{$item->descricao}}</a></td>
 											<td>{{$item->cor}}</td>
-
+											<td>{{$item->categoria}}</td>
 											{{-- COMISSÃO DE 5 --}}
 
 											<td 
@@ -90,7 +90,6 @@
 										</tr>
 									@endforeach
 								</tbody>
-								@endforeach
 							</table>
                         </div>
                     </div>
