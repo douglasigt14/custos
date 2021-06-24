@@ -33,7 +33,7 @@ class AvaliacaoCusto extends Controller
                 $data = explode(" ",$item->dt_ent_data);
                 $item->dt_ent_data = implode("/",array_reverse(explode("-",$data[0])));
 
-                $data = explode(" ",$item->dt_repos);
+                $data = explode(" ",$item->dt_repos);//Teste
                 $item->dt_repos = implode("/",array_reverse(explode("-",$data[0])));
 
                 array_push($fornecedores,$item->fornecedor);
