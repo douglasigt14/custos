@@ -24,8 +24,7 @@ class AvaliacaoCusto extends Controller
                 FOCCO3I.AVALIACAO_CUSTO_SISTEMA 
             WHERE 
                 DT_ENT_DATA BETWEEN TO_DATE ('$dt_inicial_br','DD/MM/RRRR') 
-            AND TO_DATE ('$dt_final_br','DD/MM/RRRR')
-            -- AND COD_ITEM = 328";
+            AND TO_DATE ('$dt_final_br','DD/MM/RRRR')";
                 
             $dados = DB::connection('oracle')->select($sql);
 
