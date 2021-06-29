@@ -59,7 +59,7 @@ class CustoItemComercial extends Controller
             $custo_item_focco += $volume->custo_focco_soma;
             $custo_item_futuro += $volume->custo_futuro_soma;          
         }
-       // dd($itens[0]->filhos);
+        //dd($itens[0]->filhos);
         
         return view('custo_item_comercial', compact(["itens","custo_item_focco","custo_item_futuro","cod_item","id_masc","lista_itens","lista_cores"]));
     }
@@ -103,6 +103,9 @@ class CustoItemComercial extends Controller
     }
 
     public  function busca_filhos($codproduto,$idcorfilho,$idcorpai,$tp){
+        
+        $sql_f = NULL;
+        if($tp == 'N'){
             $sql_f = "SELECT 
                     * 
                 FROM 
@@ -116,6 +119,40 @@ class CustoItemComercial extends Controller
                 else{
                     $sql_f = $sql_f." AND idcorpai = '$idcorpai'";
                 }
+        }
+        else if ($tp == 'F') {
+            if($idcorfilho){
+                $sql_f = "SELECT 
+                        * 
+                    FROM 
+                        FOCCO3i.LJ_EST_SISTEMA_CUSTO_02 
+                    WHERE  
+                        codprodutopai = '$codproduto'";
+                    
+                    if($idcorfilho){
+                        $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+                    }
+                    else{
+                        $sql_f = $sql_f." AND idcorpai = 'NULL'";
+                    }
+            }
+            else{
+                $sql_f = "SELECT 
+                * 
+                    FROM 
+                        FOCCO3i.LJ_EST_SISTEMA_CUSTO 
+                    WHERE  
+                        codprodutopai = '$codproduto'";
+                    
+                    if($idcorfilho){
+                        $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+                    }
+                    else{
+                        $sql_f = $sql_f." AND idcorpai = '$idcorpai'";
+                    }
+            }
+            
+        }
         
             $filhos = DB::connection('oracle')->select($sql_f);
         
