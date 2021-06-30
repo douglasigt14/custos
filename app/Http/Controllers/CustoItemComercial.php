@@ -119,7 +119,6 @@ class CustoItemComercial extends Controller
         //     else{
         //         $sql_f = $sql_f." AND NVL(idcorpai,0) = 0";
         //     }
-            //Douglas
             if($tp == 'N'){
             $sql_f = "SELECT 
                     * 
