@@ -116,9 +116,6 @@ class CustoItemComercial extends Controller
             if($idcorfilho){
                 $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
             }
-            else{
-                $sql_f = $sql_f." AND NVL(idcorpai,0) = 0";
-            }
         //     if($tp == 'N'){
         //     $sql_f = "SELECT 
         //             * 
