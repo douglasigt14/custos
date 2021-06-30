@@ -106,19 +106,68 @@ class CustoItemComercial extends Controller
         
         $sql_f = NULL;
 
-        $sql_f = "SELECT 
-                * 
-            FROM 
-                FOCCO3i.LJ_EST_SISTEMA_CUSTO_03 
-            WHERE  
-                codprodutopai = '$codproduto'";
+        // $sql_f = "SELECT 
+        //         * 
+        //     FROM 
+        //         FOCCO3i.LJ_EST_SISTEMA_CUSTO_03 
+        //     WHERE  
+        //         codprodutopai = '$codproduto'";
             
+        //     if($idcorfilho){
+        //         $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+        //     }
+        //     else{
+        //         $sql_f = $sql_f." AND NVL(idcorpai,0) = 0";
+        //     }
+
+            if($tp == 'N'){
+            $sql_f = "SELECT 
+                    * 
+                FROM 
+                    FOCCO3i.LJ_EST_SISTEMA_CUSTO 
+                WHERE  
+                    codprodutopai = '$codproduto'";
+
+                if($idcorfilho){
+                    $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+                }
+                else{
+                    $sql_f = $sql_f." AND idcorpai = '$idcorpai'";
+                }
+        }
+        else if ($tp == 'F') {
             if($idcorfilho){
-                $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+                $sql_f = "SELECT 
+                        * 
+                    FROM 
+                        FOCCO3i.LJ_EST_SISTEMA_CUSTO_02 
+                    WHERE  
+                        codprodutopai = '$codproduto'";
+
+                    if($idcorfilho){
+                        $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+                    }
+                    else{
+                        $sql_f = $sql_f." AND idcorpai = 'NULL'";
+                    }
             }
             else{
-                $sql_f = $sql_f." AND NVL(idcorpai,0) = 0";
+                $sql_f = "SELECT 
+                * 
+                    FROM 
+                        FOCCO3i.LJ_EST_SISTEMA_CUSTO 
+                    WHERE  
+                        codprodutopai = '$codproduto'";
+
+                    if($idcorfilho){
+                        $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+                    }
+                    else{
+                        $sql_f = $sql_f." AND idcorpai = '$idcorpai'";
+                    }
             }
+
+        }
         
             $filhos = DB::connection('oracle')->select($sql_f);
         
