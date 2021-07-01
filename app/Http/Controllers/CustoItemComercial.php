@@ -107,18 +107,18 @@ class CustoItemComercial extends Controller
         $sql_f = NULL;
 
         $sql_f = "SELECT 
-                * 
-            FROM 
-                FOCCO3i.LJ_EST_SISTEMA_CUSTO_03 
-            WHERE  
-                codprodutopai = '$codproduto'";
-            
-            if($idcorfilho){
-                $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
-            }
-            else{
-                $sql_f = $sql_f." AND idcorpai IS NULL";
-            }
+                        * 
+                    FROM 
+                        FOCCO3i.LJ_EST_SISTEMA_CUSTO_03
+                    WHERE  
+                        codprodutopai = '$codproduto'";
+                    
+                    if($idcorfilho){
+                        $sql_f = $sql_f." AND idcorpai = '$idcorfilho'";
+                    }
+                    else{
+                        $sql_f = $sql_f." AND idcorpai IS NULL";
+                    }
         //     if($tp == 'N'){
         //     $sql_f = "SELECT 
         //             * 
