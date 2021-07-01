@@ -103,8 +103,6 @@ class CustoCron extends Command
                 'custo_focco' => number_format($custo_item_focco,4,'.',''),
                 'custo_manual' => number_format($custo_item_futuro,4,'.','')
             ]);
-
-            break;
         }
         $this->info('Finalizado: Logs de Custos Criados');
 
