@@ -19,6 +19,7 @@
 										<th colspan="3" class='center'>COMISSÃO DE 5%</th>
 										<th colspan="3" class='center'>COMISSÃO DE 4%</th>
 										<th colspan="3" class='center'>COMISSÃO DE 3%</th>
+										<th></th>
 									</tr>
 									<tr>
 										<th>COD</th>
