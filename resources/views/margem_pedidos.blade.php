@@ -6,7 +6,7 @@
                     <!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">Margem Pedidos</h3>
+							<h3 class="panel-title">Margens Pedidos</h3>
 						</div>
 						<div class="panel-body">
 							

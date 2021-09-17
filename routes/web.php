@@ -31,7 +31,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/margem_lucro', [MargemLucro::class, 'index']);
     Route::get('/avaliacao_custo', [AvaliacaoCusto::class, 'index']);
     Route::get('/relatorios/rel_itens_reajustados', [Relatorios::class, 'rel_itens_reajustados']);
-    Route::get('/margens_pedidos', [MargemPedidos::class, 'index']);
+    Route::get('/margem_pedidos', [MargemPedidos::class, 'index']);
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');
