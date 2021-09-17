@@ -49,6 +49,18 @@
 										</p>
 									</div>
 								</a>
+								
+							</div>
+							<div class="row">
+								<a href='/margens_pedidos' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-line-chart"></i></span>
+										<p>
+											<span class="number">&nbsp;</span>
+											<span class="title">Margens sobre Pedidos</span>
+										</p>
+									</div>
+								</a>
 							</div>
 							
                         </div>
