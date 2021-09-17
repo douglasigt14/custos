@@ -80,20 +80,24 @@
 		  </button>
 		</div>
 		<div class="modal-body">
+			<form action='/margem_pedidos' method="GET">
 		   <div class="row">
 			   <div class="col col-md-1"></div>
 			   <div class="col col-md-5">
+				    <label>Data Inicial</label>
 					<input type="date" name='dt_inicial' class="form-control">
 			   </div>
 			   <div class="col col-md-5">
+				   <label>Data Final</label>
 					<input type="date" name='dt_final' class="form-control">
 			   </div>
 			   <div class="col col-md-1"></div>
 		   </div>
 		</div>
 		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary">Selecionar</button>
+		  <button type="submit" class="btn btn-secondary">Selecionar</button>
 		</div>
+	</form>
 	  </div>
 	</div>
 </div>

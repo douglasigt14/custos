@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class MargemPedidos extends Controller
 {
     public function index(){
-        return view('margem_pedidos', compact([]));;
+        $filtros = $_GET;
+        return view('margem_pedidos', compact(['filtros']));;
     }
 }
