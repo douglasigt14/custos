@@ -9,6 +9,7 @@ use App\Http\Controllers\CustoItemComercial;
 use App\Http\Controllers\MargemLucro;
 use App\Http\Controllers\AvaliacaoCusto;
 use App\Http\Controllers\Relatorios;
+use App\Http\Controllers\MargemPedidos;
 
 
 /*
@@ -29,8 +30,8 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/custo_item_comercial', [CustoItemComercial::class, 'index']);
     Route::get('/margem_lucro', [MargemLucro::class, 'index']);
     Route::get('/avaliacao_custo', [AvaliacaoCusto::class, 'index']);
-
     Route::get('/relatorios/rel_itens_reajustados', [Relatorios::class, 'rel_itens_reajustados']);
+    Route::get('/margens_pedidos', [MargemPedidos::class, 'index']);
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');
