@@ -52,7 +52,7 @@
 								
 							</div>
 							<div class="row">
-								<a href='/margem_pedidos' class="col-md-3 cinzinha">
+								<div data-toggle="modal" data-target="#modalPedidos" class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-line-chart"></i></span>
 										<p>
@@ -60,7 +60,7 @@
 											<span class="title">Margens Pedidos</span>
 										</p>
 									</div>
-								</a>
+								</div>
 							</div>
 							
                         </div>
@@ -69,7 +69,34 @@
                             </div>
 					<!-- END OVERVIEW -->
 	
-
+<!-- Modal -->
+<div class="modal fade" id="modalPedidos" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title">Margens Pedidos</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		   <div class="row">
+			   <div class="col col-md-1"></div>
+			   <div class="col col-md-5">
+					<input type="date" name='dt_inicial' class="form-control">
+			   </div>
+			   <div class="col col-md-5">
+					<input type="date" name='dt_final' class="form-control">
+			   </div>
+			   <div class="col col-md-1"></div>
+		   </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary">Selecionar</button>
+		</div>
+	  </div>
+	</div>
+</div>
        
             
 @endsection	
