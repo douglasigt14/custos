@@ -9,8 +9,10 @@ class MargemPedidos extends Controller
 {
     public function index(){
         $filtros = $_GET;
-        $dt_inicial =   $filtros['dt_inicial'];
-        $dt_final =   $filtros['dt_final'];
+
+        $dt_inicial_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
+
+        $dt_final_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
 
         $sql = "SELECT SUM((titens_pdv.qtde * titens_pdv.vlr_liq) - (titens_pdv.qtde * titens_pdv.vlr_desc_zf) - (titens_pdv.qtde  *titens_pdv.vlr_pis_zf) - (titens_pdv.qtde * titens_pdv.vlr_cofins_zf)
                 - round(tpedidos_venda.vlr_desc_pdv - (select sum((titens_pdv.qtde * titens_pdv.vlr_pis_zf) + (titens_pdv.qtde * titens_pdv.vlr_desc_zf) + (titens_pdv.qtde * titens_pdv.vlr_cofins_zf))
@@ -66,7 +68,7 @@ class MargemPedidos extends Controller
             and    titens_pdv.tmasc_item_id     =   tmasc_item.id
             AND TPEDIDOS_VENDA.ID          =  TPLC_PDV.PDV_ID(+)
             AND TCARGAS.ID(+)              =  TPLC_PDV.PLC_ID 
-            AND    TPEDIDOS_VENDA.DT_EMIS BETWEEN TO_DATE('$dt_inicial','DD/MM/RRRR') AND TO_DATE('$dt_final','DD/MM/RRRR')
+            AND    TPEDIDOS_VENDA.DT_EMIS BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')
             and    (temp_rep.ativo = 1)
             and    tdivisoes_vendas.cod_divd = 1
             and    testabelecimentos.cod_est = 1
@@ -79,9 +81,21 @@ class MargemPedidos extends Controller
                 ,TPEDIDOS_VENDA.DT_EMIS
             ORDER BY 2";
 
-       // $pedidos_itens = DB::connection('oracle')->select($sql);
-       // dd( $pedidos_itens);
+       $pedidos_itens = DB::connection('oracle')->select($sql);
+       $pedidos = [];
+       $pedidos_validations = [];
+       foreach ($pedidos_itens as $key => $ped_itens) {
+        if (in_array($ped_itens->num_pedido, $pedidos_validations)) { 
+            $key = array_search($ped_itens->num_pedido, $pedidos_validations);
+           array_push($pedidos[$key]['itens'], $ped_itens);
+        }
+        else{
+            array_push($pedidos,['num_pedido' =>$ped_itens->num_pedido, 'itens' => [$ped_itens] ]);
+            array_push($pedidos_validations, $ped_itens->num_pedido);
+        }
 
-        return view('margem_pedidos', compact(['filtros']));;
+       }   
+
+        return view('margem_pedidos', compact(['filtros','pedidos']));;
     }
 }
