@@ -34,7 +34,24 @@
 									<button type='submit' class="btn btn-primary btn-block">Filtrar</button>
 								</div>
 							</div>
-						</form>
+							</form>
+							<br><br>
+							<div class="row">
+								<div class="col col-md-12" >
+									@foreach ($pedidos as $pedido)
+										<div style='border:solid 1px;border-color: #d3d3d3'>
+											<a style='color:black' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="card-header" id="headingOne">
+												<h3>{{$pedido['num_pedido']}}</h3>
+											</a>
+										
+										<div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+											
+										</div>
+
+									</div>
+									@endforeach
+								</div>
+							</div>
                         </div>
                     </div>
 @endsection	
