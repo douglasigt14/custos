@@ -40,11 +40,11 @@
 								<div class="col col-md-12" >
 									@foreach ($pedidos as $pedido)
 										<div style='border:solid 1px;border-color: #d3d3d3'>
-											<a style='color:black' data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="card-header" id="headingOne">
+											<a style='color:black' data-toggle="collapse" data-target="#collapse{{$pedido['num_pedido']}}" aria-expanded="true"  class="card-header">
 												<h3>{{$pedido['num_pedido']}}</h3>
 											</a>
 										
-										<div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+										<div id="collapse{{$pedido['num_pedido']}}" class="collapse" >
 											
 										</div>
 
