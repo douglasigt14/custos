@@ -39,13 +39,35 @@
 							<div class="row">
 								<div class="col col-md-12" >
 									@foreach ($pedidos as $pedido)
-										<div style='border:solid 1px;border-color: #d3d3d3'>
+										<div style='border:solid 1px;border-color: #d3d3d3;padding: 7px;'>
 											<a style='color:black' data-toggle="collapse" data-target="#collapse{{$pedido['num_pedido']}}" aria-expanded="true"  class="card-header">
 												<h3>{{$pedido['num_pedido']}}</h3>
 											</a>
 										
 										<div id="collapse{{$pedido['num_pedido']}}" class="collapse" >
-											
+											<table class="table table-hover table-striped menor myTable">
+												<thead>
+													<tr>
+														<th>Item</th>
+														<th class='center'>Valor</th>
+														<th class='center'>Custo Atual</th>
+														<th class='center'>Custo Futuro</th>
+													</tr>
+												</thead>
+												<tbody>
+													@foreach ($pedido['itens'] as $item)
+														
+													
+													<tr>
+														<td>{{$item->item}}</td>
+														<td class='center'>{{number_format($item->valor,2,',','.')}}</td>
+														<td class='center'></td>
+														<td class='center'></td>
+													</tr>
+
+													@endforeach
+												</tbody>
+											</table>
 										</div>
 
 									</div>
