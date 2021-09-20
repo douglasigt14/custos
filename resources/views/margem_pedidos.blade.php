@@ -11,11 +11,14 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col col-md-3">							<label>Data Inicial</label>
-									<input type="date" name='dt_inicial' class="form-control">
+									<input type="date" name='dt_inicial'
+									value="{{$filtros['dt_inicial'] ?? NULL}}"
+									class="form-control">
 								</div>
 								<div class="col col-md-3">
 									 <label>Data Final</label>
-									 <input type="date" name='dt_final' class="form-control">
+									 <input type="date" name='dt_final'
+									 value="{{$filtros['dt_final'] ?? NULL}}" class="form-control">
 								</div>
 								<div class="col col-md-2">
 									<label>Num Pedido</label>
