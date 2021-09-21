@@ -99,7 +99,9 @@ class MargemPedidos extends Controller
            array_push($pedidos[$key]['itens'], $ped_itens);
         }
         else{
-            array_push($pedidos,['num_pedido' =>$ped_itens->num_pedido, 'itens' => [$ped_itens] ]);
+            array_push($pedidos,['num_pedido' => $ped_itens->num_pedido, 
+                                 'dt_emis' => $ped_itens->dt_emis,
+            'itens' => [$ped_itens] ]);
             array_push($pedidos_validations, $ped_itens->num_pedido);
         }
 
