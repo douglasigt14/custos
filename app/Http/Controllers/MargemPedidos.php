@@ -10,9 +10,6 @@ class MargemPedidos extends Controller
     public function index(){
         $filtros = $_GET;
 
-        $dt_inicial_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
-
-        $dt_final_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
 
         $sql = "SELECT SUM((titens_pdv.qtde * titens_pdv.vlr_liq) - (titens_pdv.qtde * titens_pdv.vlr_desc_zf) - (titens_pdv.qtde  *titens_pdv.vlr_pis_zf) - (titens_pdv.qtde * titens_pdv.vlr_cofins_zf)
                 - round(tpedidos_venda.vlr_desc_pdv - (select sum((titens_pdv.qtde * titens_pdv.vlr_pis_zf) + (titens_pdv.qtde * titens_pdv.vlr_desc_zf) + (titens_pdv.qtde * titens_pdv.vlr_cofins_zf))
@@ -68,18 +65,30 @@ class MargemPedidos extends Controller
             and    titens_pdv.tmasc_item_id     =   tmasc_item.id
             AND TPEDIDOS_VENDA.ID          =  TPLC_PDV.PDV_ID(+)
             AND TCARGAS.ID(+)              =  TPLC_PDV.PLC_ID 
-            AND    TPEDIDOS_VENDA.DT_EMIS BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')
             and    (temp_rep.ativo = 1)
             and    tdivisoes_vendas.cod_divd = 1
             and    testabelecimentos.cod_est = 1
             and    tpedidos_venda.pos_pdv <> 'C'
             and    (tgrp_clas_ite.cod_grp_ite LIKE '60%')
-            and    (ttipos_nf.receita IN (1,2,81,82,13,71,157,158))
-            GROUP by
-                tpedidos_venda.num_pedido
-                ,titens.cod_item||'-'||titens_pdv.descricao
-                ,TPEDIDOS_VENDA.DT_EMIS
-            ORDER BY 2";
+            and    (ttipos_nf.receita IN (1,2,81,82,13,71,157,158))";
+        
+        if(isset($filtros['dt_inicial']) and isset($filtros['dt_final'])){
+            $dt_inicial_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
+
+            $dt_final_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
+            
+            $sql = $sql." AND    TPEDIDOS_VENDA.DT_EMIS BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')";
+        }
+
+        if(isset($filtros['num_pedido']) and $filtros['num_pedido'] != ''){
+           $sql = $sql. " and tpedidos_venda.num_pedido = ".$filtros['num_pedido'];
+        }
+
+        $sql = $sql ." GROUP by
+            tpedidos_venda.num_pedido
+            ,titens.cod_item||'-'||titens_pdv.descricao
+            ,TPEDIDOS_VENDA.DT_EMIS
+        ORDER BY 2";
 
        $pedidos_itens = DB::connection('oracle')->select($sql);
        $pedidos = [];

@@ -85,11 +85,11 @@
 			   <div class="col col-md-1"></div>
 			   <div class="col col-md-5">
 				    <label>Data Inicial</label>
-					<input type="date" name='dt_inicial' class="form-control">
+					<input type="date" name='dt_inicial' class="form-control" required>
 			   </div>
 			   <div class="col col-md-5">
 				   <label>Data Final</label>
-					<input type="date" name='dt_final' class="form-control">
+					<input type="date" name='dt_final' class="form-control" required>
 			   </div>
 			   <div class="col col-md-1"></div>
 		   </div>
