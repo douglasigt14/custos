@@ -73,9 +73,9 @@ class MargemPedidos extends Controller
             and    (ttipos_nf.receita IN (1,2,81,82,13,71,157,158))";
         
         if(isset($filtros['dt_inicial']) and isset($filtros['dt_final'])){
-            $dt_inicial_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
+            $dt_inicial_br = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
 
-            $dt_final_br =   $data = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
+            $dt_final_br = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
             
             $sql = $sql." AND    TPEDIDOS_VENDA.DT_EMIS BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')";
         }
@@ -94,13 +94,17 @@ class MargemPedidos extends Controller
        $pedidos = [];
        $pedidos_validations = [];
        foreach ($pedidos_itens as $key => $ped_itens) {
+
         if (in_array($ped_itens->num_pedido, $pedidos_validations)) { 
             $key = array_search($ped_itens->num_pedido, $pedidos_validations);
            array_push($pedidos[$key]['itens'], $ped_itens);
         }
         else{
+            $partes = explode(" ",$ped_itens->dt_emis);
+            $dt_emis = implode("/",array_reverse(explode("-",$partes[0])));
+
             array_push($pedidos,['num_pedido' => $ped_itens->num_pedido, 
-                                 'dt_emis' => $ped_itens->dt_emis,
+                                 'dt_emis' => $dt_emis,
             'itens' => [$ped_itens] ]);
             array_push($pedidos_validations, $ped_itens->num_pedido);
         }

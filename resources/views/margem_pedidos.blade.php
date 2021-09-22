@@ -40,10 +40,16 @@
 								<div class="col col-md-12" >
 									@foreach ($pedidos as $pedido)
 										<div style='border:solid 1px;border-color: #d3d3d3;padding: 7px;'>
-											<a style='color:black' data-toggle="collapse" data-target="#collapse{{$pedido['num_pedido']}}" aria-expanded="true"  class="card-header">
-												<h3>{{$pedido['num_pedido']}}</h3>
-											</a>
-										
+											<div class="row">
+											<div class="col col-md-6">
+												<a style='color:black' data-toggle="collapse" data-target="#collapse{{$pedido['num_pedido']}}" aria-expanded="true"  class="card-header">
+													<h3>{{$pedido['num_pedido']}}</h3>
+												</a>
+											</div>
+											<div class="col col-md-6">
+												<h3>{{$pedido['dt_emis']}}</h3>
+											</div>
+											</div>
 										<div id="collapse{{$pedido['num_pedido']}}" class="collapse" >
 											<table class="table table-hover table-striped menor myTable">
 												<thead>
