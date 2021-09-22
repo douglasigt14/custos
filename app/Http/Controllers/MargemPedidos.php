@@ -94,20 +94,34 @@ class MargemPedidos extends Controller
        $pedidos = [];
        $pedidos_validations = [];
        foreach ($pedidos_itens as $key => $ped_itens) {
+            $partes = explode("-",$ped_itens->item);
+            $cod_item = $partes[0];
+            
+            $sql = "SELECT 
+                        *
+                    FROM custos_log
+                    WHERE 
+                        cod_item = $cod_item";
 
-        if (in_array($ped_itens->num_pedido, $pedidos_validations)) { 
-            $key = array_search($ped_itens->num_pedido, $pedidos_validations);
-           array_push($pedidos[$key]['itens'], $ped_itens);
-        }
-        else{
-            $partes = explode(" ",$ped_itens->dt_emis);
-            $dt_emis = implode("/",array_reverse(explode("-",$partes[0])));
+            $custos_log  = DB::connection('mysql')->select($sql);
 
-            array_push($pedidos,['num_pedido' => $ped_itens->num_pedido, 
-                                 'dt_emis' => $dt_emis,
-            'itens' => [$ped_itens] ]);
-            array_push($pedidos_validations, $ped_itens->num_pedido);
-        }
+            $ped_itens->custo_atual = $custos_log[0]->custo_manual ?? NULL;
+            $ped_itens->custo_futuro = $custos_log[0]->custo_focco ?? NULL;
+            $ped_itens->categoria = $custos_log[0]->categoria ?? NULL;
+
+            if (in_array($ped_itens->num_pedido, $pedidos_validations)) { 
+                $key = array_search($ped_itens->num_pedido, $pedidos_validations);
+            array_push($pedidos[$key]['itens'], $ped_itens);
+            }
+            else{
+                $partes = explode(" ",$ped_itens->dt_emis);
+                $dt_emis = implode("/",array_reverse(explode("-",$partes[0])));
+
+                array_push($pedidos,['num_pedido' => $ped_itens->num_pedido, 
+                                    'dt_emis' => $dt_emis,
+                'itens' => [$ped_itens] ]);
+                array_push($pedidos_validations, $ped_itens->num_pedido);
+            }
 
        }   
 
