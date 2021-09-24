@@ -67,8 +67,8 @@
 													<tr>
 														<td>{{$item->item}}</td>
 														<td class='center'>{{number_format($item->valor,2,',','.')}}</td>
-														<td class='center'></td>
-														<td class='center'></td>
+														<td class='center'>{{number_format($item->custo_atual,2,',','.')}}</td>
+														<td class='center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
 													</tr>
 
 													@endforeach
