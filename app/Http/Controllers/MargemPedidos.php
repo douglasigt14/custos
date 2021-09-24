@@ -72,16 +72,18 @@ class MargemPedidos extends Controller
             and    (tgrp_clas_ite.cod_grp_ite LIKE '60%')
             and    (ttipos_nf.receita IN (1,2,81,82,13,71,157,158))";
         
+        $is_filtro = false;
         if(isset($filtros['dt_inicial']) and isset($filtros['dt_final'])){
             $dt_inicial_br = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
 
             $dt_final_br = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
             
             $sql = $sql." AND    TPEDIDOS_VENDA.DT_EMIS BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')";
+            $is_filtro = true;
         }
-
         if(isset($filtros['num_pedido']) and $filtros['num_pedido'] != ''){
            $sql = $sql. " and tpedidos_venda.num_pedido = ".$filtros['num_pedido'];
+           $is_filtro = true;
         }
 
         $sql = $sql ." GROUP by
@@ -90,8 +92,8 @@ class MargemPedidos extends Controller
             ,TPEDIDOS_VENDA.DT_EMIS
         ORDER BY 2";
 
-       $pedidos_itens = DB::connection('oracle')->select($sql);
-       $pedidos = [];
+       $pedidos_itens = $is_filtro ?  DB::connection('oracle')->select($sql) : [] ;
+        $pedidos = [];
        $pedidos_validations = [];
        foreach ($pedidos_itens as $key => $ped_itens) {
             $partes = explode("-",$ped_itens->item);

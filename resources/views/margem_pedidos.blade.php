@@ -51,7 +51,7 @@
 											</div>
 											</div>
 										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >
-											<table class="table table-hover table-striped menor myTable">
+											<table class="table table-bordered table-hover table-striped menor myTable">
 												<thead>
 													<tr>
 														<th>Item</th>
