@@ -38,8 +38,8 @@
 							<br><br>
 							<div class="row">
 								<div class="col col-md-12" >
-									@foreach ($pedidos as $pedido)
-										<div style='border:solid 1px;border-color: #d3d3d3;padding: 3px;border-radius: 10px; margin: 10px'>
+									@foreach ($pedidos as $key => $pedido)
+										<div style='border:solid 1px;border-color: #d3d3d3;padding: 3px;border-radius: 10px; margin: 5px;{{$key%2 == 0 ? "background-color: #d3d3d3" : "" }}'>
 											<div class="row" data-toggle="collapse" data-target="#collapse{{$pedido['num_pedido']}}" aria-expanded="true"  class="card-header">
 											<div class="col col-md-6">
 												<a style='color: #676a6d;'>
@@ -51,7 +51,7 @@
 											</div>
 											</div>
 										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >
-											<table class="table table-bordered table-hover table-striped menor myTable">
+											<table class="table table-bordered table-hover  menor myTable" style='background-color: white'>
 												<thead>
 													<tr>
 														<th>Item</th>
