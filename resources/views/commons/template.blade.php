@@ -84,12 +84,13 @@
 					<ul class="nav">
 						<li><a href="/" @if(Route::current()->uri() == '/') class="active" @endif><i class="lnr lnr-home"></i> <span>Pagina Inicial</span></a></li>
 
-						<li><a href="materias_primas" @if(Route::current()->uri() == 'materias_primas') class="active" @endif><i class="fa fa-cube"></i> <span>Materias Primas</span></a></li>
+						<li><a href="/materias_primas" @if(Route::current()->uri() == 'materias_primas') class="active" @endif><i class="fa fa-cube"></i> <span>Materias Primas</span></a></li>
 
-						<li><a href="custo_item_comercial" @if(Route::current()->uri() == 'custo_item_comercial') class="active" @endif><i class="fa fa-money"></i> <span>Custo Item Comercial</span></a></li>
-						<li><a href="margem_lucro" @if(Route::current()->uri() == 'margem_lucro') class="active" @endif><i class="fa fa-bar-chart"></i> <span>Margens de Lucro</span></a></li>
-						<li><a href="avaliacao_custo" @if(Route::current()->uri() == 'avaliacao_custo') class="active" @endif><i class="fa fa-line-chart"></i> <span>Avaliação Vlr de Compra</span></a></li>
-						<li><a href="margem_pedidos" @if(Route::current()->uri() == 'margem_pedidos') class="active" @endif><i class="fa fa-line-chart"></i> <span>Margens Pedidos</span></a></li>
+						<li><a href="/custo_item_comercial" @if(Route::current()->uri() == 'custo_item_comercial') class="active" @endif><i class="fa fa-money"></i> <span>Custo Item Comercial</span></a></li>
+						<li><a href="/margem_lucro" @if(Route::current()->uri() == 'margem_lucro') class="active" @endif><i class="fa fa-bar-chart"></i> <span>Margens de Lucro</span></a></li>
+						<li><a href="/avaliacao_custo" @if(Route::current()->uri() == 'avaliacao_custo') class="active" @endif><i class="fa fa-line-chart"></i> <span>Avaliação Vlr de Compra</span></a></li>
+						<li><a href="/margem_pedidos" @if(Route::current()->uri() == 'margem_pedidos') class="active" @endif><i class="fa fa-line-chart"></i> <span>Margens Pedidos</span></a></li>
+						<li><a href="/parametros" @if(Route::current()->uri() == 'parametros') class="active" @endif><i class="fa fa-cogs"></i> <span>Parâmetros</span></a></li>
 						
 					</ul>
 				</nav>

@@ -34,6 +34,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/relatorios/rel_itens_reajustados', [Relatorios::class, 'rel_itens_reajustados']);
     Route::get('/margem_pedidos', [MargemPedidos::class, 'index']);
     Route::get('/parametros', [Parametros::class, 'index']);
+    Route::post('/parametros', [Parametros::class, 'salvar']);
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');

@@ -47,7 +47,7 @@
 												</a>
 											</div>
 											<div class="col col-md-6">
-												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{$pedido['dt_emis']}}</h4>
+												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{$pedido['dt_fat']}}</h4>
 											</div>
 											</div>
 										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >
@@ -66,7 +66,7 @@
 													
 													<tr>
 														<td>{{$item->item}}</td>
-														<td class='center'>{{number_format($item->valor,2,',','.')}}</td>
+														<td class='center'>{{number_format($item->vlr_ft_item,2,',','.')}}</td>
 														<td class='center'>{{number_format($item->custo_atual,2,',','.')}}</td>
 														<td class='center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
 													</tr>
