@@ -61,6 +61,16 @@
 										</p>
 									</div>
 								</div>
+
+								<a href='/parametros' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-cogs"></i></span>
+										<p>
+											<span class="number">&nbsp;</span>
+											<span class="title">Parâmetros</span>
+										</p>
+									</div>
+								</a>
 							</div>
 							
                         </div>
