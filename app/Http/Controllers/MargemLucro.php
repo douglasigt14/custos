@@ -12,6 +12,9 @@ class MargemLucro extends Controller
                 FROM custos_log";
 
             $itens  = DB::connection('mysql')->select($sql);
+        
+        $sql = "SELECT * FROM parametros WHERE id = 1";
+        $parametros =  DB::connection('mysql')->select($sql);
 
         $categorias = array();
         foreach ($itens as $key => $item) {
@@ -71,7 +74,7 @@ class MargemLucro extends Controller
             array_push($categorias,$item->categoria);
 
             if($item->categoria  == 'ROUPEIROS'){
-                $item->fator = $item->fator-4;
+                $item->fator = $item->fator-$parametros[0]->valor;
             }
 
             if($item->preco_com_5){
