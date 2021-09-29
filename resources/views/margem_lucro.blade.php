@@ -9,6 +9,21 @@
 							<h3 class="panel-title">Margem de Lucro </h3>
 						</div>
 						<div class="panel-body">
+							<div class="row">
+								<div class="col col-md-2"></div>
+								<div class="col col-md-6">
+									<input class='form-control' list="itens_buscar" name="item_buscar">
+									<datalist id="itens_buscar">
+										@foreach ($itens_todos as $item)
+											<option value="{{$item->cod_item}}">{{$item->descricao}}</option>
+										@endforeach
+									</datalist>
+								</div>
+								<div class="col col-md-2">
+									<button type='submit' class="btn btn-primary btn-block">Buscar</button>
+								</div>
+								<div class="col col-md-2"></div>
+							</div><br>
 							<table class="table table-hover menor myTable">
 								<thead>
 										<tr>

@@ -7,6 +7,13 @@ use DB;
 class MargemLucro extends Controller
 {
     public function index(){
+        
+        $sql = "SELECT 
+                    *
+                FROM custos_log";
+
+        $itens_todos  = DB::connection('mysql')->select($sql);
+
         $sql = "SELECT 
                     *
                 FROM custos_log";
@@ -102,6 +109,6 @@ class MargemLucro extends Controller
         }
         $categorias = array_unique($categorias);
 
-        return view('margem_lucro', compact(["itens","categorias"]));
+        return view('margem_lucro', compact(["itens","categorias","itens_todos"]));
     }
 }
