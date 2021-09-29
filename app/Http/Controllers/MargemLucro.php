@@ -7,6 +7,8 @@ use DB;
 class MargemLucro extends Controller
 {
     public function index(){
+
+        $item_buscar = $_GET['item_buscar'] ?? NULL;
         
         $sql = "SELECT 
                     *
@@ -16,7 +18,11 @@ class MargemLucro extends Controller
 
         $sql = "SELECT 
                     *
-                FROM custos_log";
+                FROM custos_log
+                WHERE 1";
+        if($item_buscar){
+            $sql = $sql." AND cod_item = $item_buscar";
+        }
 
             $itens  = DB::connection('mysql')->select($sql);
         
@@ -109,6 +115,6 @@ class MargemLucro extends Controller
         }
         $categorias = array_unique($categorias);
 
-        return view('margem_lucro', compact(["itens","categorias","itens_todos"]));
+        return view('margem_lucro', compact(["itens","categorias","itens_todos","item_buscar"]));
     }
 }
