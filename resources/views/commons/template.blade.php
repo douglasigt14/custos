@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}?{{date("YmdHis")}}">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/print.css')}}">
 	
      @stack('styles')
 </head>
@@ -25,7 +26,7 @@
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-fixed-top no-print">
 			<div class="brand brand-modificado">
 				<a href="/"><img src="{{asset('assets/img/logo.png')}}" alt="Klorofil Logo" class="img-responsive logo logo-modificado"></a>
 			</div>
@@ -78,7 +79,7 @@
 		</nav>
 		<!-- END NAVBAR -->
 		<!-- LEFT SIDEBAR -->
-		<div id="sidebar-nav" class="sidebar">
+		<div id="sidebar-nav" class="sidebar no-print">
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
