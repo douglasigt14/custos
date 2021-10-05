@@ -9,7 +9,7 @@
 							<h3 class="panel-title">Avaliação do Vlr Compra x Vlr Reposição </h3>
 						</div>
 						<div class="panel-body">
-							<div class="row">
+							<div class="row no-print">
 							  <form action="">
 								<div class="col col-md-3">
 									<label>Data de Entrada - Inicial</label>
@@ -23,7 +23,11 @@
 									<label>&nbsp;</label>
 									<button type='submit' class="btn btn-primary btn-block">Buscar</button>
 								</div>
-								<div class="col col-md-4"></div>
+								<div class="col col-md-3"></div>
+								<div class="col col-md-1">
+									<label>&nbsp;</label>
+									<button onclick="printpage()" type='button' class="btn btn-primary btn-block"><i class="fa fa-print"></i></button>
+								</div>
 							  </form>
 							</div><br><br>
 
@@ -86,4 +90,13 @@
 							@endif				
                         </div>
                     </div>
+
+					<script>
+						function printpage(){
+							console.log("Print");
+							let body = document.querySelector('body');
+							body.classList.add("layout-fullwidth");
+							window.print();
+						}
+					</script>
 @endsection	
