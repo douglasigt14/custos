@@ -48,6 +48,11 @@ class MateriasPrimas extends Controller
         $custos_futuros = DB::connection('mysql')->select($sql);
 
         $item->custo_futuro = $custos_futuros ? $custos_futuros[0]->valor : $item->custo;
+
+        $sqlFor = "SELECT fornecedor FROM fornecedores WHERE cod_item = $item->cod_item";
+        $fornecedor = DB::connection('mysql')->select($sqlFor);
+        $item->fornecedor = $fornecedor[0]->fornecedor ?? NULL; 
+
         
         $perc = ($item->custo / $item->custo_futuro *100)-100;
         $item->perc = number_format( $perc,2,',','.');
