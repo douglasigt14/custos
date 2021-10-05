@@ -96,7 +96,10 @@ class MateriasPrimas extends Controller
     }
     $lista_class_desc = array_unique($lista_class_desc);
 
-        return view('materias_primas', compact(["itens","lista_class_desc"]));
+    $sqlFornecedores = "SELECT COD_FOR, DESCRICAO FROM FOCCO3I.TFORNECEDORES";
+    $fornecedores = DB::connection('oracle')->select($sqlFornecedores);
+
+        return view('materias_primas', compact(["itens","lista_class_desc","fornecedores"]));
     }
 
     public function ins_up_custo_futuro($cod_item = null,$valor = null){
