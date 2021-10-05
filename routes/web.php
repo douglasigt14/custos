@@ -28,6 +28,7 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/materias_primas', [MateriasPrimas::class, 'index']);
     Route::delete('/materias_primas', [MateriasPrimas::class, 'delete']);
     Route::get('/ins_up_custo_futuro/{cod_item}/{valor}', [MateriasPrimas::class, 'ins_up_custo_futuro']);
+    Route::get('/ins_up_fornecedor/{cod_item}/{fornecedor}', [MateriasPrimas::class, 'ins_up_fornecedor']);
     Route::get('/custo_item_comercial', [CustoItemComercial::class, 'index']);
     Route::get('/margem_lucro', [MargemLucro::class, 'index']);
     Route::get('/avaliacao_custo', [AvaliacaoCusto::class, 'index']);

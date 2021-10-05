@@ -122,6 +122,25 @@ class MateriasPrimas extends Controller
         }
     }
 
+    public function ins_up_fornecedor($cod_item = null,$fornecedor = null){
+        $sql = "SELECT fornecedor FROM fornecedores WHERE cod_item = $cod_item";
+        $fornecedores = DB::connection('mysql')->select($sql);
+
+        if($fornecedores){
+            DB::table('fornecedores')
+              ->where('cod_item', $cod_item)
+              ->update([
+                    'fornecedor' => $fornecedor
+            ]);
+        }
+        else{
+            DB::table('fornecedores')->insert([
+                'cod_item' => $cod_item,
+                'fornecedor' => $fornecedor
+            ]);
+        }
+    }
+
     public function delete(){
         DB::table('custos_futuros')->delete();
         return back();
