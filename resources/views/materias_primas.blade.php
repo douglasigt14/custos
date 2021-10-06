@@ -95,6 +95,12 @@
 					return v;
 				}
 
+				var datalist = "<datalist id='fors'>";
+							@foreach ($fornecedores as $for)
+								datalist = datalist+"<option value='{{$for->descricao}}'>"; 
+							@endforeach
+							datalist = datalist+'</datalist>';
+
 				@foreach ($itens as $item)
 					$(function () {
 						$("#EditarValor{{$item->cod_item}}").dblclick(function () {
@@ -167,9 +173,11 @@
 
 				$(function () {
 						$("#EditarValorFor{{$item->cod_item}}").dblclick(function () {
+							
+
 							var conteudoOriginal = $(this).text();
 							$(this).addClass("celulaEmEdicao");
-							$(this).html("<input  type='text' class='form-control' value='" + conteudoOriginal + "' />");
+							$(this).html("<input list='fors'  type='text' class='form-control' value='" + conteudoOriginal + "' />"+datalist);
 							$(this).children().first().focus();
 
 							$(this).children().first().keypress(function (e) {
