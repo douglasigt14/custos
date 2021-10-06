@@ -43,7 +43,7 @@
 										<tr>
 											<td>{{$item->cod_item}}</td>
 											<td>{{$item->desc_tecnica}}</td>
-											<td id='EditarValorFor{{$item->cod_item}}'>
+											<td class="EditarValorFor" id='EditarValorFor{{$item->cod_item}}'>
 												{{$item->fornecedor}}
 											</td>
 											<td class='center'>{{date("d/m/Y", strtotime($item->dt_atualiza))}}</td>

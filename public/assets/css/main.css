@@ -1937,4 +1937,7 @@ ul.activity-timeline > li {
   .tabela-relatorio{
     font-size: 10px !important;
   }
+  .EditarValorFor{
+    min-width: 250px;
+  }
 /*# sourceMappingURL=main.css.map */
