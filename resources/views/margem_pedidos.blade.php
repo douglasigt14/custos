@@ -55,9 +55,16 @@
 												<thead>
 													<tr>
 														<th>Item</th>
-														<th class='center'>Valor Fat</th>
+														<th>Mascara</th>
+														<th class='center'>Valor Uni</th>
+														<th class='center'>Qtde</th>
+														<th class='center'>Comissão Fat</th>
+														
 														<th class='center'>Custo Atual</th>
+														<th 
+														<th class='center'>Margem Atual</th>
 														<th class='center'>Custo Futuro</th>
+														<th class='center'>Margem Futura</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -66,9 +73,15 @@
 													
 													<tr>
 														<td>{{$item->item}}</td>
-														<td class='center'>{{number_format($item->vlr_ft_item,2,',','.')}}</td>
+														<td>{{$item->mascara}}</td>
+														<td class='center'>{{number_format(($item->vlr_ft_item/$item->qtde),2,',','.')}}</td>
+														<td class='center'>{{$item->qtde}}</td>
+														<td class='center'></td>
+														
 														<td class='center'>{{number_format($item->custo_atual,2,',','.')}}</td>
+														<td class='center'>{{number_format($item->margem_atual,2,',','.')}}</td>
 														<td class='center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
+														<td class='center'>{{number_format($item->margem_futuro,2,',','.')}}</td>
 													</tr>
 
 													@endforeach

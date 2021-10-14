@@ -95,9 +95,9 @@ class MargemPedidos extends Controller
                 $ped_itens->fator = $ped_itens->fator-$parametros[0]->valor;
             }
 
-            $ped_itens->margem_atual = (( 100-($ped_itens->fator)-$ped_itens->custo_atual*100/$ped_itens->vlr_ft_item)/100)*100;
+            $ped_itens->margem_atual = (( 100-($ped_itens->fator)-$ped_itens->custo_atual*100/($ped_itens->vlr_ft_item/$ped_itens->qtde))/100)*100;
 
-            $ped_itens->margem_futuro = (( 100-($ped_itens->fator)-$ped_itens->custo_futuro*100/$ped_itens->vlr_ft_item)/100)*100;
+            $ped_itens->margem_futuro = (( 100-($ped_itens->fator)-$ped_itens->custo_futuro*100/ ($ped_itens->vlr_ft_item/$ped_itens->qtde))/100)*100;
             
             if (in_array($ped_itens->num_pedido, $pedidos_validations)) { 
                 $key = array_search($ped_itens->num_pedido, $pedidos_validations);
