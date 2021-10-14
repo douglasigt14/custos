@@ -68,6 +68,10 @@ class MargemPedidos extends Controller
        $pedidos_itens = $is_filtro ?  DB::connection('oracle')->select($sql) : [] ;
         $pedidos = [];
        $pedidos_validations = [];
+
+       $sql = "SELECT * FROM parametros WHERE id = 1";
+       $parametros =  DB::connection('mysql')->select($sql);
+
        foreach ($pedidos_itens as $key => $ped_itens) {
             $cod_item = $ped_itens->cod_item;
             
@@ -83,6 +87,18 @@ class MargemPedidos extends Controller
             $ped_itens->custo_futuro = $custos_log[0]->custo_focco ?? NULL;
             $ped_itens->categoria = $custos_log[0]->categoria ?? NULL;
 
+            
+
+            $ped_itens->fator = 54.6;
+            
+            if($ped_itens->categoria  == 'ROUPEIROS'){
+                $ped_itens->fator = $ped_itens->fator-$parametros[0]->valor;
+            }
+
+            $ped_itens->margem_atual = (( 100-($ped_itens->fator)-$ped_itens->custo_atual*100/$ped_itens->vlr_ft_item)/100)*100;
+
+            $ped_itens->margem_futuro = (( 100-($ped_itens->fator)-$ped_itens->custo_futuro*100/$ped_itens->vlr_ft_item)/100)*100;
+            
             if (in_array($ped_itens->num_pedido, $pedidos_validations)) { 
                 $key = array_search($ped_itens->num_pedido, $pedidos_validations);
             array_push($pedidos[$key]['itens'], $ped_itens);
@@ -98,7 +114,6 @@ class MargemPedidos extends Controller
             }
 
        }   
-       //dd($pedidos);
 
         return view('margem_pedidos', compact(['filtros','pedidos']));;
     }
