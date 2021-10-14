@@ -55,7 +55,7 @@
 												<thead>
 													<tr>
 														<th>Item</th>
-														<th class='center'>Valor</th>
+														<th class='center'>Valor Fat</th>
 														<th class='center'>Custo Atual</th>
 														<th class='center'>Custo Futuro</th>
 													</tr>
