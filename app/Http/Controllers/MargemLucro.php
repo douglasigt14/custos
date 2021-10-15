@@ -26,7 +26,7 @@ class MargemLucro extends Controller
 
             $itens  = DB::connection('mysql')->select($sql);
         
-        $sql = "SELECT * FROM parametros WHERE id = 1";
+        $sql = "SELECT * FROM parametros";
         $parametros =  DB::connection('mysql')->select($sql);
 
         $categorias = array();
@@ -86,7 +86,9 @@ class MargemLucro extends Controller
             $item->fator = 54.6;
             array_push($categorias,$item->categoria);
 
-            if($item->categoria  == 'ROUPEIROS'){
+            $cod_itens_exceto = explode(',',$parametros[1]->valor);
+
+            if(in_array($item->cod_item, $cod_itens_exceto)){
                 $item->fator = $item->fator-$parametros[0]->valor;
             }
 
