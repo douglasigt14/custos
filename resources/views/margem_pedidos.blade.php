@@ -41,7 +41,7 @@
 									@foreach ($pedidos as $key => $pedido)
 										<div style='border:solid 1px;border-color: #d3d3d3;padding: 3px;border-radius: 10px; margin: 5px;{{$key%2 == 0 ? "background-color: #d3d3d3" : "" }}'>
 											<div class="row" data-toggle="collapse" data-target="#collapse{{$pedido['num_pedido']}}" aria-expanded="true"  class="card-header">
-											<div class="col col-md-3">
+											<div class="col col-md-2">
 												<a style='color: #676a6d;'>
 													<h4 style='margin-left: 15px;margin-top: 5px;margin-bottom: 5px;'>{{$pedido['num_pedido']}}</h4>
 												</a>
@@ -49,8 +49,11 @@
 											<div class="col col-md-6">
 												{{$pedido['cliente']}}
 											</div>
-											<div class="col col-md-3">
+											<div class="col col-md-2">
 												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{$pedido['dt_fat']}}</h4>
+											</div>
+											<div class="col col-md-2">
+												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{number_format($pedido['vlr_liq'],2,',','.')}}</h4>
 											</div>
 											</div>
 										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >

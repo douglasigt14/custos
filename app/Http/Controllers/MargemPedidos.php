@@ -20,6 +20,7 @@ class MargemPedidos extends Controller
         ,TMASC_ITEM.MASCARA
         ,TITENS_PDV.QTDE
         ,TITENS_PDV.PERC_COMIS
+        ,TPEDIDOS_VENDA.VLR_LIQ
         ,ROUND(SUM((TITENS_PDV.QTDE * TITENS_PDV.VLR_LIQ) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_DESC_ZF) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_PIS_ZF) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_COFINS_ZF)
          - ROUND(TPEDIDOS_VENDA.VLR_DESC_PDV - (SELECT SUM((TITENS_PDV.QTDE * TITENS_PDV.VLR_PIS_ZF) + (TITENS_PDV.QTDE * TITENS_PDV.VLR_DESC_ZF) + (TITENS_PDV.QTDE * TITENS_PDV.VLR_COFINS_ZF))
          FROM FOCCO3I.TITENS_PDV  WHERE TITENS_PDV.PDV_ID = TPEDIDOS_VENDA.ID),3 ) / (SELECT COUNT(TITENS_PDV.NUM_ITEM) FROM FOCCO3I.TITENS_PDV WHERE TPEDIDOS_VENDA.ID   = TITENS_PDV.PDV_ID)),2) vlr_ft_item
@@ -63,6 +64,7 @@ class MargemPedidos extends Controller
         ,THIST_MOV_ITE_PDV.DT
         ,TITENS.COD_ITEM
         ,TITENS_PDV.PERC_COMIS
+        ,TPEDIDOS_VENDA.VLR_LIQ
         ,TITENS.DESC_TECNICA
         ,TMASC_ITEM.MASCARA
         ,TITENS_PDV.QTDE";
@@ -119,6 +121,7 @@ class MargemPedidos extends Controller
 
                 array_push($pedidos,['num_pedido' => $ped_itens->num_pedido, 
                                     'dt_fat' => $dt_fat,
+                                    'vlr_liq' => $ped_itens->vlr_liq,
                                     'cliente' => $ped_itens->cod_cli.'-'.$ped_itens->cliente,
                 'itens' => [$ped_itens] ]);
                 array_push($pedidos_validations, $ped_itens->num_pedido);
