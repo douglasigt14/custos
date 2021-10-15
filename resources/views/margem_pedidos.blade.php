@@ -50,7 +50,7 @@
 												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{$pedido['dt_fat']}}</h4>
 											</div>
 											</div>
-										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >
+										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >=
 											<table class="table table-bordered table-hover  menor myTable" style='background-color: white'>
 												<thead>
 													<tr>
@@ -76,12 +76,14 @@
 														<td>{{$item->mascara}}</td>
 														<td class='center'>{{number_format(($item->vlr_ft_item/$item->qtde),2,',','.')}}</td>
 														<td class='center'>{{$item->qtde}}</td>
-														<td class='center'></td>
+														<td class='center'>
+															{{$item->perc_comis}}%
+														</td>
 														
 														<td class='center'>{{number_format($item->custo_atual,2,',','.')}}</td>
-														<td class='center'>{{number_format($item->margem_atual,2,',','.')}}</td>
+														<td class='center'>{{number_format($item->margem_atual,2,',','.')}}%</td>
 														<td class='center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
-														<td class='center'>{{number_format($item->margem_futuro,2,',','.')}}</td>
+														<td class='center'>{{number_format($item->margem_futuro,2,',','.')}}%</td>
 													</tr>
 
 													@endforeach
