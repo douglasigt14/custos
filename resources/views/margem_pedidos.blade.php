@@ -50,7 +50,7 @@
 												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{$pedido['dt_fat']}}</h4>
 											</div>
 											</div>
-										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >=
+										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >
 											<table class="table table-bordered table-hover  menor myTable" style='background-color: white'>
 												<thead>
 													<tr>
