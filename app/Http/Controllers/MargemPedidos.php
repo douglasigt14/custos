@@ -12,7 +12,7 @@ class MargemPedidos extends Controller
 
 
         $sql = "SELECT TCLIENTES.COD_CLI
-        ,TCLIENTES.DESCRICAO
+        ,TCLIENTES.DESCRICAO CLIENTE
         ,TPEDIDOS_VENDA.NUM_PEDIDO
         ,THIST_MOV_ITE_PDV.DT AS DT_FAT
         ,TITENS.COD_ITEM
@@ -119,6 +119,7 @@ class MargemPedidos extends Controller
 
                 array_push($pedidos,['num_pedido' => $ped_itens->num_pedido, 
                                     'dt_fat' => $dt_fat,
+                                    'cliente' => $ped_itens->cod_cli.'-'.$ped_itens->cliente,
                 'itens' => [$ped_itens] ]);
                 array_push($pedidos_validations, $ped_itens->num_pedido);
             }
