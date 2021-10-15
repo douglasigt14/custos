@@ -53,7 +53,7 @@ class MargemPedidos extends Controller
             $is_filtro = true;
         }
         if(isset($filtros['num_pedido']) and $filtros['num_pedido'] != ''){
-           $sql = $sql. " and TPEDIDOS_VENDA.NUM_PEDIDO = ".$filtros['num_pedido'];
+           $sql = $sql. " and TPEDIDOS_VENDA.NUM_PEDIDO IN (".$filtros['num_pedido'].")";
            $is_filtro = true;
         }
 
@@ -66,7 +66,6 @@ class MargemPedidos extends Controller
         ,TITENS.DESC_TECNICA
         ,TMASC_ITEM.MASCARA
         ,TITENS_PDV.QTDE";
-        
        $pedidos_itens = $is_filtro ?  DB::connection('oracle')->select($sql) : [] ;
         $pedidos = [];
        $pedidos_validations = [];
@@ -92,7 +91,7 @@ class MargemPedidos extends Controller
             
 
             $ped_itens->fator = 54.6;
-            
+            $ped_itens->fator = $ped_itens->fator - (5-$ped_itens->perc_comis);
             //Itens que tira os 
             $cod_itens_exceto = explode(',',$parametros[1]->valor);
 
