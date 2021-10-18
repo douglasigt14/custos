@@ -53,7 +53,7 @@
 												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{$pedido['dt_fat']}}</h4>
 											</div>
 											<div class="col col-md-2">
-												<h4 style='margin-top: 5px;margin-bottom: 5px;'>{{number_format($pedido['vlr_liq'],2,',','.')}}</h4>
+												<h4 style='margin-top: 5px;margin-bottom: 5px;text-aling: center'>{{number_format($pedido['vlr_liq'],2,',','.')}}</h4>
 											</div>
 											</div>
 										<div style='margin: 10px;' id="collapse{{$pedido['num_pedido']}}" class="collapse" >
