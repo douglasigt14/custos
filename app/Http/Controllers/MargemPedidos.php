@@ -45,7 +45,7 @@ class MargemPedidos extends Controller
      AND TDIVISOES_VENDAS.COD_DIVD = 1";
         
         $is_filtro = false;
-        if(isset($filtros['dt_inicial']) and isset($filtros['dt_final'])){
+        if(isset($filtros['dt_inicial']) and isset($filtros['dt_final']) and $filtros['dt_inicial'] != '' and $filtros['dt_final'] != '' ){
             $dt_inicial_br = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
 
             $dt_final_br = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
@@ -68,6 +68,7 @@ class MargemPedidos extends Controller
         ,TITENS.DESC_TECNICA
         ,TMASC_ITEM.MASCARA
         ,TITENS_PDV.QTDE";
+
        $pedidos_itens = $is_filtro ?  DB::connection('oracle')->select($sql) : [] ;
         $pedidos = [];
        $pedidos_validations = [];
