@@ -90,10 +90,11 @@
 														<td data-toggle="tooltip" data-placement="top" 
 														title="{{$item->margem_atual_label}}" class='center'>{{number_format($item->margem_atual,2,',','.')}}%</td>
 														<td 
+														class='center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
+														<td 
 														data-toggle="tooltip" data-placement="top" 
 														title="{{$item->margem_futuro_label}}"
-														class='center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
-														<td class='center'>{{number_format($item->margem_futuro,2,',','.')}}%</td>
+														class='center'>{{number_format($item->margem_futuro,2,',','.')}}%</td>
 													</tr>
 
 													@endforeach
