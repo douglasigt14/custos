@@ -9,6 +9,7 @@
         <tr>
             <th>Cod</th>
             <th>Item</th>
+            <th>Fornecedor</th>
             <th class='center'>Dt. Atualz. Focco</th>
             <th class='center'>Unid. Med.</th>
             
@@ -22,6 +23,7 @@
         <tr>
             <td>{{$item->cod_item}}</td>
             <td>{{$item->desc_tecnica}}</td>
+            <td>{{$item->fornecedor}}</td>
             <td class='center'>{{date("d/m/Y", strtotime($item->dt_atualiza))}}</td>
             <td class='center'>{{$item->unid_med}}</td>
             <td class='center'>{{$item->custo_futuro}}</td>
