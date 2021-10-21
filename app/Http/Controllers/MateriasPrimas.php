@@ -130,7 +130,7 @@ class MateriasPrimas extends Controller
     public function ins_up_fornecedor($cod_item = null,$fornecedor = null){
         $sql = "SELECT fornecedor FROM fornecedores WHERE cod_item = $cod_item";
         $fornecedores = DB::connection('mysql')->select($sql);
-
+        $fornecedor = $fornecedor == '0' ? NULL : $fornecedor; 
         if($fornecedores){
             DB::table('fornecedores')
               ->where('cod_item', $cod_item)

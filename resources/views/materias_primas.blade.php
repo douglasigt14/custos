@@ -43,9 +43,7 @@
 										<tr>
 											<td>{{$item->cod_item}}</td>
 											<td>{{$item->desc_tecnica}}</td>
-											<td class="EditarValorFor" id='EditarValorFor{{$item->cod_item}}'>
-												{{$item->fornecedor}}
-											</td>
+											<td class='EditarValorFor' id='EditarValorFor{{$item->cod_item}}'>{{$item->fornecedor}}</td>
 											<td class='center'>{{date("d/m/Y", strtotime($item->dt_atualiza))}}</td>
 											<td class='center'>{{$item->unid_med}}</td>
 											<td id='EditarValor{{$item->cod_item}}' class='center texto-azul'>{{$item->custo_futuro}}</td>
@@ -107,7 +105,7 @@
 							var conteudoOriginal = $(this).text();
 							let evento = "mascara(this,moeda)";
 							$(this).addClass("celulaEmEdicao");
-							$(this).html("<input onKeyPress="+evento+" type='text' class='form-control' value='" + conteudoOriginal + "' />");
+							$(this).html("<input onKeyPress="+evento+" type='text' class='form-control' value='"+conteudoOriginal+ "' />");
 							$(this).children().first().focus();
 
 							$(this).children().first().keypress(function (e) {
@@ -177,7 +175,7 @@
 
 							var conteudoOriginal = $(this).text();
 							$(this).addClass("celulaEmEdicao");
-							$(this).html("<input list='fors'  type='text' class='form-control' value='" + conteudoOriginal + "' />"+datalist);
+							$(this).html("<input type='text' class='form-control' value='" + conteudoOriginal + "' />");
 							$(this).children().first().focus();
 
 							$(this).children().first().keypress(function (e) {
@@ -186,7 +184,9 @@
 									$(this).parent().text(novoConteudo);
 									$(this).parent().removeClass("celulaEmEdicao");
 
-
+									if(!novoConteudo){
+										novoConteudo= "0";
+									}
 									let url = "{{asset('')}}";
 									const URL_TO_FETCH = url+"ins_up_fornecedor/{{$item->cod_item}}/"+novoConteudo;
 									fetch(URL_TO_FETCH, {
