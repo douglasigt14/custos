@@ -9,7 +9,7 @@ class MargemPedidos extends Controller
 {
     public function index(){
         $filtros = $_GET;
-
+       
 
         $sql = "SELECT TCLIENTES.COD_CLI
         ,TCLIENTES.DESCRICAO CLIENTE
@@ -24,6 +24,7 @@ class MargemPedidos extends Controller
         ,ROUND(SUM((TITENS_PDV.QTDE * TITENS_PDV.VLR_LIQ) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_DESC_ZF) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_PIS_ZF) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_COFINS_ZF)
          - ROUND(TPEDIDOS_VENDA.VLR_DESC_PDV - (SELECT SUM((TITENS_PDV.QTDE * TITENS_PDV.VLR_PIS_ZF) + (TITENS_PDV.QTDE * TITENS_PDV.VLR_DESC_ZF) + (TITENS_PDV.QTDE * TITENS_PDV.VLR_COFINS_ZF))
          FROM FOCCO3I.TITENS_PDV  WHERE TITENS_PDV.PDV_ID = TPEDIDOS_VENDA.ID),3 ) / (SELECT COUNT(TITENS_PDV.NUM_ITEM) FROM FOCCO3I.TITENS_PDV WHERE TPEDIDOS_VENDA.ID   = TITENS_PDV.PDV_ID)),2) vlr_ft_item
+        ,TPEDIDOS_VENDA.POS_PDV POS
     FROM FOCCO3I.TPEDIDOS_VENDA
         ,FOCCO3I.TITENS_PDV
         ,FOCCO3I.TITENS_COMERCIAL
@@ -39,11 +40,9 @@ class MargemPedidos extends Controller
      AND TITENS_COMERCIAL.ID = TITENS_PDV.ITCM_ID
      AND TITENS_EMPR.ID      = TITENS_COMERCIAL.ITEMPR_ID
      AND TITENS.ID           = TITENS_EMPR.ITEM_ID
-     AND TITENS_PDV.ID       = THIST_MOV_ITE_PDV.ITPDV_ID
+     AND TITENS_PDV.ID       = THIST_MOV_ITE_PDV.ITPDV_ID(+)
      AND TMASC_ITEM.ID       = TITENS_PDV.TMASC_ITEM_ID
-     AND TPEDIDOS_VENDA.POS_PDV = 'A'
      AND TDIVISOES_VENDAS.COD_DIVD = 1";
-        
         $is_filtro = false;
         if(isset($filtros['dt_inicial']) and isset($filtros['dt_final']) and $filtros['dt_inicial'] != '' and $filtros['dt_final'] != '' ){
             $dt_inicial_br = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
@@ -57,6 +56,15 @@ class MargemPedidos extends Controller
            $sql = $sql. " and TPEDIDOS_VENDA.NUM_PEDIDO IN (".$filtros['num_pedido'].")";
            $is_filtro = true;
         }
+        if(isset($filtros['pos']) and $filtros['pos'] == 'Atendido'){
+            $sql = $sql." and TPEDIDOS_VENDA.POS_PDV = 'A' ";
+            $is_filtro = true;
+        }
+        if(isset($filtros['pos']) and $filtros['pos'] == 'Pendente' 
+        and $filtros['dt_inicial'] == '' and $filtros['dt_final'] == ''){
+            $sql = $sql." and TPEDIDOS_VENDA.POS_PDV = 'PE' ";
+            $is_filtro = true;
+        }
 
         $sql = $sql." GROUP BY TCLIENTES.COD_CLI
         ,TCLIENTES.DESCRICAO
@@ -67,7 +75,9 @@ class MargemPedidos extends Controller
         ,TPEDIDOS_VENDA.VLR_LIQ
         ,TITENS.DESC_TECNICA
         ,TMASC_ITEM.MASCARA
-        ,TITENS_PDV.QTDE";
+        ,TITENS_PDV.QTDE
+        ,TPEDIDOS_VENDA.POS_PDV";
+
 
        $pedidos_itens = $is_filtro ?  DB::connection('oracle')->select($sql) : [] ;
         $pedidos = [];
@@ -125,7 +135,8 @@ class MargemPedidos extends Controller
                 $partes = explode(" ",$ped_itens->dt_fat);
                 $dt_fat = implode("/",array_reverse(explode("-",$partes[0])));
 
-                array_push($pedidos,['num_pedido' => $ped_itens->num_pedido, 
+                array_push($pedidos,['num_pedido' => $ped_itens->num_pedido,
+                                    'pos'=> $ped_itens->pos,
                                     'dt_fat' => $dt_fat,
                                     'vlr_liq' => $ped_itens->vlr_liq,
                                     'cliente' => $ped_itens->cod_cli.'-'.$ped_itens->cliente,
