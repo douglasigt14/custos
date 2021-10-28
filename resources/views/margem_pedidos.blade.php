@@ -87,7 +87,7 @@
 										
 									
 									<tr>
-										<td>{{$item->cod_item}}-{{$item->item}}</td>
+										<td style="width: 30%">{{$item->cod_item}}-{{$item->item}}</td>
 										<td>{{$item->mascara}}</td>
 										<td class='center'>{{number_format(($item->vlr_ft_item/$item->qtde),2,',','.')}}</td>
 										<td class='center'>{{$item->qtde}}</td>
@@ -117,4 +117,18 @@
 			</div>
 		</div>
 	</div>
-@endsection	
+@endsection
+
+@push('scripts')
+	<script>
+			$(document).ready( function () {
+				$('.myTable').DataTable({
+					"pageLength": 1000
+					,"order": [[ 8, "asc" ]]
+					,"searching": false
+					,"paging": false
+					,"info":  false
+				});
+			} );
+	</script>
+@endpush

@@ -9,6 +9,9 @@ class MargemPedidos extends Controller
 {
     public function index(){
         $filtros = $_GET;
+
+        $filtros['pos'] = $filtros['pos'] ?? null;
+
        
 
         $sql = "SELECT TCLIENTES.COD_CLI
