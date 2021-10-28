@@ -52,7 +52,7 @@
 								
 							</div>
 							<div class="row">
-								<div data-toggle="modal" data-target="#modalPedidos" class="col-md-3 cinzinha">
+								<a href="/margem_pedidos" class="col-md-3 cinzinha">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-line-chart"></i></span>
 										<p>
@@ -60,7 +60,7 @@
 											<span class="title">Margens Pedidos</span>
 										</p>
 									</div>
-								</div>
+								</a>
 
 								<a href='/parametros' class="col-md-3 cinzinha">
 									<div class="metric">
