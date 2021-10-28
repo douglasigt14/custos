@@ -47,26 +47,26 @@ class MargemPedidos extends Controller
      AND TMASC_ITEM.ID       = TITENS_PDV.TMASC_ITEM_ID
      AND TDIVISOES_VENDAS.COD_DIVD = 1";
         $is_filtro = false;
+
         if(isset($filtros['dt_inicial']) and isset($filtros['dt_final']) and $filtros['dt_inicial'] != '' and $filtros['dt_final'] != '' ){
             $dt_inicial_br = implode("/",array_reverse(explode("-",$filtros['dt_inicial'])));
 
             $dt_final_br = implode("/",array_reverse(explode("-",$filtros['dt_final'])));
             
-            $sql = $sql." AND THIST_MOV_ITE_PDV.DT BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')";
+            if(isset($filtros['pos']) and $filtros['pos'] == 'Atendido'){
+                $sql = $sql." AND TPEDIDOS_VENDA.POS_PDV = 'A' ";
+                $sql = $sql." AND THIST_MOV_ITE_PDV.DT BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')";
+            }
+            if(isset($filtros['pos']) and $filtros['pos'] == 'Pendente'){
+                $sql = $sql." AND TPEDIDOS_VENDA.POS_PDV = 'PE' ";
+                $sql = $sql." AND TPEDIDOS_VENDA.DT_EMIS BETWEEN TO_DATE('$dt_inicial_br','DD/MM/RRRR') AND TO_DATE('$dt_final_br','DD/MM/RRRR')";
+            }
             $is_filtro = true;
         }
+
         if(isset($filtros['num_pedido']) and $filtros['num_pedido'] != ''){
            $sql = $sql. " and TPEDIDOS_VENDA.NUM_PEDIDO IN (".$filtros['num_pedido'].")";
            $is_filtro = true;
-        }
-        if(isset($filtros['pos']) and $filtros['pos'] == 'Atendido'){
-            $sql = $sql." and TPEDIDOS_VENDA.POS_PDV = 'A' ";
-            $is_filtro = true;
-        }
-        if(isset($filtros['pos']) and $filtros['pos'] == 'Pendente' 
-        and $filtros['dt_inicial'] == '' and $filtros['dt_final'] == ''){
-            $sql = $sql." and TPEDIDOS_VENDA.POS_PDV = 'PE' ";
-            $is_filtro = true;
         }
 
         $sql = $sql." GROUP BY TCLIENTES.COD_CLI
