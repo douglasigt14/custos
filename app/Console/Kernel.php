@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\CustoCron::class,
         Commands\ApagarCusto::class,
         Commands\AvaliacaoCusto::class,
+        Commands\CustoCronAll::class,
     ];
 
     /**
@@ -27,7 +28,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('custo:cron')->twiceDaily(15,21);
+        $schedule->command('custo:cron')->twiceDaily(15,4);
+        $schedule->command('custo:cronall')->dailyAt('21:00');
     }
 
     /**
