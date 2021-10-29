@@ -21,6 +21,7 @@ class MargemPedidos extends Controller
         ,TITENS.COD_ITEM
         ,TITENS.DESC_TECNICA ITEM
         ,TMASC_ITEM.MASCARA
+        ,TMASC_ITEM.ID ID_MASC
         ,TITENS_PDV.QTDE
         ,TITENS_PDV.PERC_COMIS
         ,TPEDIDOS_VENDA.VLR_LIQ
@@ -32,7 +33,7 @@ class MargemPedidos extends Controller
         ,FOCCO3I.TITENS_PDV
         ,FOCCO3I.TITENS_COMERCIAL
         ,FOCCO3I.TITENS_EMPR
-        ,FOCCO3I.TMASC_ITEM
+        ,FOCCO3I.TMASC_ITEM 
         ,FOCCO3I.TITENS
         ,FOCCO3I.TDIVISOES_VENDAS
         ,FOCCO3I.TCLIENTES
@@ -78,6 +79,7 @@ class MargemPedidos extends Controller
         ,TPEDIDOS_VENDA.VLR_LIQ
         ,TITENS.DESC_TECNICA
         ,TMASC_ITEM.MASCARA
+        ,TMASC_ITEM.ID
         ,TITENS_PDV.QTDE
         ,TPEDIDOS_VENDA.POS_PDV";
 
@@ -91,12 +93,14 @@ class MargemPedidos extends Controller
 
        foreach ($pedidos_itens as $key => $ped_itens) {
             $cod_item = $ped_itens->cod_item;
-            
+            $id_masc = $ped_itens->id_masc;
+
             $sql = "SELECT 
                         *
-                    FROM custos_log
+                    FROM custos_log_all
                     WHERE 
-                        cod_item = $cod_item";
+                        cod_item = $cod_item
+                    AND id_masc  = $id_masc";
 
             $custos_log  = DB::connection('mysql')->select($sql);
 

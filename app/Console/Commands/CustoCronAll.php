@@ -108,7 +108,6 @@ class CustoCronAll extends Command
                 'custo_manual' => number_format($custo_item_futuro,4,'.','')
             ]);
             }
-            break;
         }
         $this->info('Finalizado: Logs de Custos Criados');
 
