@@ -75,11 +75,11 @@
 										<th class='center'>Qtde</th>
 										<th class='center'>Comissão Fat</th>
 										
-										<th class='center'>Custo Atual</th>
+										<th class='texto-azul center'>Custo Atual</th>
 										<th 
-										<th class='center'>Margem Atual</th>
-										<th class='center'>Custo Futuro</th>
-										<th class='center'>Margem Futura</th>
+										<th class='texto-azul center'>Margem Atual</th>
+										<th class='texto-verde center'>Custo Futuro</th>
+										<th class='texto-verde center'>Margem Futura</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -95,15 +95,15 @@
 											{{$item->perc_comis}}%
 										</td>
 										
-										<td class='center'>{{number_format($item->custo_atual,2,',','.')}}</td>
+										<td class='texto-azul center'>{{number_format($item->custo_atual,2,',','.')}}</td>
 										<td data-toggle="tooltip" data-placement="top" 
-										title="{{$item->margem_atual_label}}" class='center'>{{number_format($item->margem_atual,2,',','.')}}%</td>
+										title="{{$item->margem_atual_label}}" class=' texto-azul center'>{{number_format($item->margem_atual,2,',','.')}}%</td>
 										<td 
-										class='center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
+										class='texto-verde center'>{{number_format($item->custo_futuro,2,',','.')}}</td>
 										<td 
 										data-toggle="tooltip" data-placement="top" 
 										title="{{$item->margem_futuro_label}}"
-										class='center'>{{number_format($item->margem_futuro,2,',','.')}}%</td>
+										class='texto-verde center'>{{number_format($item->margem_futuro,2,',','.')}}%</td>
 									</tr>
 
 									@endforeach
