@@ -71,6 +71,16 @@
 										</p>
 									</div>
 								</a>
+
+								<a href='/simulacao_cotacao' class="col-md-3 cinzinha">
+									<div class="metric">
+										<span class="icon"><i class="fa fa-play"></i></span>
+										<p>
+											<span class="number">&nbsp;</span>
+											<span class="title">Simulação Cotação</span>
+										</p>
+									</div>
+								</a>
 							</div>
 							
                         </div>

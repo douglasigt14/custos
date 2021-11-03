@@ -92,6 +92,7 @@
 						<li><a href="/avaliacao_custo" @if(Route::current()->uri() == 'avaliacao_custo') class="active" @endif><i class="fa fa-line-chart"></i> <span>Avaliação Vlr de Compra</span></a></li>
 						<li><a href="/margem_pedidos" @if(Route::current()->uri() == 'margem_pedidos') class="active" @endif><i class="fa fa-line-chart"></i> <span>Margens Pedidos</span></a></li>
 						<li><a href="/parametros" @if(Route::current()->uri() == 'parametros') class="active" @endif><i class="fa fa-cogs"></i> <span>Parâmetros</span></a></li>
+						<li><a href="/simulacao_cotacao" @if(Route::current()->uri() == 'simulacao_cotacao') class="active" @endif><i class="fa fa-play"></i> <span>Simulação Cotação</span></a></li>
 						
 					</ul>
 				</nav>

@@ -11,6 +11,7 @@ use App\Http\Controllers\AvaliacaoCusto;
 use App\Http\Controllers\Relatorios;
 use App\Http\Controllers\MargemPedidos;
 use App\Http\Controllers\Parametros;
+use App\Http\Controllers\SimulacaoCotacao;
 
 
 /*
@@ -36,6 +37,8 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/margem_pedidos', [MargemPedidos::class, 'index']);
     Route::get('/parametros', [Parametros::class, 'index']);
     Route::post('/parametros', [Parametros::class, 'salvar']);
+
+    Route::get('/simulacao_cotacao', [SimulacaoCotacao::class, 'index']);
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');
