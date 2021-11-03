@@ -89,7 +89,7 @@
 									<tr>
 										<td style="width: 30%">{{$item->cod_item}}-{{$item->item}}</td>
 										<td>{{$item->mascara}}</td>
-										<td class='center'>{{number_format(($item->vlr_ft_item/$item->qtde),2,',','.')}}</td>
+										<td class='center'>{{number_format(($item->vlr_ft_item),2,',','.')}}</td>
 										<td class='center'>{{$item->qtde}}</td>
 										<td class='center'>
 											{{$item->perc_comis}}%

@@ -25,10 +25,9 @@ class MargemPedidos extends Controller
         ,TITENS_PDV.QTDE
         ,TITENS_PDV.PERC_COMIS
         ,TPEDIDOS_VENDA.VLR_LIQ
-        ,ROUND(SUM((TITENS_PDV.QTDE * TITENS_PDV.VLR_LIQ) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_DESC_ZF) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_PIS_ZF) - (TITENS_PDV.QTDE * TITENS_PDV.VLR_COFINS_ZF)
-         - ROUND(TPEDIDOS_VENDA.VLR_DESC_PDV - (SELECT SUM((TITENS_PDV.QTDE * TITENS_PDV.VLR_PIS_ZF) + (TITENS_PDV.QTDE * TITENS_PDV.VLR_DESC_ZF) + (TITENS_PDV.QTDE * TITENS_PDV.VLR_COFINS_ZF))
-         FROM FOCCO3I.TITENS_PDV  WHERE TITENS_PDV.PDV_ID = TPEDIDOS_VENDA.ID),3 ) / (SELECT COUNT(TITENS_PDV.NUM_ITEM) FROM FOCCO3I.TITENS_PDV WHERE TPEDIDOS_VENDA.ID   = TITENS_PDV.PDV_ID)),2) vlr_ft_item
+        ,TITENS_PDV.VLR_LIQ vlr_ft_item
         ,TPEDIDOS_VENDA.POS_PDV POS
+        ,TPEDIDOS_VENDA.VLR_DESC_PDV desc_pdv
     FROM FOCCO3I.TPEDIDOS_VENDA
         ,FOCCO3I.TITENS_PDV
         ,FOCCO3I.TITENS_COMERCIAL
@@ -69,19 +68,18 @@ class MargemPedidos extends Controller
            $sql = $sql. " and TPEDIDOS_VENDA.NUM_PEDIDO IN (".$filtros['num_pedido'].")";
            $is_filtro = true;
         }
-
-        $sql = $sql." GROUP BY TCLIENTES.COD_CLI
-        ,TCLIENTES.DESCRICAO
-        ,TPEDIDOS_VENDA.NUM_PEDIDO
-        ,THIST_MOV_ITE_PDV.DT
-        ,TITENS.COD_ITEM
-        ,TITENS_PDV.PERC_COMIS
-        ,TPEDIDOS_VENDA.VLR_LIQ
-        ,TITENS.DESC_TECNICA
-        ,TMASC_ITEM.MASCARA
-        ,TMASC_ITEM.ID
-        ,TITENS_PDV.QTDE
-        ,TPEDIDOS_VENDA.POS_PDV";
+        // $sql = $sql." GROUP BY TCLIENTES.COD_CLI
+        // ,TCLIENTES.DESCRICAO
+        // ,TPEDIDOS_VENDA.NUM_PEDIDO
+        // ,THIST_MOV_ITE_PDV.DT
+        // ,TITENS.COD_ITEM
+        // ,TITENS_PDV.PERC_COMIS
+        // ,TPEDIDOS_VENDA.VLR_LIQ
+        // ,TITENS.DESC_TECNICA
+        // ,TMASC_ITEM.MASCARA
+        // ,TMASC_ITEM.ID
+        // ,TITENS_PDV.QTDE
+        // ,TPEDIDOS_VENDA.POS_PDV";
 
 
        $pedidos_itens = $is_filtro ?  DB::connection('oracle')->select($sql) : [] ;
@@ -119,14 +117,14 @@ class MargemPedidos extends Controller
                 $ped_itens->fator = $ped_itens->fator-$parametros[0]->valor;
             }
 
-            $ped_itens->margem_atual = (( 100-($ped_itens->fator)-$ped_itens->custo_atual*100/($ped_itens->vlr_ft_item/$ped_itens->qtde))/100)*100;
+            $ped_itens->margem_atual = (( 100-($ped_itens->fator)-$ped_itens->custo_atual*100/($ped_itens->vlr_ft_item))/100)*100;
 
-            $ped_itens->margem_atual_label = "(( 100-(".$ped_itens->fator.") - ".$ped_itens->custo_atual."*100/".$ped_itens->vlr_ft_item/$ped_itens->qtde.")/100)*100";
+            $ped_itens->margem_atual_label = "(( 100-(".$ped_itens->fator.") - ".$ped_itens->custo_atual."*100/".$ped_itens->vlr_ft_item.")/100)*100";
 
 
-            $ped_itens->margem_futuro = (( 100-($ped_itens->fator)-$ped_itens->custo_futuro*100/ ($ped_itens->vlr_ft_item/$ped_itens->qtde))/100)*100;
+            $ped_itens->margem_futuro = (( 100-($ped_itens->fator)-$ped_itens->custo_futuro*100/ ($ped_itens->vlr_ft_item))/100)*100;
 
-            $ped_itens->margem_futuro_label = "(( 100-(".$ped_itens->fator.") - ".$ped_itens->custo_futuro."*100/".$ped_itens->vlr_ft_item/$ped_itens->qtde.")/100)*100";
+            $ped_itens->margem_futuro_label = "(( 100-(".$ped_itens->fator.") - ".$ped_itens->custo_futuro."*100/".$ped_itens->vlr_ft_item.")/100)*100";
 
             if(isset( $filtros['ml']) and  $filtros['ml'] != '' ){
                 if($ped_itens->margem_atual >= $filtros['ml']){
