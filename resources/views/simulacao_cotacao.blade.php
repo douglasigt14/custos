@@ -25,16 +25,22 @@
 			</div>
 			<br><br>
 			<div class="row" id='info_cliente' style='display: none'>
-				<div class="col col-md-1"></div>
-				<div class="col col-md-5">
+				<div class="col col-md-4">
 					<label>Cliente</label>
 					<input type="text" name='cliente' id='cliente' class='form-control' readonly='true'>
 				</div>
-				<div class="col col-md-5">
+				<div class="col col-md-4">
 					<label>Representante</label>
 					<input type="text" name='representante' id='representante' class='form-control' readonly='true'>
 				</div>
-				<div class="col col-md-1"></div>
+				<div class="col col-md-2">
+					<label>Aumento</label>
+					<input type="text" name='aumento' id='aumento' class='form-control'>
+				</div>
+				<div class="col col-md-2">
+					<label>&nbsp;</label>
+					<button class="btn btn-primary btn-block">Aplicar</button>
+				</div>
 			</div>
 		</div>
 	</div>
