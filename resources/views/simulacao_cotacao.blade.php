@@ -10,9 +10,7 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col col-md-1">
-				</div>
-				<div class="col col-md-8">
+				<div class="col col-md-10">
 					<input value='{{$cliente_selected}}' list="clientes" class='form-control' id='busca_cliente' name="cliente_selected" required>
 						<datalist id="clientes">
 							@foreach ($clientes as $item)
@@ -24,17 +22,19 @@
 				<div class="col col-md-2">
 					<button type='button' onclick='buscar_info_clientes()' class="btn btn-primary btn-block">Buscar</button>
 				</div>
-				<div class="col col-md-1">
-				</div>
 			</div>
 			<br><br>
-			<div class="row" id='info_cliente' style='display: nome'>
-				<div class="col col-md-6">
-					<input type="text" class='form-control'>
+			<div class="row" id='info_cliente' style='display: none'>
+				<div class="col col-md-1"></div>
+				<div class="col col-md-5">
+					<label>Cliente</label>
+					<input type="text" name='cliente' id='cliente' class='form-control' readonly='true'>
 				</div>
-				<div class="col col-md-6">
-					<input type="text" class='form-control'>
+				<div class="col col-md-5">
+					<label>Representante</label>
+					<input type="text" name='representante' id='representante' class='form-control' readonly='true'>
 				</div>
+				<div class="col col-md-1"></div>
 			</div>
 		</div>
 	</div>
@@ -45,11 +45,27 @@
 		function buscar_info_clientes(){
 			let busca_cliente = document.querySelector('#busca_cliente').value;
 			let info_cliente = document.querySelector('#info_cliente');
+			let cliente = document.querySelector('#cliente');
+			let representante = document.querySelector('#representante');
+			
 			let result = busca_cliente.split("-");
 			let cod_cli = result[0];
-			console.log(cod_cli);
+			
 
-			info_cliente.style.display = 'block';
+			let url = "{{asset('')}}";
+			const URL_TO_FETCH = url+"buscar_clientes_info/"+cod_cli;
+			fetch(URL_TO_FETCH, {
+				method: 'get' //opcional 
+			})
+			.then((response) => response.json())
+         	.then((json) => {
+				 info_cliente.style.display = 'block';
+				cliente.value = json.cod_e_descricao;
+				representante.value = json.representante;
+			})
+			.catch(function(err) { 
+				console.error(err); 
+			});
 
 		}
 	</script>
