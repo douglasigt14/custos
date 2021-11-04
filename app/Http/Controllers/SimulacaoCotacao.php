@@ -8,6 +8,8 @@ use DB;
 class SimulacaoCotacao extends Controller
 {
     public function index(){
+        $cliente_selected = $_GET['cliente_selected'] ?? NULL;
+
         $sqlClientes = "SELECT TCLIENTES1.COD_CLI COD_CLI,
         TCLIENTES1.COD_CLI||'-'||TCLIENTES1.DESCRICAO COD_E_DESCRICAO,
         TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO REPRESENTANTE
@@ -52,12 +54,58 @@ class SimulacaoCotacao extends Controller
         TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO";
      
      $clientes = DB::connection('oracle')->select($sqlClientes);
-        return view('simulacao_cotacao', compact(['clientes']));
+        return view('simulacao_cotacao', compact(['clientes','cliente_selected']));
     }
+    public function buscar_clientes_info($cod_cli = null){
+        $cliente_selected = $_GET['cliente_selected'] ?? NULL;
 
-    public function buscar_clientes_info(Request $request){
-        $dados = (object) $request->all();
-        dd($dados);
-        return back();        
+        $sqlClientes = "SELECT TCLIENTES1.COD_CLI COD_CLI,
+        TCLIENTES1.COD_CLI||'-'||TCLIENTES1.DESCRICAO COD_E_DESCRICAO,
+        TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO REPRESENTANTE
+   FROM focco3i.TCLI_VINC_CLI TCLI_VINC_CLI,
+        focco3i.TCLIENTES TCLIENTES1,
+        focco3i.TESTABELECIMENTOS TESTABELECIMENTOS,
+       -- focco3i.TCLIENTES TCLIENTES,
+        focco3i.TEMP_CLI TEMP_CLI,
+        focco3i.TEST_REP TEST_REP,
+        focco3i.TREPRESENTANTES TREPRESENTANTES,
+        focco3i.TCIDADES TCIDADES,
+        focco3i.TEST_MICROREG TEST_MICROREG,
+        focco3i.TMICROREGIOES TMICROREGIOES,
+        focco3i.TREGIOES TREGIOES,
+        focco3i.TEMP_EST TEMP_EST,
+        focco3i.TUFS TUFS
+  WHERE TCLIENTES1.ID = TCLI_VINC_CLI.CLI_ID_DEST
+    --AND TCLIENTES.ID = TCLI_VINC_CLI.CLI_ID_ORIG
+    AND TCLIENTES1.ID = TESTABELECIMENTOS.CLI_ID
+    AND TCIDADES.ID = TESTABELECIMENTOS.CID_ID
+    AND TCLIENTES1.ID = TEMP_CLI.CLI_ID
+    AND TREPRESENTANTES.ID = TEST_REP.REP_ID
+    AND TEMP_CLI.ID = TEST_REP.EMPCLI_ID
+    AND TESTABELECIMENTOS.ID = TEST_REP.EST_ID
+    AND TUFS.ID = TCIDADES.UF_ID
+    AND TMICROREGIOES.ID = TEST_MICROREG.MREG_ID
+    AND TESTABELECIMENTOS.ID = TEST_MICROREG.EST_ID
+    AND TEMP_CLI.ID = TEST_MICROREG.EMPCLI_ID
+    AND TREGIOES.ID = TMICROREGIOES.REG_ID
+    AND TEMP_CLI.ID = TEMP_EST.EMPCLI_ID
+    AND TESTABELECIMENTOS.ID = TEMP_EST.EST_ID
+    AND (TESTABELECIMENTOS.COD_EST = 1)
+    AND (TESTABELECIMENTOS.TP_PES = 'J')
+    AND (TEMP_CLI.ATIVO = 1)
+    AND (TEMP_EST.ATIVO = 1)
+    AND (TCLI_VINC_CLI.ATIVO = 1)
+    AND (TEST_REP.RANKING = 1)
+    AND TEMP_CLI.EMPR_ID = 1
+    AND TCLIENTES1.COD_CLI = $cod_cli
+ GROUP BY 
+     TCLIENTES1.COD_CLI,
+        TCLIENTES1.COD_CLI||'-'||TCLIENTES1.DESCRICAO,
+        TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO";
+     
+     $clientes = DB::connection('oracle')->select($sqlClientes);
+     $dados_cliente =  $clientes[0] ?? NULL;
+    
+     return json_encode($dados_cliente);
     }
 }
