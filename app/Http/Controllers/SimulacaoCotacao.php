@@ -54,4 +54,10 @@ class SimulacaoCotacao extends Controller
      $clientes = DB::connection('oracle')->select($sqlClientes);
         return view('simulacao_cotacao', compact(['clientes']));
     }
+
+    public function buscar_clientes_info(Request $request){
+        $dados = (object) $request->all();
+        dd($dados);
+        return back();        
+    }
 }

@@ -13,15 +13,19 @@
 				<div class="col col-md-1">
 				</div>
 				<div class="col col-md-8">
-					<input list="clientes" class='form-control' name="cliente">
+					<form action="/simulacao_cotacao/buscar_clientes_info" method="POST">
+					@csrf
+					<input list="clientes" class='form-control' name="cliente" required>
 						<datalist id="clientes">
 							@foreach ($clientes as $item)
 							   <option value="{{$item->cod_e_descricao}}">
 							@endforeach
 						</datalist>
+					
 				</div>
 				<div class="col col-md-2">
-					<button class="btn btn-primary btn-block">Buscar</button>
+					<button type='submit' class="btn btn-primary btn-block">Buscar</button>
+				</form>
 				</div>
 				<div class="col col-md-1">
 				</div>
