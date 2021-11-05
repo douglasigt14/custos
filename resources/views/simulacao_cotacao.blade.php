@@ -6,7 +6,7 @@
 	<!-- OVERVIEW -->
 	<div class="panel panel-headline">
 		<div class="panel-heading">
-			<h3 class="panel-title">Simulação de Cotação</h3>
+			<h3 class="panel-title">@{{ titulo }}</h3>
 		</div>
 		<div class="panel-body">
 			<div class="row">
@@ -145,6 +145,11 @@
 				console.error(err); 
 			});
 
+		}
+
+
+		function buscar_info_itens(){
+			// let busca_cliente = document.querySelector('#busca_cliente').value;
 		}
 	</script>
 @endpush

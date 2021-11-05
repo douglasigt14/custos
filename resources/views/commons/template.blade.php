@@ -22,7 +22,7 @@
      @stack('styles')
 </head>
 {{-- class="layout-fullwidth" --}}
-<body @yield('tela_inteira') > 
+<body  ng-app="App"  ng-controller="Controller" ng-cloak @yield('tela_inteira') > 
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
@@ -173,6 +173,9 @@
 	<script src="{{url('assets/vendor/bootstrap4-toggle/js/bootstrap4-toggle.min.js')}}"></script>
 	<script src="{{url('assets/scripts/klorofil-common.js')}}"></script>
 	<script src="{{url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+	<script src="{{url('js\angular\angular.min.js')}}"></script>
+	<script src="{{url('js\controle.js')}}"></script>
 	<script>
 		 function mostrarModalSenha_template(event) {
                 const button = event.currentTarget
