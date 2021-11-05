@@ -40,6 +40,7 @@ Route::middleware(MyAuth::class)->group(function () {
 
     Route::get('/simulacao_cotacao', [SimulacaoCotacao::class, 'index']);
     Route::get('/buscar_clientes_info/{cod_cli}', [SimulacaoCotacao::class, 'buscar_clientes_info']);
+    Route::get('/buscar_itens_info/{cod_item}', [SimulacaoCotacao::class, 'buscar_itens_info']);
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');
