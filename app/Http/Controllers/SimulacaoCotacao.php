@@ -10,6 +10,10 @@ class SimulacaoCotacao extends Controller
     public function index(){
         $cliente_selected = $_GET['cliente_selected'] ?? NULL;
 
+        $dt_inicial = date('Y-m-d');
+
+        $dt_final = date('Y').'-12-31';
+
         $sqlClientes = "SELECT TCLIENTES1.COD_CLI COD_CLI,
         TCLIENTES1.COD_CLI||'-'||TCLIENTES1.DESCRICAO COD_E_DESCRICAO,
         TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO REPRESENTANTE
@@ -54,7 +58,7 @@ class SimulacaoCotacao extends Controller
         TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO";
      
      $clientes = DB::connection('oracle')->select($sqlClientes);
-        return view('simulacao_cotacao', compact(['clientes','cliente_selected']));
+        return view('simulacao_cotacao', compact(['clientes','cliente_selected','dt_inicial','dt_final']));
     }
     public function buscar_clientes_info($cod_cli = null){
         $cliente_selected = $_GET['cliente_selected'] ?? NULL;
