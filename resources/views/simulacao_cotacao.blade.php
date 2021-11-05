@@ -66,6 +66,11 @@
 						  </div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col col-md-3">
+						
+					</div>
+				</div>
 			</div><!-- FIM INFO CLIENTE VIA JAVASCRIPT-->
 		</div>
 	</div>

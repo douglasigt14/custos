@@ -57,6 +57,41 @@ class SimulacaoCotacao extends Controller
         TCLIENTES1.COD_CLI||'-'||TCLIENTES1.DESCRICAO,
         TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO";
      
+     $sql_itens = "SELECT TITENS.COD_ITEM
+                        ,TITENS.COD_ITEM||'-'||TITENS.DESC_TECNICA DESCRICAO
+                    ,REPLACE(TPRECOSVEN_IT.PRECO,',','.') PRECO
+                    ,TPRECOSVEN.ID
+                    FROM focco3i.TPRECOSVEN
+                    ,focco3i.TPRECOSVEN_IT 
+                    ,focco3i.TITENS_EMPR
+                    ,focco3i.TITENS_COMERCIAL
+                    ,focco3i.TITENS
+                    ,focco3i.TGRP_CLAS_ITE
+                    WHERE TPRECOSVEN.ID          =  TPRECOSVEN_IT.TPRVEN_ID
+                    AND TITENS_EMPR.ID         =  TITENS_COMERCIAL.ITEMPR_ID
+                    AND TPRECOSVEN_IT.ITCM_ID  =  TITENS_COMERCIAL.ID 
+                    AND TITENS.ID              =  TITENS_EMPR.ITEM_ID
+                    AND TGRP_CLAS_ITE.ID       =  TITENS_COMERCIAL.GRP_CLAS_ID
+                    AND TGRP_CLAS_ITE.COD_GRP_ITE LIKE '60%'
+                    AND TPRECOSVEN.COD_PREVEN IN (1,9005)
+                    AND TPRECOSVEN_IT.SIT = 1";
+
+        $itens =  DB::connection('oracle')->select($sql_itens);
+    
+        foreach ($itens as $key => $item) {
+            $sql = "SELECT 
+                        *
+                    FROM custos_log
+                    WHERE 
+                        cod_item = $item->cod_item";
+
+            $custos_log  = DB::connection('mysql')->select($sql);
+
+            $item->custo_atual = $custos_log[0]->custo_manual ?? NULL;
+            $item->custo_futuro = $custos_log[0]->custo_focco ?? NULL;
+            $item->categoria = $custos_log[0]->categoria ?? NULL;
+        }
+
      $clientes = DB::connection('oracle')->select($sqlClientes);
         return view('simulacao_cotacao', compact(['clientes','cliente_selected','dt_inicial','dt_final']));
     }
@@ -106,7 +141,7 @@ class SimulacaoCotacao extends Controller
      TCLIENTES1.COD_CLI,
         TCLIENTES1.COD_CLI||'-'||TCLIENTES1.DESCRICAO,
         TREPRESENTANTES.COD_REP||'-'||TREPRESENTANTES.DESCRICAO";
-     
+
      $clientes = DB::connection('oracle')->select($sqlClientes);
      $dados_cliente =  $clientes[0] ?? NULL;
     
