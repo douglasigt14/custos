@@ -73,7 +73,7 @@ class SimulacaoCotacao extends Controller
                     AND TITENS.ID              =  TITENS_EMPR.ITEM_ID
                     AND TGRP_CLAS_ITE.ID       =  TITENS_COMERCIAL.GRP_CLAS_ID
                     AND TGRP_CLAS_ITE.COD_GRP_ITE LIKE '60%'
-                    AND TPRECOSVEN.COD_PREVEN IN (1,9005)
+                    AND TPRECOSVEN.COD_PREVEN IN (1)
                     AND TPRECOSVEN_IT.SIT = 1";
 
         $itens =  DB::connection('oracle')->select($sql_itens);
@@ -93,7 +93,7 @@ class SimulacaoCotacao extends Controller
         }
 
      $clientes = DB::connection('oracle')->select($sqlClientes);
-        return view('simulacao_cotacao', compact(['clientes','cliente_selected','dt_inicial','dt_final']));
+        return view('simulacao_cotacao', compact(['clientes','cliente_selected','dt_inicial','dt_final','itens']));
     }
     public function buscar_clientes_info($cod_cli = null){
         $cliente_selected = $_GET['cliente_selected'] ?? NULL;
