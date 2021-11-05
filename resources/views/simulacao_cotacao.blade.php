@@ -27,7 +27,7 @@
 			<div  id='info_cliente' style='display: none'>
 
 			<div class="row">
-				<div class="col col-md-4">
+				<div class="col col-md-5">
 					<label>Cliente</label>
 					<input type="text" name='cliente' id='cliente' class='form-control' readonly='true'>
 				</div>
@@ -35,7 +35,7 @@
 					<label>Representante</label>
 					<input type="text" name='representante' id='representante' class='form-control' readonly='true'>
 				</div>
-				<div class="col col-md-3">
+				<div class="col col-md-2">
 					<label>Aumento</label>
 					<input type="text" name='aumento' id='aumento' class='form-control'>
 				</div>
@@ -45,15 +45,15 @@
 				</div>
 			</div><br>
 			<div class="row">
-				<div class="col col-md-4">
+				<div class="col col-md-5">
 					<label>Data Inicial</label>
 					<input type="date" name="dt_inicial" id="dt_inicial" class="form-control">
 				</div>
-				<div class="col col-md-4">
+				<div class="col col-md-5">
 					<label>Data Final</label>
 					<input type="date" name="dt_final" id="dt_final" class="form-control">
 				</div>
-				<div class="col col-md-4">
+				<div class="col col-md-2">
 					<label>Aliquota</label>
 					<input type="text" name="aliquota" id="aliquota" class="form-control">
 				</div>
