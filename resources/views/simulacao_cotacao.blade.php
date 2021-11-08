@@ -66,7 +66,7 @@
 						  </div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row" ng-repeat="item in itens track by $index">
 					<div class="col col-md-3">
 						<label>Item</label>
 						<input list="itens" class='form-control' id='item' name="itens[]" required>
@@ -106,12 +106,12 @@
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button class="btn btn-danger btn-sm btn-block"><b>-</b></button>
+						<button ng-click="remover(item,$index)" class="btn btn-danger btn-sm btn-block"><b>-</b></button>
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button class="btn btn-success btn-sm btn-block"><b>+</b></button>
-					</div
+						<button ng-click="inserir(item)" class="btn btn-success btn-sm btn-block"><b>+</b></button>
+					</div><br>
 				</div>
 			</div><!-- FIM INFO CLIENTE VIA JAVASCRIPT-->
 		</div>
