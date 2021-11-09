@@ -175,7 +175,7 @@
 	<script src="{{url('assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 
 	<script src="{{url('js\angular\angular.min.js')}}"></script>
-	<script src="{{url('js\controle.js')}}"></script>
+	<script src="{{url('js\controle.js')}}?{{ time() }}"></script>
 	<script>
 		 function mostrarModalSenha_template(event) {
                 const button = event.currentTarget

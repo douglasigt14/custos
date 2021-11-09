@@ -69,7 +69,7 @@
 				<div class="row" ng-repeat="item in itens track by $index">
 					<div class="col col-md-3">
 						<label>Item</label>
-						<input list="itens" class='form-control' id='item' name="itens[]" required>
+						<input autocomplete="off" list="itens" class='form-control' id='item' name="itens[]" required>
 						<datalist id="itens">
 							@foreach ($itens as $item)
 							   <option value="{{$item->descricao}}">
@@ -78,15 +78,15 @@
 					</div>
 					<div class="col col-md-1">
 						<label>VPC</label>
-						<input type="text" name='vpcs[]'  class="form-control">
+						<input autocomplete="off" type="text" name='vpcs[]'  class="form-control">
 					</div>
 					<div class="col col-md-1">
 						<label>COM</label>
-						<input type="text" name='coms[]'  class="form-control">
+						<input autocomplete="off" type="text" name='coms[]'  class="form-control">
 					</div>
 					<div class="col col-md-1">
 						<label>P.NEG</label>
-						<input type="text" name='precos_n[]'  class="form-control">
+						<input autocomplete="off"type="text" name='precos_n[]'  class="form-control">
 					</div>
 					<div class="col col-md-1">
 						<label>P.CHEIO</label>
