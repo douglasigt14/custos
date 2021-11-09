@@ -102,15 +102,15 @@
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button class="btn btn-primary btn-sm btn-block"><b>x</b></button>
+						<button class="btn btn-primary btn-sm btn-block"><b><i class="fa fa-calculator"></i></b></button>
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button ng-click="remover(item,$index)" class="btn btn-danger btn-sm btn-block"><b>-</b></button>
+						<button ng-click="remover(item,$index)" class="btn btn-danger btn-sm btn-block"><b><i class="fa fa-minus"></i></b></button>
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button ng-click="inserir(item)" class="btn btn-success btn-sm btn-block"><b>+</b></button>
+						<button ng-click="inserir(item)" class="btn btn-success btn-sm btn-block"><b><i class="fa fa-plus"></i></b></button>
 					</div><br>
 				</div>
 			</div><!-- FIM INFO CLIENTE VIA JAVASCRIPT-->
