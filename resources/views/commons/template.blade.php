@@ -18,6 +18,8 @@
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="{{asset('assets/css/demo.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/print.css')}}">
+
+	<link rel="stylesheet" href="{{asset('css\bootstrap4-toggle.min.css')}}">
 	
      @stack('styles')
 </head>
@@ -176,6 +178,9 @@
 
 	<script src="{{url('js\angular\angular.min.js')}}"></script>
 	<script src="{{url('js\controle.js')}}?{{ time() }}"></script>
+
+	<script src="{{url('js\bootstrap4-toggle.min.js')}}"></script>
+
 	<script>
 		 function mostrarModalSenha_template(event) {
                 const button = event.currentTarget

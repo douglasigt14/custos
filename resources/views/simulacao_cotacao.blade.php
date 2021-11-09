@@ -45,17 +45,20 @@
 					</div> --}}
 				</div><br>
 				<div class="row">
-					<div class="col col-md-5">
+					<div class="col col-md-4">
 						<label>Data Inicial</label>
 						<input type="date" value='{{$dt_inicial}}' name="dt_inicial" id="dt_inicial" class="form-control">
 					</div>
-					<div class="col col-md-5">
+					<div class="col col-md-4">
 						<label>Data Final</label>
 						<input type="date" value='{{$dt_final}}' name="dt_final" id="dt_final" class="form-control">
 					</div>
 					<div class="col col-md-2">
 						<label>Aliquota</label>
 						<input type="text" name="aliquota" id="aliquota" class="form-control">
+					</div>
+					<div class="col col-md-2">
+						
 					</div>
 				</div><br>
 				<div class="row">
@@ -90,15 +93,15 @@
 					</div>
 					<div class="col col-md-1">
 						<label>P.CHEIO</label>
-						<input type="text" ng-model='item.preco_nordeste' ng-readonly="true" name='precos_c[]'  class="form-control">
+						<input style='background-color: #d3d3d3' type="text" ng-model='item.preco_nordeste' ng-readonly="true" name='precos_c[]'  class="form-control"  step=0.0001  min=0 onBlur="if(this.value==''){this.value='0'};" >
 					</div>
 					<div class="col col-md-1">
 						<label>DESC</label>
-						<input type="text" ng-model='item.desconto' ng-readonly="true" name='descs[]'  class="form-control">
+						<input style='background-color: #d3d3d3' type="text" ng-model='item.desconto' ng-readonly="true" name='descs[]'  step=0.0001  min=0 onBlur="if(this.value==''){this.value='0'};"  class="form-control">
 					</div>
 					<div class="col col-md-1">
 						<label>ML</label>
-						<input type="text" ng-model='item.ml' ng-readonly="true" name='mls[]'  class="form-control">
+						<input style='background-color: #d3d3d3' type="text" ng-model='item.ml' ng-readonly="true" name='mls[]'  step=0.0001  min=0 onBlur="if(this.value==''){this.value='0'};"   class="form-control">
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
