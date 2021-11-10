@@ -2,7 +2,11 @@
 
 @section('conteudo')
 
-		
+	<style>
+		.campos{
+			padding: 0.1rem !important;
+		}
+	</style>	
 	<!-- OVERVIEW -->
 	<div class="panel panel-headline">
 		<div class="panel-heading">
@@ -70,7 +74,7 @@
 					</div>
 				</div>
 				<div class="row" ng-repeat="item in itens track by $index">
-					<div class="col col-md-3">
+					<div class="col campos col-md-3">
 						<label>Item</label>
 						<input autocomplete="off" list="itens" class='form-control' ng-model='item.item' id='item' name="itens[]" required>
 						<datalist id="itens">
@@ -79,27 +83,27 @@
 							@endforeach
 						</datalist>
 					</div>
-					<div class="col col-md-1">
+					<div class="col campos col-md-1">
 						<label>VPC</label>
 						<input autocomplete="off" ng-model='item.vpc' type="text" name='vpcs[]'  class="form-control">
 					</div>
-					<div class="col col-md-1">
+					<div class="col campos col-md-1">
 						<label>COM</label>
 						<input autocomplete="off" ng-model='item.com' type="text" name='coms[]'  class="form-control">
 					</div>
-					<div class="col col-md-1">
+					<div class="col campos col-md-1">
 						<label>P.NEG</label>
 						<input autocomplete="off"type="text" ng-model='item.preco' name='precos[]'  class="form-control">
 					</div>
-					<div class="col col-md-1">
+					<div class="col campos col-md-1">
 						<label>P.CHEIO</label>
 						<input style='background-color: #d3d3d3' type="text" ng-model='item.preco_nordeste' ng-readonly="true" name='precos_c[]'  class="form-control"  step=0.0001  min=0 onBlur="if(this.value==''){this.value='0'};" >
 					</div>
-					<div class="col col-md-1">
+					<div class="col campos col-md-1">
 						<label>DESC</label>
 						<input style='background-color: #d3d3d3' type="text" ng-model='item.desconto' ng-readonly="true" name='descs[]'  step=0.0001  min=0 onBlur="if(this.value==''){this.value='0'};"  class="form-control">
 					</div>
-					<div class="col col-md-1">
+					<div class="col campos col-md-1">
 						<label>ML</label>
 						<input style='background-color: #d3d3d3' type="text" ng-model='item.ml' ng-readonly="true" name='mls[]'  step=0.0001  min=0 onBlur="if(this.value==''){this.value='0'};"   class="form-control">
 					</div>

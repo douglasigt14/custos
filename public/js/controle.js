@@ -4,14 +4,14 @@ angular.module('App', [])
               $scope.titulo = 'Simulação Cotação';
 
               $scope.itens = [
-                {item: '',vpc: 0, com: 0, preco: 0, custo: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'},
+                {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'},
               ];
 
               $scope.lista_itens = [];
 
 
               $scope.inserir = function(){
-                $scope.itens.push({item: '',vpc: 0, com: 0, preco: 0, custo: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'});
+                $scope.itens.push({item: '',vpc: 0, com: 0, preco: 0,  custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'});
                // $scope.remover_lista();
             };
 
@@ -41,7 +41,8 @@ angular.module('App', [])
               })
               .then((response) => response.json())
                   .then((json) => {
-                    console.log(json);
+                    $scope.itens[i].preco_nordeste = json.preco_nordeste;
+                    
               })
               .catch(function(err) { 
                 console.error(err); 

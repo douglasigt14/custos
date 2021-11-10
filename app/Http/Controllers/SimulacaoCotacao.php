@@ -151,7 +151,7 @@ class SimulacaoCotacao extends Controller
     public function buscar_itens_info($cod_item = null){
         $sql_itens = "SELECT TITENS.COD_ITEM
                         ,TITENS.COD_ITEM||'-'||TITENS.DESC_TECNICA DESCRICAO
-                    ,REPLACE(TPRECOSVEN_IT.PRECO,',','.') PRECO
+                    ,REPLACE(TPRECOSVEN_IT.PRECO,',','.') PRECO_NORDESTE
                     ,TPRECOSVEN.ID
                     FROM focco3i.TPRECOSVEN
                     ,focco3i.TPRECOSVEN_IT 
