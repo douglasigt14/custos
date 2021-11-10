@@ -105,7 +105,7 @@
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button class="btn btn-primary btn-sm btn-block"><b><i class="fa fa-calculator"></i></b></button>
+						<button ng-click="calcularML(item.item,$index)" class="btn btn-primary btn-sm btn-block"><b><i class="fa fa-calculator"></i></b></button>
 					</div>
 					
 					<div class="col col-md-1">

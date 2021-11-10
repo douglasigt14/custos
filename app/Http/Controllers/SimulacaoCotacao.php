@@ -186,7 +186,7 @@ class SimulacaoCotacao extends Controller
             $item->custo_futuro = $custos_log[0]->custo_focco ?? NULL;
             $item->categoria = $custos_log[0]->categoria ?? NULL;
             
-            return json_encode($iten); 
+            return json_encode($item); 
         }
         else{
             return [];

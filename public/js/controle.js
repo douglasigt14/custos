@@ -29,6 +29,26 @@ angular.module('App', [])
                 
             };
 
+            $scope.calcularML = function(item,i){
+              let partes = item.split('-'); 
+              let cod_item = partes[0];
+              let getUrl = window.location;
+              let url = getUrl .protocol + "//" + getUrl.host+'/';
+          
+              const URL_TO_FETCH = url+"buscar_itens_info/"+cod_item;
+              fetch(URL_TO_FETCH, {
+                method: 'get' //opcional 
+              })
+              .then((response) => response.json())
+                  .then((json) => {
+                    console.log(json);
+              })
+              .catch(function(err) { 
+                console.error(err); 
+              });
+
+            }
+
               $scope.voltar = function(pagina){
                 console.log(pagina);
 								window.location.assign(pagina);
