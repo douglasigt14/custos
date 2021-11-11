@@ -93,7 +93,7 @@ angular.module('App', [])
                   var oldstr= $scope.itens[i].com.toString();  
                   $scope.itens[i].com  = oldstr.toString().replace(".",",");
                   
-                  if($scope.itens[i].custo_atual != 0 ){
+                  if( custo != 0 ){
 
                     $scope.itens[i].ml =  ( (100 - (parseFloat(fator) + vpc + com + parseFloat($scope.aliquota) )) - (custo*100) / preco); 
 
