@@ -9,6 +9,8 @@ angular.module('App', [])
 
               $scope.lista_itens = [];
 
+              $scope.aliquota = 0;
+
 
               $scope.inserir = function(){
                 $scope.itens.push({item: '',vpc: 0, com: 0, preco: 0,  custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'});
@@ -30,6 +32,7 @@ angular.module('App', [])
             };
 
             $scope.calcularML = function(item,i){
+              let fator = 54.6;
               let partes = item.split('-'); 
               let cod_item = partes[0];
               let getUrl = window.location;
@@ -89,8 +92,17 @@ angular.module('App', [])
 
                   var oldstr= $scope.itens[i].com.toString();  
                   $scope.itens[i].com  = oldstr.toString().replace(".",",");
+                  
+                  if($scope.itens[i].custo_atual != 0 ){
 
-                    console.log($scope.itens[i]);
+                    $scope.itens[i].ml =  ( (100 - (parseFloat(fator) + vpc + com + parseFloat($scope.aliquota) )) - (custo*100) / preco); 
+
+                   $scope.itens[i].ml = $scope.itens[i].ml.toFixed(2);
+
+                   var oldstr= $scope.itens[i].ml.toString();
+                   $scope.itens[i].ml  = oldstr.toString();//.replace(".","A");
+                }
+                  //  console.log($scope.itens[i]);
               })
               .catch(function(err) { 
                 console.error(err); 
