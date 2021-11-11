@@ -42,7 +42,9 @@ angular.module('App', [])
               .then((response) => response.json())
                   .then((json) => {
                     $scope.itens[i].preco_nordeste = json.preco_nordeste;
-                    
+                    $scope.itens[i].custo_atual = json.custo_atual;
+                    $scope.itens[i].custo_futuro = json.custo_futuro;
+                    console.log($scope.itens[i]);
               })
               .catch(function(err) { 
                 console.error(err); 
