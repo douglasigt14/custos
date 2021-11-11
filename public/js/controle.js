@@ -44,6 +44,52 @@ angular.module('App', [])
                     $scope.itens[i].preco_nordeste = json.preco_nordeste;
                     $scope.itens[i].custo_atual = json.custo_atual;
                     $scope.itens[i].custo_futuro = json.custo_futuro;
+
+                    vpc = parseFloat($scope.itens[i].vpc);
+                    com = parseFloat($scope.itens[i].com);
+
+                    var oldstr= $scope.itens[i].preco.toString();  
+                    $scope.itens[i].preco  = oldstr.toString().replace(",",".");
+                    preco = parseFloat($scope.itens[i].preco);
+
+
+                    var oldstr= $scope.itens[i].vpc.toString();  
+                    $scope.itens[i].vpc  = oldstr.toString().replace(",",".");
+                    vpc = parseFloat($scope.itens[i].vpc);
+
+
+                    var oldstr= $scope.itens[i].com.toString();  
+                    $scope.itens[i].com  = oldstr.toString().replace(",",".");
+                    com = parseFloat($scope.itens[i].com);
+
+                    custo = parseFloat($scope.itens[i].custo_atual);
+
+                    preco_nordeste = parseFloat($scope.itens[i].preco_nordeste);
+
+                  $scope.itens[i].desconto = ((((preco / preco_nordeste)*100)-100)*-1);
+
+                  $scope.itens[i].desconto = parseFloat($scope.itens[i].desconto);
+                  $scope.itens[i].desconto =  $scope.itens[i].desconto.toFixed(4); 
+                  var oldstr= $scope.itens[i].desconto.toString();  
+                  $scope.itens[i].desconto  = oldstr.toString().replace(".",",");
+                  $scope.itens[i].desconto  = $scope.itens[i].desconto+"%";
+
+                 $scope.itens[i].preco_nordeste = parseFloat($scope.itens[i].preco_nordeste);
+                  $scope.itens[i].preco_nordeste =  $scope.itens[i].preco_nordeste.toFixed(2); 
+                  var oldstr= $scope.itens[i].preco_nordeste.toString();  
+                  $scope.itens[i].preco_nordeste  = oldstr.toString().replace(".",",");
+
+                  var oldstr= $scope.itens[i].preco.toString();  
+                  $scope.itens[i].preco  = oldstr.toString().replace(".",",");
+
+
+                  var oldstr= $scope.itens[i].vpc.toString();  
+                  $scope.itens[i].vpc  = oldstr.toString().replace(".",",");
+
+
+                  var oldstr= $scope.itens[i].com.toString();  
+                  $scope.itens[i].com  = oldstr.toString().replace(".",",");
+
                     console.log($scope.itens[i]);
               })
               .catch(function(err) { 
