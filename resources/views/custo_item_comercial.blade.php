@@ -54,7 +54,7 @@
 											<th>MASC</th>
 											<th>UM</th>
 											<th class="center">QTDE</th>
-											<th class="center" colspan="3">CUSTO ATUAl</th>
+											<th class="center" colspan="3">CUSTO ATUAL</th>
 											<th class="center" colspan="3">CUSTO FUTURO</th>
 										</tr>
 									</thead>
