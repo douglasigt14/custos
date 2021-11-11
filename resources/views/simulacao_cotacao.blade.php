@@ -59,10 +59,14 @@
 					</div>
 					<div class="col col-md-2">
 						<label>Aliquota</label>
-						<input type="text" name="aliquota" id="aliquota" class="form-control">
+						<input type="text" name="aliquota" ng-model='aliquota' id="aliquota" class="form-control">
 					</div>
 					<div class="col col-md-2">
-						
+						<label>Custo</label>
+						<select name="select_custo" class='form-control' ng-model="select_custo">
+							<option value="custo_atual">Custo Atual</option>
+							<option value="custo_futuro">Custo Futuro</option>
+						</select>
 					</div>
 				</div><br>
 				<div class="row">

@@ -11,6 +11,8 @@ angular.module('App', [])
 
               $scope.aliquota = 0;
 
+              $scope.select_custo = 'custo_atual';
+
 
               $scope.inserir = function(){
                 $scope.itens.push({item: '',vpc: 0, com: 0, preco: 0,  custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'});
@@ -65,7 +67,7 @@ angular.module('App', [])
                     $scope.itens[i].com  = oldstr.toString().replace(",",".");
                     com = parseFloat($scope.itens[i].com);
 
-                    custo = parseFloat($scope.itens[i].custo_atual);
+                    custo = $scope.select_custo == 'custo_atual' ? parseFloat($scope.itens[i].custo_atual) : parseFloat($scope.itens[i].custo_futuro);
 
                     preco_nordeste = parseFloat($scope.itens[i].preco_nordeste);
 
