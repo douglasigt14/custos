@@ -34,7 +34,6 @@ angular.module('App', [])
             };
 
             $scope.calcularML = function(item,i){
-              let fator = 54.6;
               let partes = item.split('-'); 
               let cod_item = partes[0];
               let getUrl = window.location;
@@ -49,6 +48,8 @@ angular.module('App', [])
                     $scope.itens[i].preco_nordeste = json.preco_nordeste;
                     $scope.itens[i].custo_atual = json.custo_atual;
                     $scope.itens[i].custo_futuro = json.custo_futuro;
+
+                    let fator = json.fator;
 
                     vpc = parseFloat($scope.itens[i].vpc);
                     com = parseFloat($scope.itens[i].com);
