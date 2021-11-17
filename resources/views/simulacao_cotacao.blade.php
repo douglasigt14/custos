@@ -28,6 +28,7 @@
 				</div>
 			</div>
 			<br><br>
+			<form action="/simulacao_cotacao/salvar">
 			<div  id='info_cliente' style='display: none'>
 
 				<div class="row">
@@ -113,25 +114,26 @@
 					</div>
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button ng-click="calcularML(item.item,$index)" class="btn btn-primary btn-sm btn-block"><b><i class="fa fa-calculator"></i></b></button>
+						<button  type='button' ng-click="calcularML(item.item,$index)" class="btn btn-primary btn-sm btn-block"><b><i class="fa fa-calculator"></i></b></button>
 					</div>
 					
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button ng-click="inserir(item)" class="btn btn-success btn-sm btn-block"><b><i class="fa fa-plus"></i></b></button>
+						<button  type='button' ng-click="inserir(item)" class="btn btn-success btn-sm btn-block"><b><i class="fa fa-plus"></i></b></button>
 					</div>
 
 					<div class="col col-md-1">
 						<label>&nbsp;</label>
-						<button ng-click="remover(item,$index)" class="btn btn-danger btn-sm btn-block"><b><i class="fa fa-minus"></i></b></button>
+						<button type='button' ng-click="remover(item,$index)" class="btn btn-danger btn-sm btn-block"><b><i class="fa fa-minus"></i></b></button>
 					</div><br>
 				</div><br>
 				<div class="row">
 					<div class="col col-md-10"></div>
 					<div class="col col-md-2">
-						<button class="btn btn-primary btn-block">Salvar</button>
+						<button type='submit' class="btn btn-primary btn-block">Salvar</button>
 					</div>
 				</div>
+			</form>
 			</div><!-- FIM INFO CLIENTE VIA JAVASCRIPT-->
 		</div>
 	</div>
