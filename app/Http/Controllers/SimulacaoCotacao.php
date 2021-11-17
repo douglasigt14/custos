@@ -203,4 +203,23 @@ class SimulacaoCotacao extends Controller
             return [];
         }
     }
+
+    public function salvar(Request $request){
+        $dados = (object) $request->all();
+        //dd($dados);
+        $partes = explode('-', $dados->cliente);
+        $cod_cli = $partes[0];
+        DB::table('cabecalho_cotacao')->updateOrInsert([
+            'cliente' => $dados->cliente,
+            'representante' => $dados->representante,
+            'cod_cli' => $cod_cli,
+            'dt_inicial' => $dados->dt_inicial,
+            'dt_final' => $dados->dt_final,
+            'aliquota' => $dados->aliquota,
+            'select_custo' => $dados->select_custo,
+            'obs' => $dados->obs
+        ]);
+
+        return back();
+    }
 }

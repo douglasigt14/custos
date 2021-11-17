@@ -28,7 +28,8 @@
 				</div>
 			</div>
 			<br><br>
-			<form action="/simulacao_cotacao/salvar">
+			<form action="/simulacao_cotacao/salvar" method="POST">
+			@csrf
 			<div  id='info_cliente' style='display: none'>
 
 				<div class="row">
@@ -74,7 +75,7 @@
 					<div class="col col-md-12">
 						<div class="form-group">
 							<label>Observação</label>
-							<textarea class="form-control" rows="3"></textarea>
+							<textarea class="form-control" name='obs' rows="3"></textarea>
 						  </div>
 					</div>
 				</div>
