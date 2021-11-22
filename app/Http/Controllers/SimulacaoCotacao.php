@@ -204,6 +204,14 @@ class SimulacaoCotacao extends Controller
         }
     }
 
+    public function buscar_cotacao_cabecalho($cod_cli = null){
+
+    }
+    
+    public function buscar_cotacao_itens($cod_cli = null){
+
+    }
+
     public function salvar(Request $request){
         $dados = (object) $request->all();
         //dd($dados);

@@ -42,6 +42,10 @@ Route::middleware(MyAuth::class)->group(function () {
     Route::get('/buscar_clientes_info/{cod_cli}', [SimulacaoCotacao::class, 'buscar_clientes_info']);
     Route::get('/buscar_itens_info/{cod_item}', [SimulacaoCotacao::class, 'buscar_itens_info']);
     Route::post('/simulacao_cotacao/salvar', [SimulacaoCotacao::class, 'salvar']);
+    Route::get('/buscar_cotacao_cabecalho/{cod_cli}', [SimulacaoCotacao::class, 'buscar_cotacao_cabecalho']);
+    Route::get('/buscar_cotacao_itens/{cod_cli}', [SimulacaoCotacao::class, 'buscar_cotacao_itens']);
+
+    
 });
 
 Route::get('/login', [MyLogin::class, 'index'] )->name('login');
