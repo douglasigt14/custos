@@ -134,7 +134,7 @@
 					</div>
 					<div class="col col-md-8"></div>
 					<div class="col col-md-2">
-						<button type='submit' class="btn btn-primary btn-block">Salvar</button>
+						<button type='submit' target='_blank' class="btn btn-primary btn-block">Salvar</button>
 					</div>
 				</div>
 			</form>

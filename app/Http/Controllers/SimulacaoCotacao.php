@@ -209,7 +209,11 @@ class SimulacaoCotacao extends Controller
         //dd($dados);
         $partes = explode('-', $dados->cliente);
         $cod_cli = $partes[0];
-        DB::table('cabecalho_cotacao')->updateOrInsert([
+        DB::table('cabecalho_cotacao')->updateOrInsert(
+            [
+                 'cod_cli' => $cod_cli
+            ],
+            [
             'cliente' => $dados->cliente,
             'representante' => $dados->representante,
             'cod_cli' => $cod_cli,
@@ -219,6 +223,23 @@ class SimulacaoCotacao extends Controller
             'select_custo' => $dados->select_custo,
             'obs' => $dados->obs
         ]);
+        foreach ($dados->itens as $i => $item) {
+            $partes = explode('-', $item);
+            $cod_item = $partes[0];
+
+            DB::table('itens_cotacao')->updateOrInsert(
+                ['cod_item' => $cod_item,
+                 'cod_cli' => $cod_cli
+                ]
+                ,[
+                'item' => $item,
+                'vpc' => $dados->vpcs[$i],
+                'com' => $dados->coms[$i],
+                'preco' => $dados->precos[$i],
+                'cod_cli' => $cod_cli,
+                'cod_item' => $cod_item
+            ]);
+        }
 
         return back();
     }
