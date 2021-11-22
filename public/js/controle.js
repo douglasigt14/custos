@@ -3,6 +3,36 @@ angular.module('App', [])
               
               $scope.titulo = 'Simulação Cotação';
 
+              
+              $scope.buscar_info_clientes = function (){
+                let busca_cliente = document.querySelector('#busca_cliente').value;
+                let info_cliente = document.querySelector('#info_cliente');
+                let cliente = document.querySelector('#cliente');
+                let representante = document.querySelector('#representante');
+                
+                let result = busca_cliente.split("-");
+                let cod_cli = result[0];
+                
+          
+                let getUrl = window.location;
+                let url = getUrl .protocol + "//" + getUrl.host+'/';
+
+                const URL_TO_FETCH = url+"buscar_clientes_info/"+cod_cli;
+                fetch(URL_TO_FETCH, {
+                  method: 'get' //opcional 
+                })
+                .then((response) => response.json())
+                     .then((json) => {
+                   info_cliente.style.display = 'block';
+                  cliente.value = json.cod_e_descricao;
+                  representante.value = json.representante;
+                })
+                .catch(function(err) { 
+                  console.error(err); 
+                });
+          
+              }
+
               $scope.itens = [
                 {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'},
               ];
