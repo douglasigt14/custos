@@ -33,6 +33,12 @@ angular.module('App', [])
                 
             };
 
+            $scope.calcularTudo = function(){
+                $scope.itens.forEach(function(item,i){
+                 $scope.calcularML(item.item,i);
+                });
+            };
+
             $scope.calcularML = function(item,i){
               let partes = item.split('-'); 
               let cod_item = partes[0];

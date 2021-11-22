@@ -129,7 +129,10 @@
 					</div><br>
 				</div><br>
 				<div class="row">
-					<div class="col col-md-10"></div>
+					<div class="col col-md-2">
+						<button ng-click="calcularTudo()" type='button' class="btn btn-primary btn-block">Calcular Tudo</button>
+					</div>
+					<div class="col col-md-8"></div>
 					<div class="col col-md-2">
 						<button type='submit' class="btn btn-primary btn-block">Salvar</button>
 					</div>
