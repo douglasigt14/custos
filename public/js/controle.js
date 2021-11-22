@@ -1,9 +1,7 @@
 angular.module('App', [])
  					.controller('Controller', function($scope,$http) {
               
-              $scope.titulo = 'Simulação Cotação';
-
-              
+              $scope.titulo = 'Simulação Cotação'; 
               $scope.buscar_info_clientes = function (){
                 let busca_cliente = document.querySelector('#busca_cliente').value;
                 let info_cliente = document.querySelector('#info_cliente');
@@ -12,7 +10,6 @@ angular.module('App', [])
                 
                 let result = busca_cliente.split("-");
                 let cod_cli = result[0];
-                
           
                 let getUrl = window.location;
                 let url = getUrl .protocol + "//" + getUrl.host+'/';
@@ -30,12 +27,32 @@ angular.module('App', [])
                 .catch(function(err) { 
                   console.error(err); 
                 });
+
+
+                const URL_TO_FETCH_ITENS = url+"buscar_cotacao_itens/"+cod_cli;
+                fetch(URL_TO_FETCH_ITENS, {
+                  method: 'get' //opcional 
+                })
+                .then((response) => response.json())
+                     .then((json) => {
+                       if(json){
+                         $scope.itens = json;
+                          //$scope.calcularTudo();
+                        }
+                        else{
+                          $scope.itens = [
+                            {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'},
+                           ];
+                        }
+                       
+                })
+                .catch(function(err) { 
+                  console.error(err); 
+                });
           
               }
 
-              $scope.itens = [
-                {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'},
-              ];
+              
 
               $scope.lista_itens = [];
 
