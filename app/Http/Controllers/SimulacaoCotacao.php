@@ -218,7 +218,10 @@ class SimulacaoCotacao extends Controller
     
     public function buscar_cotacao_itens($cod_cli = null){
         $sql = "SELECT 
-                        *
+                    itens_cotacao.*
+                    ,'0' desconto
+                    ,'0' preco_nordeste
+                    ,'0' ml
             FROM itens_cotacao
             WHERE 
                     cod_cli = $cod_cli";

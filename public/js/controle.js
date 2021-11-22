@@ -1,7 +1,12 @@
 angular.module('App', [])
  					.controller('Controller', function($scope,$http) {
-              
+
               $scope.titulo = 'Simulação Cotação'; 
+              
+              $scope.itens = [
+                {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0}
+               ];
+
               $scope.buscar_info_clientes = function (){
                 let busca_cliente = document.querySelector('#busca_cliente').value;
                 let info_cliente = document.querySelector('#info_cliente');
@@ -15,14 +20,13 @@ angular.module('App', [])
                 let url = getUrl .protocol + "//" + getUrl.host+'/';
 
                 const URL_TO_FETCH = url+"buscar_clientes_info/"+cod_cli;
-                fetch(URL_TO_FETCH, {
+               let prom_cab = fetch(URL_TO_FETCH, {
                   method: 'get' //opcional 
                 })
                 .then((response) => response.json())
                      .then((json) => {
-                   info_cliente.style.display = 'block';
-                  cliente.value = json.cod_e_descricao;
-                  representante.value = json.representante;
+                      cliente.value = json.cod_e_descricao;
+                      representante.value = json.representante;
                 })
                 .catch(function(err) { 
                   console.error(err); 
@@ -30,25 +34,31 @@ angular.module('App', [])
 
 
                 const URL_TO_FETCH_ITENS = url+"buscar_cotacao_itens/"+cod_cli;
-                fetch(URL_TO_FETCH_ITENS, {
+                let prom_itens = fetch(URL_TO_FETCH_ITENS, {
                   method: 'get' //opcional 
                 })
                 .then((response) => response.json())
                      .then((json) => {
-                       if(json){
+                       if(json.length != 0){
                          $scope.itens = json;
-                          //$scope.calcularTudo();
+                          $scope.calcularTudo();
                         }
                         else{
                           $scope.itens = [
-                            {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0,ativo: 1,cor_ativo: 'white',comunicado: 0, desc_comunicado: 'Não Comunicado', cor_comunicado : '#FF5E38'},
-                           ];
+                            {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0
+                            }];
                         }
                        
                 })
                 .catch(function(err) { 
                   console.error(err); 
                 });
+                
+                Promise.all([prom_cab, prom_itens]).then(() => {
+                  info_cliente.style.display = 'block';
+                  _update();
+               });
+
           
               }
 
