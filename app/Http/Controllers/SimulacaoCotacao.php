@@ -205,10 +205,27 @@ class SimulacaoCotacao extends Controller
     }
 
     public function buscar_cotacao_cabecalho($cod_cli = null){
+        $sql = "SELECT 
+                        *
+            FROM cabecalho_cotacao
+            WHERE 
+                    cod_cli = $cod_cli";
 
+        $cabecalho_cotacao  = DB::connection('mysql')->select($sql);
+
+        return $cabecalho_cotacao;
     }
     
     public function buscar_cotacao_itens($cod_cli = null){
+        $sql = "SELECT 
+                        *
+            FROM itens_cotacao
+            WHERE 
+                    cod_cli = $cod_cli";
+
+        $itens_cotacao  = DB::connection('mysql')->select($sql);
+
+        return $itens_cotacao;
 
     }
 
