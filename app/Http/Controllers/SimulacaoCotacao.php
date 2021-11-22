@@ -252,14 +252,17 @@ class SimulacaoCotacao extends Controller
             $partes = explode('-', $item);
             $cod_item = $partes[0];
             $preco = str_replace(',','.',$dados->precos[$i]);
+            $vpc = str_replace(',','.',$dados->vpcs[$i]);
+            $com = str_replace(',','.',$dados->coms[$i]);
+            
             DB::table('itens_cotacao')->updateOrInsert(
                 ['cod_item' => $cod_item,
                  'cod_cli' => $cod_cli
                 ]
                 ,[
                 'item' => $item,
-                'vpc' => $dados->vpcs[$i],
-                'com' => $dados->coms[$i],
+                'vpc' => $vpc,
+                'com' => $com,
                 'preco' => $preco,
                 'cod_cli' => $cod_cli,
                 'cod_item' => $cod_item
