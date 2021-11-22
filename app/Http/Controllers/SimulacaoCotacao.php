@@ -234,7 +234,7 @@ class SimulacaoCotacao extends Controller
         foreach ($dados->itens as $i => $item) {
             $partes = explode('-', $item);
             $cod_item = $partes[0];
-
+            $preco = str_replace(',','.',$dados->precos[$i]);
             DB::table('itens_cotacao')->updateOrInsert(
                 ['cod_item' => $cod_item,
                  'cod_cli' => $cod_cli
@@ -243,7 +243,7 @@ class SimulacaoCotacao extends Controller
                 'item' => $item,
                 'vpc' => $dados->vpcs[$i],
                 'com' => $dados->coms[$i],
-                'preco' => $dados->precos[$i],
+                'preco' => $preco,
                 'cod_cli' => $cod_cli,
                 'cod_item' => $cod_item
             ]);
