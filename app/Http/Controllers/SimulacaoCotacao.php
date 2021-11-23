@@ -251,9 +251,13 @@ class SimulacaoCotacao extends Controller
             'select_custo' => $dados->select_custo,
             'obs' => $dados->obs
         ]);
+        $itens_request = [];
+        $itens_select = $this->buscar_cotacao_itens($cod_cli);
+
         foreach ($dados->itens as $i => $item) {
             $partes = explode('-', $item);
             $cod_item = $partes[0];
+            array_push($itens_request,$cod_item);
             $preco = str_replace(',','.',$dados->precos[$i]);
             $vpc = str_replace(',','.',$dados->vpcs[$i]);
             $com = str_replace(',','.',$dados->coms[$i]);
@@ -270,6 +274,14 @@ class SimulacaoCotacao extends Controller
                 'cod_cli' => $cod_cli,
                 'cod_item' => $cod_item
             ]);
+        }
+
+        foreach ($itens_select as $key => $item) {
+            if (!in_array( $item->cod_item , $itens_request)) { 
+                DB::table('itens_cotacao')->where(['cod_item' => $item->cod_item,
+                'cod_cli' => $cod_cli
+               ])->delete();
+            }
         }
 
         return back();
