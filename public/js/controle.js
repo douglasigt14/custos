@@ -56,7 +56,7 @@ angular.module('App', [])
                 
                 Promise.all([prom_cab, prom_itens]).then(() => {
                   info_cliente.style.display = 'block';
-                  _update();
+                  console.log($scope.itens);
                });
 
           
