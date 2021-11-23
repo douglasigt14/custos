@@ -57,6 +57,7 @@ angular.module('App', [])
                 Promise.all([prom_cab, prom_itens]).then(() => {
                   info_cliente.style.display = 'block';
                   console.log($scope.itens);
+                  $scope.$apply();
                });
 
           
@@ -94,6 +95,7 @@ angular.module('App', [])
                 $scope.itens.forEach(function(item,i){
                  $scope.calcularML(item.item,i);
                 });
+                $scope.$apply();
             };
 
             $scope.calcularML = function(item,i){
@@ -168,6 +170,7 @@ angular.module('App', [])
                    var oldstr= $scope.itens[i].ml.toString();
                    $scope.itens[i].ml  = oldstr.toString();//.replace(".","A");
                 }
+                $scope.$apply();
                   //  console.log($scope.itens[i]);
               })
               .catch(function(err) { 
