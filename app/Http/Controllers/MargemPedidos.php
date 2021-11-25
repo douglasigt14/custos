@@ -20,7 +20,7 @@ class MargemPedidos extends Controller
         ,CASE 
          WHEN TPEDIDOS_VENDA.POS_PDV = 'A' THEN THIST_MOV_ITE_PDV.DT
          WHEN TPEDIDOS_VENDA.POS_PDV = 'PE' THEN TPEDIDOS_VENDA.DT_EMIS 
-        END AS DT_FAT
+        END AS DT
         ,TITENS.COD_ITEM
         ,TITENS.DESC_TECNICA ITEM
         ,TMASC_ITEM.MASCARA
@@ -140,12 +140,12 @@ class MargemPedidos extends Controller
             array_push($pedidos[$key]['itens'], $ped_itens);
             }
             else{
-                $partes = explode(" ",$ped_itens->dt_fat);
-                $dt_fat = implode("/",array_reverse(explode("-",$partes[0])));
+                $partes = explode(" ",$ped_itens->dt);
+                $dt = implode("/",array_reverse(explode("-",$partes[0])));
 
                 array_push($pedidos,['num_pedido' => $ped_itens->num_pedido,
                                     'pos'=> $ped_itens->pos,
-                                    'dt_fat' => $dt_fat,
+                                    'dt' => $dt,
                                     'vlr_liq' => $ped_itens->vlr_liq,
                                     'cliente' => $ped_itens->cod_cli.'-'.$ped_itens->cliente,
                 'itens' => [$ped_itens] ]);
