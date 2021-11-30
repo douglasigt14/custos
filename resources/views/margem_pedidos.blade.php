@@ -59,7 +59,8 @@
 								<h4>{{$pedido['cliente']}}</h4>
 							</div>
 							<div class="col col-md-2">
-								<h4>{{$pedido['dt']}}</h4>
+								<h5>{{$pedido['dt_emis']}}</h5>
+								<h5>{{$pedido['dt']}}</h5>
 							</div>
 							<div class="col col-md-2">
 								<h4>{{number_format($pedido['vlr_liq'],2,',','.')}}</h4>

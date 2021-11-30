@@ -31,6 +31,10 @@ class MargemPedidos extends Controller
         ,TITENS_PDV.VLR_LIQ vlr_ft_item
         ,TPEDIDOS_VENDA.POS_PDV POS
         ,TPEDIDOS_VENDA.VLR_DESC_PDV desc_pdv
+        ,CASE 
+         WHEN TPEDIDOS_VENDA.POS_PDV = 'A' THEN TPEDIDOS_VENDA.DT_EMIS
+         WHEN TPEDIDOS_VENDA.POS_PDV = 'PE' THEN TPEDIDOS_VENDA.DT_EMIS 
+        END AS DT_EMIS
     FROM FOCCO3I.TPEDIDOS_VENDA
         ,FOCCO3I.TITENS_PDV
         ,FOCCO3I.TITENS_COMERCIAL
@@ -143,9 +147,13 @@ class MargemPedidos extends Controller
                 $partes = explode(" ",$ped_itens->dt);
                 $dt = implode("/",array_reverse(explode("-",$partes[0])));
 
+                $partes = explode(" ",$ped_itens->dt_emis);
+                $dt_emis = implode("/",array_reverse(explode("-",$partes[0])));
+
                 array_push($pedidos,['num_pedido' => $ped_itens->num_pedido,
                                     'pos'=> $ped_itens->pos,
                                     'dt' => $dt,
+                                    'dt_emis' => $dt_emis,
                                     'vlr_liq' => $ped_itens->vlr_liq,
                                     'cliente' => $ped_itens->cod_cli.'-'.$ped_itens->cliente,
                 'itens' => [$ped_itens] ]);
