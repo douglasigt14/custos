@@ -116,6 +116,8 @@ angular.module('App', [])
 
                     let fator = json.fator;
 
+                    console.log(fator);
+
                     vpc = parseFloat($scope.itens[i].vpc);
                     com = parseFloat($scope.itens[i].com);
 
@@ -171,7 +173,7 @@ angular.module('App', [])
                    $scope.itens[i].ml  = oldstr.toString();//.replace(".","A");
                 }
                 $scope.$apply();
-                  //  console.log($scope.itens[i]);
+                console.log($scope.itens[i]);
               })
               .catch(function(err) { 
                 console.error(err); 

@@ -186,7 +186,7 @@ class SimulacaoCotacao extends Controller
             $item->custo_futuro = $custos_log[0]->custo_focco ?? NULL;
             $item->categoria = $custos_log[0]->categoria ?? NULL;
 
-            $item->fator = 54.6;
+            $item->fator = 47.6;
 
             $sql = "SELECT * FROM parametros";
             $parametros =  DB::connection('mysql')->select($sql);
