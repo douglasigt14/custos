@@ -7,6 +7,8 @@ angular.module('App', [])
                 {item: '',vpc: 0, com: 0, preco: 0, custo_atual: 0, custo_futuro: 0,ml: 0,preco_nordeste: 0,desconto: 0}
                ];
 
+              $scope.obs = "";
+
               $scope.buscar_info_clientes = function (){
                 let busca_cliente = document.querySelector('#busca_cliente').value;
                 let info_cliente = document.querySelector('#info_cliente');
@@ -27,6 +29,21 @@ angular.module('App', [])
                      .then((json) => {
                       cliente.value = json.cod_e_descricao;
                       representante.value = json.representante;
+                })
+                .catch(function(err) { 
+                  console.error(err); 
+                });
+
+
+                const URL_TO_FETCH_CABECALHO = url+"buscar_cotacao_cabecalho/"+cod_cli;
+                let prom_cabecalho = fetch(URL_TO_FETCH_CABECALHO, {
+                  method: 'get' //opcional 
+                })
+                .then((response) => response.json())
+                     .then((json) => {
+                      $scope.obs = json[0].obs;
+                      $scope.aliquota = json[0].aliquota;
+                      $scope.select_custo = json[0].select_custo;
                 })
                 .catch(function(err) { 
                   console.error(err); 
@@ -54,9 +71,8 @@ angular.module('App', [])
                   console.error(err); 
                 });
                 
-                Promise.all([prom_cab, prom_itens]).then(() => {
+                Promise.all([prom_cab, prom_itens,prom_cabecalho]).then(() => {
                   info_cliente.style.display = 'block';
-                  console.log($scope.itens);
                   $scope.$apply();
                });
 
@@ -82,9 +98,7 @@ angular.module('App', [])
                     
                }
                else{
-                 console.log(i);
                  $scope.itens.splice(i,1);
-                 console.log($scope.itens);
                 // $scope.lista_itens.push ( { 0: item.item, DESCRICAO: item.item } );
                 // $scope.lista_itens = $scope.lista_itens.filter( onlyUnique );
               }
@@ -116,7 +130,6 @@ angular.module('App', [])
 
                     let fator = json.fator;
 
-                    console.log(fator);
 
                     vpc = parseFloat($scope.itens[i].vpc);
                     com = parseFloat($scope.itens[i].com);
@@ -173,7 +186,6 @@ angular.module('App', [])
                    $scope.itens[i].ml  = oldstr.toString();//.replace(".","A");
                 }
                 $scope.$apply();
-                console.log($scope.itens[i]);
               })
               .catch(function(err) { 
                 console.error(err); 
@@ -182,7 +194,6 @@ angular.module('App', [])
             }
 
               $scope.voltar = function(pagina){
-                console.log(pagina);
 								window.location.assign(pagina);
 							};
 	 	});

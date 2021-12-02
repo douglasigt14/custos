@@ -75,7 +75,7 @@
 					<div class="col col-md-12">
 						<div class="form-group">
 							<label>Observação</label>
-							<textarea class="form-control" name='obs' rows="3"></textarea>
+							<textarea class="form-control" name='obs' rows="3">@{{obs}}</textarea>
 						  </div>
 					</div>
 				</div>
