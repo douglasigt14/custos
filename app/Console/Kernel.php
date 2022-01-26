@@ -28,8 +28,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('custo:cron')->twiceDaily(15,4);
-        $schedule->command('custo:cronall')->dailyAt('21:00');
+       // $schedule->command('custo:cron')->twiceDaily(15,7);
+        $schedule->command('custo:cron')->dailyAt('7:00');
+        $schedule->command('custo:cronall')->dailyAt('01:00');
     }
 
     /**

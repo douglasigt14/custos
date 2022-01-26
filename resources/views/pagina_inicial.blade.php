@@ -35,7 +35,7 @@
 									<div class="metric">
 										<span class="icon"><i class="fa fa-bar-chart"></i></span>
 										<p>
-											<span class="number">&nbsp;</span>
+											<span class="number">{{$qtde_ml}}</span>
 											<span class="title">Margens de Lucro<br><br></span>
 										</p>
 									</div>

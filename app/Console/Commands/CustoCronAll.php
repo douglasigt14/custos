@@ -48,6 +48,8 @@ class CustoCronAll extends Command
     WHERE
         ITEM NOT LIKE '--%'
     AND ITEM NOT LIKE '(P)%'
+    AND ITEM NOT LIKE 'L-%'
+    AND ITEM NOT LIKE 'P-%'
     GROUP BY 
         COD_ITEM
         ,ITEM

@@ -35,7 +35,15 @@ class Dashboard extends Controller
     ORDER BY TGRP_CLAS_ITE.COD_GRP_ITE";
         $itens = DB::connection('oracle')->select($sqlItens);
         $qtde = (object) ['materias_primas' => $itens[0]->qtde ]; 
+
+        $sql = "SELECT 
+                    COUNT(*) as qtde
+                FROM custos_log";
+
+        $result  = DB::connection('mysql')->select($sql);
+
+        $qtde_ml = $result[0]->qtde ?? 0;
         
-        return view('pagina_inicial', compact(["qtde"]));
+        return view('pagina_inicial', compact(["qtde","qtde_ml"]));
     }
 }
